@@ -6,6 +6,8 @@ public class WeaponInfo
     public int cost;
     public int damage;
     public int cooldown;
+    public int magazineCapacity;
+    public int maxAmmo;
 }
 
 
