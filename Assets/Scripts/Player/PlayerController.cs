@@ -4,47 +4,75 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private float acceleration;
-    [SerializeField] private float jumpForce;
+    [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private Transform head;
     [SerializeField] private Transform arms;
+    private Rigidbody2D rb;
+    private PlayerInput playerInput;
+
+    [Header ("Movement")]
+    [SerializeField] private float movementSpeed;
+    [SerializeField] private float acceleration;
+    [SerializeField] private float jumpForce;
+    [SerializeField] private float flightTime;
+    [SerializeField] private float flightVelocity;
     [SerializeField] private float armRotationOffset;
     [SerializeField] private float maxHeadRotation;
-    public PlayerInput playerInput;
-    public bool isGrounded;
     public float raycastDistance;
-    private Rigidbody2D rb;
+    private float flightTimer;           
     private float moveInput;
     private float movement;
     private float movementRef;
 
+    [Header("Debugging")]
+    [SerializeField] private bool isGrounded;
+    [SerializeField] private bool flying;
+    [SerializeField] private bool canFly;
 
     private void Start()
     {
+        playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
+        flightTimer = 0;
     }
 
     private void Update()
     {
         movement = Mathf.Clamp(Mathf.SmoothDamp(movement, moveInput, ref movementRef, acceleration), -1, 1);
         SetIsGrounded();
-
+        if (flying) SetFlightTimer();              
     }
 
     private void FixedUpdate()
     {
+        if (flying) Fly();
         ApplyMovement();
         Aim();
     }
 
     private void ApplyMovement()
     {
-        if (moveInput != 0)
-            rb.linearVelocity = new Vector2(movementSpeed * moveInput, rb.linearVelocity.y);
+        rb.linearVelocity = new Vector2(movementSpeed * movement, rb.linearVelocity.y);
     }
 
+    private void SetFlightTimer()
+    {
+        if (flightTimer < flightTime)
+        {
+            flightTimer += Time.deltaTime;
+            if (flightTimer > flightTime)
+            {
+                flying = false;
+                flightTimer = 0;
+            }
+        }
+    }
+
+    private void Fly()
+    {
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, flightVelocity);
+    }
     private void Aim()
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -77,13 +105,26 @@ public class PlayerController : MonoBehaviour
     private void SetIsGrounded()
     {
         isGrounded = Physics2D.Raycast(transform.position, -transform.up, raycastDistance, 1 << 3);
-        Debug.DrawRay(transform.position, -transform.up * raycastDistance);
+        Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.red);
+        if (isGrounded && !flying) canFly = true;
     }
 
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (isGrounded)
-            rb.AddForce(new Vector2(0, jumpForce));
+        if (isGrounded && ctx.started)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+        if (!isGrounded && (ctx.performed || ctx.started) && canFly)
+        {
+            flying = true;
+            canFly = false;
+            flightTimer = 0;
+        }
+        if (ctx.canceled)
+        {
+            flying = false;
+        }
     }
 
 
@@ -99,7 +140,6 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("walking", false);
             moveInput = 0;
         }
-
     }
 
 }
