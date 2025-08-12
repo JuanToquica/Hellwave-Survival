@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
 
     [Header ("Movement")]
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float speed;
     [SerializeField] private float acceleration;
     [SerializeField] private float jumpForce;
     [SerializeField] private float flightTime;
@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     private void ApplyMovement()
     {
-        rb.linearVelocity = new Vector2(movementSpeed * movement, rb.linearVelocity.y);
+         rb.linearVelocity = new Vector2(speed * movement, rb.linearVelocity.y);        
     }
 
     private void SetFlightTimer()
@@ -101,12 +101,14 @@ public class PlayerController : MonoBehaviour
         else
             head.rotation = Quaternion.Euler(0, 0, Mathf.Sign(headAngle) * maxHeadRotation);        
     }
-
     private void SetIsGrounded()
     {
-        isGrounded = Physics2D.Raycast(transform.position, -transform.up, raycastDistance, 1 << 3);
-        Debug.DrawRay(transform.position, -transform.up * raycastDistance, Color.red);
-        if (isGrounded && !flying) canFly = true;
+        isGrounded = Physics2D.Raycast(transform.position + transform.right * (0.75f / 2), -transform.up, raycastDistance, 1 << 3) 
+            || Physics2D.Raycast(transform.position - transform.right * (0.75f / 2), -transform.up, raycastDistance, 1 << 3);
+        Debug.DrawRay(transform.position + transform.right * (0.75f / 2), -transform.up * raycastDistance, Color.red);
+        Debug.DrawRay(transform.position - transform.right * (0.75f / 2), -transform.up * raycastDistance, Color.red);
+
+        if (isGrounded && !flying && !canFly) canFly = true;
     }
 
     public void OnJump(InputAction.CallbackContext ctx)
