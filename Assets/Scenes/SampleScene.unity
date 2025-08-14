@@ -648,6 +648,7 @@ MonoBehaviour:
   animator: {fileID: 1595612947}
   head: {fileID: 84189652}
   arms: {fileID: 1185638312}
+  currentState: 0
   speed: 5
   acceleration: 0.2
   jumpForce: 7
@@ -655,7 +656,7 @@ MonoBehaviour:
   flightVelocity: 5
   armRotationOffset: 80
   maxHeadRotation: 30
-  raycastDistance: 1.4
+  raycastDistance: 1.37
   isGrounded: 0
   flying: 0
   canFly: 0

@@ -2,6 +2,16 @@ using System.Security;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
+public enum PlayerState
+{
+    Idle = 0,
+    Running = 1,
+    Jumping = 2,
+    Flying = 3,
+    Falling = 4
+}
+
 public class PlayerController : MonoBehaviour
 {
     [Header("References")]
@@ -10,6 +20,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform arms;
     private Rigidbody2D rb;
     private PlayerInput playerInput;
+    public PlayerState currentState;
 
     [Header ("Movement")]
     [SerializeField] private float speed;
@@ -41,7 +52,8 @@ public class PlayerController : MonoBehaviour
     {
         movement = Mathf.Clamp(Mathf.SmoothDamp(movement, moveInput, ref movementRef, acceleration), -1, 1);
         SetIsGrounded();
-        if (flying) SetFlightTimer();              
+        SetCurrentState();
+        if (flying) SetFlightTimer();
     }
 
     private void FixedUpdate()
@@ -116,6 +128,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded && ctx.started)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            
         }
         if (!isGrounded && (ctx.performed || ctx.started) && canFly)
         {
@@ -134,14 +147,39 @@ public class PlayerController : MonoBehaviour
     {
         if (ctx.performed)
         {
-            moveInput = ctx.ReadValue<float>();
-            animator.SetBool("walking", true);
+            moveInput = ctx.ReadValue<float>();                
         }
         if (ctx.canceled)
         {
-            animator.SetBool("walking", false);
             moveInput = 0;
         }
+    }
+
+    private void SetCurrentState()
+    {
+        if (isGrounded && moveInput == 0)
+            currentState = PlayerState.Idle;
+        else if (isGrounded && moveInput != 0)
+        {
+            currentState = PlayerState.Running;
+            if (moveInput > 0 && transform.localScale.x == 1 || moveInput < 0 && transform.localScale.x == -1)
+                animator.SetFloat("Direction", 1);
+            else
+                animator.SetFloat("Direction", -1);
+        }
+        else if (flying == true)
+        {
+            currentState = PlayerState.Flying;
+        }
+        else if (rb.linearVelocity.y > 0.1f)
+        {
+            currentState = PlayerState.Jumping;
+        }
+        else
+        {
+            currentState = PlayerState.Falling;
+        }
+        animator.SetInteger("State", (int)currentState);
     }
 
 }
