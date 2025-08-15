@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 90656f70492329a4f890536b5a9f0dec
+guid: b1469e57a174a8641956081b1ce1a0ac
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1697142225353792606
-    second: Armature_Jump_10_0
+      213: 6473140464517438013
+    second: Armature_FallAfterFly_8_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Armature_Jump_10_0
+      name: Armature_FallAfterFly_8_0
       rect:
         serializedVersion: 2
-        x: 385
-        y: 327
-        width: 1236
-        height: 1316
+        x: 718
+        y: 107
+        width: 748
+        height: 1536
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2a3a87c432a8278e0800000000000000
-      internalID: -1697142225353792606
+      spriteID: d3ad4c0d4f635d950800000000000000
+      internalID: 6473140464517438013
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Armature_Jump_10_0: -1697142225353792606
+      Armature_FallAfterFly_8_0: 6473140464517438013
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -126,10 +126,8 @@ public class PlayerController : MonoBehaviour
     public void OnJump(InputAction.CallbackContext ctx)
     {
         if (isGrounded && ctx.started)
-        {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            
-        }
+
         if (!isGrounded && (ctx.performed || ctx.started) && canFly)
         {
             flying = true;
@@ -137,22 +135,16 @@ public class PlayerController : MonoBehaviour
             flightTimer = 0;
         }
         if (ctx.canceled)
-        {
             flying = false;
-        }
     }
 
 
     public void OnMove(InputAction.CallbackContext ctx)
     {
         if (ctx.performed)
-        {
             moveInput = ctx.ReadValue<float>();                
-        }
         if (ctx.canceled)
-        {
             moveInput = 0;
-        }
     }
 
     private void SetCurrentState()

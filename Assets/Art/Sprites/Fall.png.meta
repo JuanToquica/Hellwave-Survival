@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 90656f70492329a4f890536b5a9f0dec
+guid: 8f06def3dfcd2ce4bb23fd354f263c32
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -103,10 +103,10 @@ TextureImporter:
       name: Armature_Jump_10_0
       rect:
         serializedVersion: 2
-        x: 385
-        y: 327
-        width: 1236
-        height: 1316
+        x: 718
+        y: 122
+        width: 695
+        height: 1521
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
