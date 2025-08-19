@@ -50,6 +50,9 @@ TagManager:
   - name: Head
     uniqueID: 2517813767
     locked: 0
+  - name: Weapon
+    uniqueID: 3943606267
+    locked: 0
   - name: Right Arm
     uniqueID: 725999163
     locked: 0
