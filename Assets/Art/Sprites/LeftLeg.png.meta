@@ -127,17 +127,17 @@ TextureImporter:
     bones:
     - name: LeftLeg1
       guid: 9a3d97c4948b1f448aa50d2e2fe81247
-      position: {x: -230.88301, y: 183.17952, z: 0}
-      rotation: {x: 0, y: -0, z: 0, w: -1}
-      length: 369.02292
+      position: {x: -224.41364, y: 145.17184, z: 0}
+      rotation: {x: 0, y: 0, z: 0.04361938, w: 0.9990483}
+      length: 364.54086
       parentId: 2
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: LeftLeg2
       guid: 41de746789f73ff4e8c380a800d2e541
-      position: {x: 369.02295, y: 0.00006508357, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: -1}
+      position: {x: 364.54077, y: -0.00015359336, z: 0}
+      rotation: {x: 0, y: 0, z: -0.04361938, w: 0.9990483}
       length: 392.4775
       parentId: 0
       color:
