@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e39d0cf05f985a04395ddfd118a0686d
+guid: 52741d6d0e208f3418723e51ac733767
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8452258049460650312
-    second: Weapons-12.png (1)_0
+      213: 473274070761331931
+    second: Rockets_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weapons-12.png (1)_0
+      name: Rockets_0
       rect:
         serializedVersion: 2
-        x: 839
+        x: 579
         y: 839
-        width: 322
-        height: 322
+        width: 822
+        height: 342
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8be36f3061c83ba80800000000000000
-      internalID: -8452258049460650312
+      spriteID: bdcd1258248619600800000000000000
+      internalID: 473274070761331931
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Weapons-12.png (1)_0: -8452258049460650312
+      Rockets_0: 473274070761331931
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

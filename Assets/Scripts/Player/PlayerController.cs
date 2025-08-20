@@ -17,7 +17,9 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private Transform head;
-    [SerializeField] private Transform arms;
+    [SerializeField] private Transform rightArmTarget;
+    [SerializeField] private Transform leftArmTarget;
+    [SerializeField] private Transform weapon;
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     public PlayerState currentState;
@@ -89,7 +91,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePos - transform.position;
-        Vector2 armDirection = mousePos -arms.position;
+        Vector2 weaponDirection = mousePos -weapon.position;
         Vector2 headDirection;
         float armOffset = armRotationOffset;
         if (direction.normalized.x >= 0)
@@ -104,10 +106,10 @@ public class PlayerController : MonoBehaviour
             armOffset = 90 + (90 - armRotationOffset);
         }
 
-        float armAngle = Mathf.Atan2(armDirection.y, armDirection.x) * Mathf.Rad2Deg;
+        float armAngle = Mathf.Atan2(weaponDirection.y, weaponDirection.x) * Mathf.Rad2Deg;
         float headAngle = Mathf.Atan2(headDirection.y, headDirection.x) * Mathf.Rad2Deg;
 
-        arms.rotation = Quaternion.Euler(0, 0, armAngle + armOffset);
+        weapon.rotation = Quaternion.Euler(0, 0, armAngle + armOffset);
         if (Mathf.Abs(headAngle) < maxHeadRotation)
             head.rotation = Quaternion.Euler(0, 0, headAngle);
         else

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0b5e678fa3d26c84ea6b555712dd6c61
+guid: 87c3dbd834b5c864fa3eca640fb6c74d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8950317266029010960
-    second: Weapons-6.png (1)_0
+      213: -8535769107507300308
+    second: Granade_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weapons-6.png (1)_0
+      name: Granade_0
       rect:
         serializedVersion: 2
-        x: 879
-        y: 599
-        width: 222
-        height: 802
+        x: 819
+        y: 819
+        width: 342
+        height: 382
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0ff9b4b0ed51ac380800000000000000
-      internalID: -8950317266029010960
+      spriteID: c28364e983bda8980800000000000000
+      internalID: -8535769107507300308
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Weapons-6.png (1)_0: -8950317266029010960
+      Granade_0: -8535769107507300308
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
