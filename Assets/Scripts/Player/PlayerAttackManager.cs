@@ -15,6 +15,7 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private Weapons currentWeapon;
     [SerializeField] private Weapon[] weapons;
     [SerializeField] private WeaponData weaponData;
+    [SerializeField] private Animator animator;
     public PlayerController playerController;
 
     void Start()
@@ -73,6 +74,16 @@ public class PlayerAttackManager : MonoBehaviour
 
         playerController.ChangeGripPoints(weapons[nextWeapon].rightGripPoint, weapons[nextWeapon].leftGripPoint, 
             weaponData.weapons[nextWeapon].useLeftArmBackPosition, weaponData.weapons[nextWeapon].requiresAiming, weaponData.weapons[nextWeapon].aimingOffset);
+    }
+
+    public void OnAttack(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            animator.SetTrigger("Shot");
+            animator.SetInteger("WeaponType", (int)currentWeapon);
+        }
+        
     }
 
 }
