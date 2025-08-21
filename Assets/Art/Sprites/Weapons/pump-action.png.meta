@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 29f664bd0e727764a9873ae52efac5fb
+guid: 681600432ae4e0444aeea6e71f57fdc8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4661038429365651221
-    second: Weapons-7.png (1)_0
+      213: 8101506953923663546
+    second: pump-action_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,8 +49,8 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 9
-  spritePivot: {x: 0.42, y: 0.5}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 700
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Weapons-7.png (1)_0
+      name: pump-action_0
       rect:
         serializedVersion: 2
-        x: 879
-        y: 599
-        width: 222
-        height: 802
+        x: 899
+        y: 959
+        width: 182
+        height: 82
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: be837356e3aa05fb0800000000000000
-      internalID: -4661038429365651221
+      spriteID: ab61af5a6a55e6070800000000000000
+      internalID: 8101506953923663546
       vertices: []
       indices: 
       edges: []
@@ -126,7 +126,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Weapons-7.png (1)_0: -4661038429365651221
+      pump-action_0: 8101506953923663546
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
