@@ -97,18 +97,20 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePos - transform.position;
-        Vector2 weaponDirection = mousePos -weaponPivot.position;
+        Vector2 weaponDirection;
         Vector2 headDirection;
         float armOffset = armRotationOffset;
         if (direction.normalized.x >= 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
             headDirection = mousePos - head.position;
+            weaponDirection = mousePos - weaponPivot.position;
         }
         else
         {
             transform.localScale = new Vector3(-1, 1, 1);
             headDirection = head.position - mousePos;
+            weaponDirection = weaponPivot.position - mousePos;
             armOffset = 90 + (90 - armRotationOffset);
         }
   
@@ -121,7 +123,10 @@ public class PlayerController : MonoBehaviour
         if (activatedAiming)
         {
             float armAngle = Mathf.Atan2(weaponDirection.y, weaponDirection.x) * Mathf.Rad2Deg;
-            weaponPivot.rotation = Quaternion.Euler(0, 0, armAngle + armOffset);
+            if (Mathf.Abs(armAngle) < maxArmsRotation)
+                weaponPivot.rotation = Quaternion.Euler(0, 0, armAngle);
+            else
+                weaponPivot.rotation = Quaternion.Euler(0, 0, Mathf.Sign(armAngle) * maxArmsRotation);
         }
         else
         {

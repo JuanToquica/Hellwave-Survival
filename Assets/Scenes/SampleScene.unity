@@ -1985,7 +1985,7 @@ MonoBehaviour:
   flightVelocity: 5
   armRotationOffset: -7
   maxHeadRotation: 30
-  maxArmsRotation: 0
+  maxArmsRotation: 60
   raycastDistance: 1.38
   isGrounded: 0
   flying: 0
