@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float flightTime;
     [SerializeField] private float flightVelocity;
-    [SerializeField] private float armRotationOffset;
+    [SerializeField] private float currentAimingOffset;
     [SerializeField] private float maxHeadRotation;
     [SerializeField] private float maxArmsRotation;
     public float raycastDistance;
@@ -43,6 +43,7 @@ public class PlayerController : MonoBehaviour
     private float movement;
     private float movementRef;
     private bool activatedAiming;
+    public Transform firepoint;
 
     [Header("Debugging")]
     [SerializeField] private bool isGrounded;
@@ -99,19 +100,18 @@ public class PlayerController : MonoBehaviour
         Vector2 direction = mousePos - transform.position;
         Vector2 weaponDirection;
         Vector2 headDirection;
-        float armOffset = armRotationOffset;
+        float armOffset = currentAimingOffset;
         if (direction.normalized.x >= 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
             headDirection = mousePos - head.position;
-            weaponDirection = mousePos - weaponPivot.position;
+            weaponDirection = mousePos - (weaponPivot.position + weaponPivot.up * currentAimingOffset);
         }
         else
         {
             transform.localScale = new Vector3(-1, 1, 1);
             headDirection = head.position - mousePos;
-            weaponDirection = weaponPivot.position - mousePos;
-            armOffset = 90 + (90 - armRotationOffset);
+            weaponDirection = (weaponPivot.position + weaponPivot.up * currentAimingOffset) - mousePos;
         }
   
         float headAngle = Mathf.Atan2(headDirection.y, headDirection.x) * Mathf.Rad2Deg;
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
         {
             float armAngle = Mathf.Atan2(weaponDirection.y, weaponDirection.x) * Mathf.Rad2Deg;
             if (Mathf.Abs(armAngle) < maxArmsRotation)
-                weaponPivot.rotation = Quaternion.Euler(0, 0, armAngle);
+                weaponPivot.rotation = Quaternion.Euler(0, 0, armAngle + armOffset);
             else
                 weaponPivot.rotation = Quaternion.Euler(0, 0, Mathf.Sign(armAngle) * maxArmsRotation);
         }
@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
             moveInput = 0;
     }
 
-    public void ChangeGripPoints(Transform newRightGripPoint, Transform newLeftGripPoint, bool useLeftArmBackPosition, bool requiresAiming)
+    public void ChangeGripPoints(Transform newRightGripPoint, Transform newLeftGripPoint, bool useLeftArmBackPosition, bool requiresAiming, float aimingOffset)
     {
         rightGripPoint = newRightGripPoint;
         leftGripPoint = newLeftGripPoint;
@@ -181,6 +181,7 @@ public class PlayerController : MonoBehaviour
             leftArm.localPosition = new Vector3(0, leftArm.localPosition.y, leftArm.localPosition.z);
 
         activatedAiming = requiresAiming;
+        currentAimingOffset = aimingOffset;
     }
 
     private void SetCurrentState()

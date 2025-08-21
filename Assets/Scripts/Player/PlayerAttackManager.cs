@@ -72,7 +72,7 @@ public class PlayerAttackManager : MonoBehaviour
         weapons[nextWeapon].gameObject.SetActive(true);
 
         playerController.ChangeGripPoints(weapons[nextWeapon].rightGripPoint, weapons[nextWeapon].leftGripPoint, 
-            weaponData.weapons[nextWeapon].useLeftArmBackPosition, weaponData.weapons[nextWeapon].requiresAiming);
+            weaponData.weapons[nextWeapon].useLeftArmBackPosition, weaponData.weapons[nextWeapon].requiresAiming, weaponData.weapons[nextWeapon].aimingOffset);
     }
 
 }

@@ -11,6 +11,8 @@ public class WeaponInfo
     public int maxAmmo;
     public bool useLeftArmBackPosition;
     public bool requiresAiming;
+    [Tooltip ("offset applied to the weapon pivot when calculating the direction toward the mouse and ensuring that the weapon appears aligned")] 
+    public float aimingOffset;
 }
 
 

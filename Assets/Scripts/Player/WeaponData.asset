@@ -21,6 +21,7 @@ MonoBehaviour:
     maxAmmo: 0
     useLeftArmBackPosition: 1
     requiresAiming: 1
+    aimingOffset: 0.22
   - WeaponType: 1
     cost: 0
     damage: 0
@@ -29,6 +30,7 @@ MonoBehaviour:
     maxAmmo: 0
     useLeftArmBackPosition: 0
     requiresAiming: 1
+    aimingOffset: -0.1
   - WeaponType: 2
     cost: 0
     damage: 0
@@ -37,6 +39,7 @@ MonoBehaviour:
     maxAmmo: 0
     useLeftArmBackPosition: 0
     requiresAiming: 1
+    aimingOffset: 0.04
   - WeaponType: 3
     cost: 0
     damage: 0
@@ -45,6 +48,7 @@ MonoBehaviour:
     maxAmmo: 0
     useLeftArmBackPosition: 0
     requiresAiming: 1
+    aimingOffset: 0.06
   - WeaponType: 4
     cost: 0
     damage: 0
@@ -53,6 +57,7 @@ MonoBehaviour:
     maxAmmo: 0
     useLeftArmBackPosition: 1
     requiresAiming: 0
+    aimingOffset: 0
   - WeaponType: 5
     cost: 0
     damage: 0
@@ -61,6 +66,7 @@ MonoBehaviour:
     maxAmmo: 0
     useLeftArmBackPosition: 1
     requiresAiming: 1
+    aimingOffset: 0
   - WeaponType: 6
     cost: 0
     damage: 0
@@ -69,6 +75,7 @@ MonoBehaviour:
     maxAmmo: 0
     useLeftArmBackPosition: 0
     requiresAiming: 0
+    aimingOffset: 0
   - WeaponType: 7
     cost: 0
     damage: 0
@@ -77,6 +84,7 @@ MonoBehaviour:
     maxAmmo: 0
     useLeftArmBackPosition: 0
     requiresAiming: 0
+    aimingOffset: 0
   - WeaponType: 8
     cost: 0
     damage: 0
@@ -85,3 +93,4 @@ MonoBehaviour:
     maxAmmo: 0
     useLeftArmBackPosition: 0
     requiresAiming: 1
+    aimingOffset: 0.23
