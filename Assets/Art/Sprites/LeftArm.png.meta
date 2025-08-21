@@ -127,18 +127,18 @@ TextureImporter:
     bones:
     - name: LeftArm1
       guid: a3d43b0ba6c744a48adcaacbc491e6fb
-      position: {x: 1000.48376, y: 1313.937, z: 0}
-      rotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-      length: 252.58249
+      position: {x: 1010.5, y: 1300, z: 0}
+      rotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
+      length: 239.9212
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: LeftArm2
       guid: 654d368d8f3ed214d84402096ab78c25
-      position: {x: 252.58252, y: 0.000059385537, z: 0}
+      position: {x: 239.92126, y: 0.00007606803, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      length: 384.47296
+      length: 397.13593
       parentId: 0
       color:
         serializedVersion: 2

@@ -17,9 +17,13 @@ public class PlayerController : MonoBehaviour
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private Transform head;
+    [SerializeField] private Transform rightArm;
+    [SerializeField] private Transform leftArm;
     [SerializeField] private Transform rightArmTarget;
     [SerializeField] private Transform leftArmTarget;
-    [SerializeField] private Transform weapon;
+    [SerializeField] private Transform weaponPivot;
+    private Transform rightGripPoint;
+    private Transform leftGripPoint;
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     public PlayerState currentState;
@@ -32,11 +36,13 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float flightVelocity;
     [SerializeField] private float armRotationOffset;
     [SerializeField] private float maxHeadRotation;
+    [SerializeField] private float maxArmsRotation;
     public float raycastDistance;
     private float flightTimer;           
     private float moveInput;
     private float movement;
     private float movementRef;
+    private bool activatedAiming;
 
     [Header("Debugging")]
     [SerializeField] private bool isGrounded;
@@ -91,7 +97,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = mousePos - transform.position;
-        Vector2 weaponDirection = mousePos -weapon.position;
+        Vector2 weaponDirection = mousePos -weaponPivot.position;
         Vector2 headDirection;
         float armOffset = armRotationOffset;
         if (direction.normalized.x >= 0)
@@ -105,15 +111,25 @@ public class PlayerController : MonoBehaviour
             headDirection = head.position - mousePos;
             armOffset = 90 + (90 - armRotationOffset);
         }
-
-        float armAngle = Mathf.Atan2(weaponDirection.y, weaponDirection.x) * Mathf.Rad2Deg;
+  
         float headAngle = Mathf.Atan2(headDirection.y, headDirection.x) * Mathf.Rad2Deg;
-
-        weapon.rotation = Quaternion.Euler(0, 0, armAngle + armOffset);
         if (Mathf.Abs(headAngle) < maxHeadRotation)
             head.rotation = Quaternion.Euler(0, 0, headAngle);
         else
-            head.rotation = Quaternion.Euler(0, 0, Mathf.Sign(headAngle) * maxHeadRotation);        
+            head.rotation = Quaternion.Euler(0, 0, Mathf.Sign(headAngle) * maxHeadRotation);
+
+        if (activatedAiming)
+        {
+            float armAngle = Mathf.Atan2(weaponDirection.y, weaponDirection.x) * Mathf.Rad2Deg;
+            weaponPivot.rotation = Quaternion.Euler(0, 0, armAngle + armOffset);
+        }
+        else
+        {
+            weaponPivot.rotation = Quaternion.identity;
+        }
+
+        rightArmTarget.position = rightGripPoint.position;
+        leftArmTarget.position = leftGripPoint.position;
     }
     private void SetIsGrounded()
     {
@@ -147,6 +163,19 @@ public class PlayerController : MonoBehaviour
             moveInput = ctx.ReadValue<float>();                
         if (ctx.canceled)
             moveInput = 0;
+    }
+
+    public void ChangeGripPoints(Transform newRightGripPoint, Transform newLeftGripPoint, bool useLeftArmBackPosition, bool requiresAiming)
+    {
+        rightGripPoint = newRightGripPoint;
+        leftGripPoint = newLeftGripPoint;
+
+        if (useLeftArmBackPosition)
+            leftArm.localPosition = rightArm.localPosition;
+        else
+            leftArm.localPosition = new Vector3(0, leftArm.localPosition.y, leftArm.localPosition.z);
+
+        activatedAiming = requiresAiming;
     }
 
     private void SetCurrentState()

@@ -127,18 +127,18 @@ TextureImporter:
     bones:
     - name: RightArm1
       guid: e56b8a32e03bdce4f88b87884f2b196c
-      position: {x: 994.67706, y: 1324.7098, z: 0}
+      position: {x: 1010.5, y: 1300, z: 0}
       rotation: {x: 0, y: 0, z: 0.7071068, w: -0.7071068}
-      length: 264.1646
+      length: 240.04794
       parentId: -1
       color:
         serializedVersion: 2
         rgba: 4278190335
     - name: RightArm2
       guid: f76a4002eb1a91c4291a0e9691b9627e
-      position: {x: 264.1645, y: 0.000014716221, z: 0}
+      position: {x: 240.04807, y: 0.0000009944665, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
-      length: 397.47324
+      length: 336.5611
       parentId: 0
       color:
         serializedVersion: 2

@@ -1,26 +1,26 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public enum Weapons
 {
-    Pistol, Carbine,
-    Rifle, Shotgun,
+    Pistol, Shotgun,
+    Carbine, Rifle,
     Barrels, Grenades,
-    FakeWalls, Landmine,
-    Rockets, ChargePack
+    Landmine, ChargePack, Rockets
 }
 
 public class PlayerAttackManager : MonoBehaviour
 {
     [SerializeField] private Weapons currentWeapon;
-    private float currentCooldown;
-    [SerializeField] private GameObject[] weapons;
-
-
+    [SerializeField] private Weapon[] weapons;
+    [SerializeField] private WeaponData weaponData;
+    public PlayerController playerController;
 
     void Start()
     {
-        ChangeWeapon(0);
+        playerController = GetComponent<PlayerController>();
+        ChangeWeapon(0);      
     }
 
 
@@ -55,19 +55,24 @@ public class PlayerAttackManager : MonoBehaviour
             case "8":
                 ChangeWeapon(7);
                 break;
+            case "9":
+                ChangeWeapon(8);
+                break;
         }
     }
 
 
-    private void ChangeWeapon(int weapon)
+    private void ChangeWeapon(int nextWeapon)
     {
-        currentWeapon = (Weapons)weapon;
-        foreach(GameObject w in weapons)
+        currentWeapon = (Weapons)nextWeapon;
+        foreach(Weapon w in weapons)
         {
-            w.SetActive(false);
+            w.gameObject.SetActive(false);
         }
-        weapons[weapon].SetActive(true);
-    }
+        weapons[nextWeapon].gameObject.SetActive(true);
 
+        playerController.ChangeGripPoints(weapons[nextWeapon].rightGripPoint, weapons[nextWeapon].leftGripPoint, 
+            weaponData.weapons[nextWeapon].useLeftArmBackPosition, weaponData.weapons[nextWeapon].requiresAiming);
+    }
 
 }
