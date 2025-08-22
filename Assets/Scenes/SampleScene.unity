@@ -608,9 +608,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 0}
-  player: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  weaponData: {fileID: 0}
+  player: {fileID: 843021306}
+  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
   weaponIndex: 0
   rightGripPoint: {fileID: 499707993}
   leftGripPoint: {fileID: 967643056}
@@ -1101,9 +1101,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 0}
-  player: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  weaponData: {fileID: 0}
+  player: {fileID: 843021306}
+  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
   weaponIndex: 0
   rightGripPoint: {fileID: 1701877666}
   leftGripPoint: {fileID: 1087888487}
@@ -1458,12 +1458,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 0}
-  player: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  weaponData: {fileID: 0}
+  player: {fileID: 843021306}
+  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
   weaponIndex: 0
   rightGripPoint: {fileID: 2001363324}
   leftGripPoint: {fileID: 211561049}
+--- !u!1 &568860657
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 568860658}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &568860658
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568860657}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.98, y: 0.13, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2093347212}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &582469230
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &582469231
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1768,6 +1799,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &657707481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 657707482}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &657707482
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657707481}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.7, y: 0.185, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 940245619}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &682224083
 GameObject:
   m_ObjectHideFlags: 0
@@ -2259,9 +2321,6 @@ MonoBehaviour:
   - {fileID: 940245621}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
   animator: {fileID: 1428190643}
-  currentFireRate: 0
-  playerController: {fileID: 0}
-  shooting: 0
 --- !u!1 &888224983
 GameObject:
   m_ObjectHideFlags: 0
@@ -2326,6 +2385,7 @@ Transform:
   m_Children:
   - {fileID: 1418604941}
   - {fileID: 271170923}
+  - {fileID: 657707482}
   m_Father: {fileID: 1428190642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &940245620
@@ -2395,11 +2455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbfd25c9dbae634f9231e5a305dc1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  player: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  weaponData: {fileID: 0}
-  weaponIndex: 0
+  firePoint: {fileID: 657707482}
+  player: {fileID: 843021306}
+  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  weaponIndex: 8
   rightGripPoint: {fileID: 1418604941}
   leftGripPoint: {fileID: 271170923}
 --- !u!1 &940721435
@@ -2505,9 +2565,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 0}
-  player: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  weaponData: {fileID: 0}
+  player: {fileID: 843021306}
+  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
   weaponIndex: 0
   rightGripPoint: {fileID: 1860255778}
   leftGripPoint: {fileID: 888224984}
@@ -3118,6 +3178,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1443571218
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1443571219}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1443571219
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1443571218}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.78, y: 0.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1946006313}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473493699
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,6 +3392,7 @@ Transform:
   m_Children:
   - {fileID: 1904723293}
   - {fileID: 279680376}
+  - {fileID: 1678848211}
   m_Father: {fileID: 1428190642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1509484198
@@ -3370,11 +3462,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbfd25c9dbae634f9231e5a305dc1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  player: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  weaponData: {fileID: 0}
-  weaponIndex: 0
+  firePoint: {fileID: 1678848211}
+  player: {fileID: 843021306}
+  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  weaponIndex: 3
   rightGripPoint: {fileID: 1904723293}
   leftGripPoint: {fileID: 279680376}
 --- !u!1 &1545406288
@@ -4489,6 +4581,37 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &1678848210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1678848211}
+  m_Layer: 0
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1678848211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1678848210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.07, y: 0.13, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1509484197}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1692778908
 GameObject:
   m_ObjectHideFlags: 0
@@ -4807,6 +4930,7 @@ Transform:
   m_Children:
   - {fileID: 730285434}
   - {fileID: 1692778909}
+  - {fileID: 1443571219}
   m_Father: {fileID: 1428190642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1946006314
@@ -4876,11 +5000,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbfd25c9dbae634f9231e5a305dc1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  player: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  weaponData: {fileID: 0}
-  weaponIndex: 0
+  firePoint: {fileID: 1443571219}
+  player: {fileID: 843021306}
+  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  weaponIndex: 1
   rightGripPoint: {fileID: 730285434}
   leftGripPoint: {fileID: 1692778909}
 --- !u!1 &2001363323
@@ -4947,6 +5071,7 @@ Transform:
   m_Children:
   - {fileID: 682224084}
   - {fileID: 1278036032}
+  - {fileID: 568860658}
   m_Father: {fileID: 1428190642}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2093347213
@@ -5016,11 +5141,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbfd25c9dbae634f9231e5a305dc1cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firePoint: {fileID: 0}
-  player: {fileID: 0}
-  bulletPrefab: {fileID: 0}
-  weaponData: {fileID: 0}
-  weaponIndex: 0
+  firePoint: {fileID: 568860658}
+  player: {fileID: 843021306}
+  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  weaponIndex: 2
   rightGripPoint: {fileID: 682224084}
   leftGripPoint: {fileID: 1278036032}
 --- !u!1 &2103824985
