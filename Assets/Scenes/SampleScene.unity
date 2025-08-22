@@ -119,37 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &72382697
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 72382698}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &72382698
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 72382697}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &126616308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,7 +2426,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 657707482}
   player: {fileID: 843021306}
-  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  bulletPrefab: {fileID: 1419625756454676176, guid: ad5e12c68ecbf234396b4aa9f8b313c0, type: 3}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
   weaponIndex: 8
   rightGripPoint: {fileID: 1418604941}
@@ -3464,7 +3433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1678848211}
   player: {fileID: 843021306}
-  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  bulletPrefab: {fileID: 1419625756454676176, guid: ddc40f99ae5d7264cadfdc97f8af2900, type: 3}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
   weaponIndex: 3
   rightGripPoint: {fileID: 1904723293}
@@ -4997,16 +4966,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1946006312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccbfd25c9dbae634f9231e5a305dc1cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 7a83a473c10879f438c658f5c0fe7a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 1443571219}
   player: {fileID: 843021306}
-  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  bulletPrefab: {fileID: 1419625756454676176, guid: e97529901819aff4ca9a8f6c616c5a5f, type: 3}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
   weaponIndex: 1
   rightGripPoint: {fileID: 730285434}
   leftGripPoint: {fileID: 1692778909}
+  spreadAngle: 20
+  amountOfBullets: 10
 --- !u!1 &2001363323
 GameObject:
   m_ObjectHideFlags: 0
@@ -5143,7 +5114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firePoint: {fileID: 568860658}
   player: {fileID: 843021306}
-  bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  bulletPrefab: {fileID: 1419625756454676176, guid: 8194c5dcd2a3bff4fb38e7f25782e0b1, type: 3}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
   weaponIndex: 2
   rightGripPoint: {fileID: 682224084}
@@ -5188,4 +5159,3 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 185455046}
   - {fileID: 843021306}
-  - {fileID: 72382698}

@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private Transform player;
-    [SerializeField] public GameObject bulletPrefab;
-    [SerializeField] private WeaponData weaponData;
-    [SerializeField] private int weaponIndex;
+    [SerializeField] protected Transform firePoint;
+    [SerializeField] protected Transform player;
+    [SerializeField] protected GameObject bulletPrefab;
+    [SerializeField] protected WeaponData weaponData;
+    [SerializeField] protected int weaponIndex;
     public Transform rightGripPoint;
     public Transform leftGripPoint;
-    private int projectileSpeed;
-    private int damage;
+    protected int projectileSpeed;
+    protected int damage;
 
     private void OnEnable()
     {
@@ -18,7 +18,7 @@ public class Weapon : MonoBehaviour
         damage = weaponData.weapons[weaponIndex].damage;
     }
 
-    public void Fire() 
+    public virtual void Fire() 
     {
         BulletControler bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation).GetComponent<BulletControler>();
         Vector3 direction = player.localScale.x == 1 ? firePoint.right : -firePoint.right;
