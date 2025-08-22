@@ -15,8 +15,9 @@ MonoBehaviour:
   weapons:
   - WeaponType: 0
     cost: 0
-    damage: 0
-    cooldown: 0
+    speed: 50
+    damage: 50
+    fireRate: 0.3
     magazineCapacity: 0
     maxAmmo: 0
     useLeftArmBackPosition: 1
@@ -24,8 +25,9 @@ MonoBehaviour:
     aimingOffset: 0.22
   - WeaponType: 1
     cost: 0
+    speed: 0
     damage: 0
-    cooldown: 0
+    fireRate: 0
     magazineCapacity: 0
     maxAmmo: 0
     useLeftArmBackPosition: 0
@@ -33,8 +35,9 @@ MonoBehaviour:
     aimingOffset: -0.1
   - WeaponType: 2
     cost: 0
+    speed: 0
     damage: 0
-    cooldown: 0
+    fireRate: 0
     magazineCapacity: 0
     maxAmmo: 0
     useLeftArmBackPosition: 0
@@ -42,8 +45,9 @@ MonoBehaviour:
     aimingOffset: 0.04
   - WeaponType: 3
     cost: 0
+    speed: 0
     damage: 0
-    cooldown: 0
+    fireRate: 0
     magazineCapacity: 0
     maxAmmo: 0
     useLeftArmBackPosition: 0
@@ -51,8 +55,9 @@ MonoBehaviour:
     aimingOffset: 0.06
   - WeaponType: 4
     cost: 0
+    speed: 0
     damage: 0
-    cooldown: 0
+    fireRate: 0
     magazineCapacity: 0
     maxAmmo: 0
     useLeftArmBackPosition: 1
@@ -60,8 +65,9 @@ MonoBehaviour:
     aimingOffset: 0
   - WeaponType: 5
     cost: 0
+    speed: 0
     damage: 0
-    cooldown: 0
+    fireRate: 0
     magazineCapacity: 0
     maxAmmo: 0
     useLeftArmBackPosition: 1
@@ -69,8 +75,9 @@ MonoBehaviour:
     aimingOffset: 0
   - WeaponType: 6
     cost: 0
+    speed: 0
     damage: 0
-    cooldown: 0
+    fireRate: 0
     magazineCapacity: 0
     maxAmmo: 0
     useLeftArmBackPosition: 0
@@ -78,8 +85,9 @@ MonoBehaviour:
     aimingOffset: 0
   - WeaponType: 7
     cost: 0
+    speed: 0
     damage: 0
-    cooldown: 0
+    fireRate: 0
     magazineCapacity: 0
     maxAmmo: 0
     useLeftArmBackPosition: 0
@@ -87,8 +95,9 @@ MonoBehaviour:
     aimingOffset: 0
   - WeaponType: 8
     cost: 0
+    speed: 0
     damage: 0
-    cooldown: 0
+    fireRate: 0
     magazineCapacity: 0
     maxAmmo: 0
     useLeftArmBackPosition: 0

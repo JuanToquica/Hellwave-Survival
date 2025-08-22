@@ -5,8 +5,9 @@ public class WeaponInfo
 {
     public Weapons WeaponType;
     public int cost;
+    public int speed;
     public int damage;
-    public int cooldown;
+    public float fireRate;
     public int magazineCapacity;
     public int maxAmmo;
     public bool useLeftArmBackPosition;

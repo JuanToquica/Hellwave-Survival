@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
     private float movement;
     private float movementRef;
     private bool activatedAiming;
-    public Transform firepoint;
 
     [Header("Debugging")]
     [SerializeField] private bool isGrounded;

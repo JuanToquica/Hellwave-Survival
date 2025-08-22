@@ -16,12 +16,23 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private Weapon[] weapons;
     [SerializeField] private WeaponData weaponData;
     [SerializeField] private Animator animator;
-    public PlayerController playerController;
+    private float currentFireRate;
+    private float nextFireTime;
+    private PlayerController playerController;
+    private bool shooting;
 
     void Start()
     {
         playerController = GetComponent<PlayerController>();
         ChangeWeapon(0);      
+    }
+
+    private void Update()
+    {
+        if (shooting && Time.time > nextFireTime)
+        {
+            Shot();
+        }
     }
 
 
@@ -71,19 +82,24 @@ public class PlayerAttackManager : MonoBehaviour
             w.gameObject.SetActive(false);
         }
         weapons[nextWeapon].gameObject.SetActive(true);
-
+        currentFireRate = weaponData.weapons[nextWeapon].fireRate;
         playerController.ChangeGripPoints(weapons[nextWeapon].rightGripPoint, weapons[nextWeapon].leftGripPoint, 
             weaponData.weapons[nextWeapon].useLeftArmBackPosition, weaponData.weapons[nextWeapon].requiresAiming, weaponData.weapons[nextWeapon].aimingOffset);
     }
 
     public void OnAttack(InputAction.CallbackContext ctx)
     {
-        if (ctx.started)
-        {
-            animator.SetTrigger("Shot");
-            animator.SetInteger("WeaponType", (int)currentWeapon);
-        }
-        
+        if (ctx.started) shooting = true;
+        else if (ctx.canceled) shooting = false;
+         
+    }
+
+    private void Shot()
+    {
+        animator.SetTrigger("Shot");
+        animator.SetInteger("WeaponType", (int)currentWeapon);
+        weapons[(int)currentWeapon].Fire();
+        nextFireTime = Time.time + currentFireRate;
     }
 
 }
