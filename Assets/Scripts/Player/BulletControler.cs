@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class BulletControler : MonoBehaviour
 {
-    private float speed;
-    private int damageAmount;
-    private Vector3 currentPosition;
-    private Vector3 direction;
-    private float travelledDistance;
-    private float distanceThisFrame;
+    protected float speed;
+    protected int damageAmount;
+    protected Vector3 currentPosition;
+    protected Vector3 direction;
+    protected float travelledDistance;
+    protected float distanceThisFrame;
 
     public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed, int damage)
     {
@@ -21,7 +21,7 @@ public class BulletControler : MonoBehaviour
         transform.right = direction;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         distanceThisFrame = speed * Time.deltaTime;
 
@@ -38,7 +38,7 @@ public class BulletControler : MonoBehaviour
         }
     }
 
-    void OnBecameInvisible()
+    protected void OnBecameInvisible()
     {
         Destroy(gameObject);
     }

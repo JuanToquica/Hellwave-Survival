@@ -21,7 +21,7 @@ public class Weapon : MonoBehaviour
 
     public virtual void Fire() 
     {
-        muzleFlashAnimator.SetTrigger("Shot");
+        muzleFlashAnimator.SetTrigger("Shot"); 
         BulletControler bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation).GetComponent<BulletControler>();
         Vector3 direction = player.localScale.x == 1 ? firePoint.right : -firePoint.right;
         bullet.Initialize(firePoint.position, direction, projectileSpeed, damage);
