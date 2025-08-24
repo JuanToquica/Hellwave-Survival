@@ -20,18 +20,26 @@ public class PlayerAttackManager : MonoBehaviour
     private float nextFireTime;
     private PlayerController playerController;
     private bool shooting;
+    private float grenadeTimer;
+    private float grenadeForce;
 
     void Start()
     {
         playerController = GetComponent<PlayerController>();
-        ChangeWeapon(0);      
+        ChangeWeapon(0);        
     }
 
     private void Update()
     {
-        if (shooting && Time.time > nextFireTime)
+        if (shooting && Time.time > nextFireTime && currentWeapon != Weapons.Grenades)
         {
             Shot();
+        }
+        else if (shooting && currentWeapon == Weapons.Grenades && weapons[(int)currentWeapon] is GranadeWeapon granade)
+        {
+            grenadeForce = Mathf.Lerp(granade.grenadeMinForce, granade.grenadeMaxForce, grenadeTimer / granade.grenadeMaxLaunchTime);
+            if (grenadeTimer < granade.grenadeMaxLaunchTime) grenadeTimer += Time.deltaTime;
+            else grenadeTimer = granade.grenadeMaxLaunchTime;
         }
     }
 
@@ -89,9 +97,24 @@ public class PlayerAttackManager : MonoBehaviour
 
     public void OnAttack(InputAction.CallbackContext ctx)
     {
-        if (ctx.started) shooting = true;
-        else if (ctx.canceled) shooting = false;
-         
+        if (ctx.started)
+        {
+            if (currentWeapon == Weapons.Grenades)
+            {
+                grenadeTimer = 0;
+            }
+            shooting = true;
+        }        
+        else if (ctx.canceled)
+        {
+            if (currentWeapon == Weapons.Grenades && Time.time > nextFireTime)
+            {               
+                weapons[(int)currentWeapon].Fire(grenadeForce);
+                nextFireTime = Time.time + currentFireRate;
+            }
+                
+            shooting = false;
+        }     
     }
 
     private void Shot()
@@ -101,5 +124,4 @@ public class PlayerAttackManager : MonoBehaviour
         weapons[(int)currentWeapon].Fire();
         nextFireTime = Time.time + currentFireRate;
     }
-
 }

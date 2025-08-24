@@ -16,7 +16,6 @@ public class WeaponInfo
     public float aimingOffset;
 }
 
-
 [CreateAssetMenu(fileName = "WeaponData", menuName = "ScriptableObject/WeaponsData")]
 public class WeaponData : ScriptableObject
 {

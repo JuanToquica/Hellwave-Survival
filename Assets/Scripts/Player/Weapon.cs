@@ -13,7 +13,7 @@ public class Weapon : MonoBehaviour
     protected int projectileSpeed;
     protected int damage;
 
-    private void OnEnable()
+    protected virtual void OnEnable()
     {
         projectileSpeed = weaponData.weapons[weaponIndex].speed;
         damage = weaponData.weapons[weaponIndex].damage;
@@ -26,4 +26,9 @@ public class Weapon : MonoBehaviour
         Vector3 direction = player.localScale.x == 1 ? firePoint.right : -firePoint.right;
         bullet.Initialize(firePoint.position, direction, projectileSpeed, damage);
     }
+    public virtual void Fire(float force)
+    {
+
+    }
+    
 }

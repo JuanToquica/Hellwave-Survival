@@ -24,8 +24,8 @@ public class BulletControler : MonoBehaviour
     protected virtual void Update()
     {
         distanceThisFrame = speed * Time.deltaTime;
-
-        if (Physics2D.Raycast(currentPosition, direction, distanceThisFrame))
+        RaycastHit2D hit = Physics2D.Raycast(currentPosition, direction, distanceThisFrame);
+        if (hit.collider != null && !hit.transform.CompareTag("Player"))
         {
             Debug.Log("IMPACTO"); 
             Destroy(gameObject);
