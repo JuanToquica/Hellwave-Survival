@@ -6,7 +6,7 @@ public class GranadeWeapon : Weapon
     [HideInInspector] public int grenadeMaxForce;
     [HideInInspector] public int grenadeMinForce;
     [HideInInspector] public float grenadeMaxLaunchTime;
-    [SerializeField] private GrenadeInfo grenadeData;
+    [SerializeField] private GrenadeData grenadeData;
 
     protected override void OnEnable()
     {

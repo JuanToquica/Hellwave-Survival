@@ -21,7 +21,7 @@ public class PlayerAttackManager : MonoBehaviour
     private PlayerController playerController;
     private bool shooting;
     private float grenadeTimer;
-    private float grenadeForce;
+    public float grenadeForce;
 
     void Start()
     {
@@ -111,6 +111,8 @@ public class PlayerAttackManager : MonoBehaviour
             {               
                 weapons[(int)currentWeapon].Fire(grenadeForce);
                 nextFireTime = Time.time + currentFireRate;
+                grenadeForce = 0;
+                grenadeTimer = 0;
             }
                 
             shooting = false;

@@ -3,9 +3,17 @@ using UnityEngine;
 
 public class GranadeController : MonoBehaviour
 {
-    [SerializeField] private float fuseTime;
+    [SerializeField] private GrenadeData grenadeData;
     [SerializeField] private Rigidbody2D rb;
     private float timer;
+    private float fuseTime;
+    private float extraMultiplier;
+
+    private void OnEnable()
+    {
+        fuseTime = grenadeData.fuseTime;
+        extraMultiplier = grenadeData.extraMultiplier;
+    }
 
     private void Update()
     {
@@ -20,7 +28,8 @@ public class GranadeController : MonoBehaviour
     public void Launch(Vector2 direction,float force)
     {
         timer = 0;
-        rb.AddForce(direction * force);
+        Vector2 dir = direction.normalized;
+        rb.AddForce(dir * force, ForceMode2D.Impulse);
     }
 
     private void Explode()
