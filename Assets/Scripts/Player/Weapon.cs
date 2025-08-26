@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] protected Transform firePoint;
+    public Transform firePoint;
     [SerializeField] protected Transform player;
     [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] protected WeaponData weaponData;
@@ -29,6 +29,13 @@ public class Weapon : MonoBehaviour
     public virtual void Fire(float force)
     {
 
+    }
+
+    public void Deploy(RaycastHit2D hit)
+    {
+        int positionX = Mathf.FloorToInt(firePoint.position.x);
+       
+        Instantiate(bulletPrefab, new Vector2(positionX, hit.point.y), Quaternion.identity);
     }
     
 }

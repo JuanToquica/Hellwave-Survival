@@ -44,10 +44,10 @@ public class PlayerController : MonoBehaviour
     private float movementRef;
     private bool activatedAiming;
 
-    [Header("Debugging")]
-    [SerializeField] private bool isGrounded;
+    [Header("Debugging")]   
     [SerializeField] private bool flying;
     [SerializeField] private bool canFly;
+    public bool isGrounded;
 
     private void Start()
     {

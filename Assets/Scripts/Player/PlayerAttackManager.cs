@@ -31,7 +31,7 @@ public class PlayerAttackManager : MonoBehaviour
 
     private void Update()
     {
-        if (shooting && Time.time > nextFireTime && currentWeapon != Weapons.Grenades)
+        if (shooting && Time.time > nextFireTime && ((int)currentWeapon < 4 || currentWeapon == Weapons.Rockets))
         {
             Shot();
         }
@@ -41,6 +41,7 @@ public class PlayerAttackManager : MonoBehaviour
             if (grenadeTimer < granade.grenadeMaxLaunchTime) grenadeTimer += Time.deltaTime;
             else grenadeTimer = granade.grenadeMaxLaunchTime;
         }
+        DrawRays();
     }
 
 
@@ -93,17 +94,24 @@ public class PlayerAttackManager : MonoBehaviour
         currentFireRate = weaponData.weapons[nextWeapon].fireRate;
         playerController.ChangeGripPoints(weapons[nextWeapon].rightGripPoint, weapons[nextWeapon].leftGripPoint, 
             weaponData.weapons[nextWeapon].useLeftArmBackPosition, weaponData.weapons[nextWeapon].requiresAiming, weaponData.weapons[nextWeapon].aimingOffset);
+        shooting = false;
     }
 
     public void OnAttack(InputAction.CallbackContext ctx)
     {
         if (ctx.started)
         {
+            shooting = true;
             if (currentWeapon == Weapons.Grenades)
             {
                 grenadeTimer = 0;
             }
-            shooting = true;
+            else if (currentWeapon == Weapons.Barrels || currentWeapon == Weapons.Landmine || currentWeapon == Weapons.ChargePack)
+            {
+                DeployWeapon();
+                shooting = false;
+            }
+            
         }        
         else if (ctx.canceled)
         {
@@ -125,5 +133,21 @@ public class PlayerAttackManager : MonoBehaviour
         animator.SetInteger("WeaponType", (int)currentWeapon);
         weapons[(int)currentWeapon].Fire();
         nextFireTime = Time.time + currentFireRate;
+    }
+
+    private void DeployWeapon()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(weapons[(int)currentWeapon].firePoint.position, -transform.up, 3);
+        if (!Physics2D.Raycast(transform.position + transform.right * 0.5f, transform.right * transform.localScale.x, 1) && hit.transform.CompareTag("Ground"))
+        {
+            weapons[(int)currentWeapon].Deploy(hit);
+            nextFireTime = Time.time + currentFireRate;
+        }
+    }
+
+    private void DrawRays()
+    {
+        Debug.DrawRay(weapons[(int)currentWeapon].firePoint.position, -transform.up * 3);
+        Debug.DrawRay(transform.position + transform.right * 0.5f, transform.right * transform.localScale.x);
     }
 }
