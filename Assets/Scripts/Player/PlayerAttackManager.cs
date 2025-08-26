@@ -138,7 +138,8 @@ public class PlayerAttackManager : MonoBehaviour
     private void DeployWeapon()
     {
         RaycastHit2D hit = Physics2D.Raycast(weapons[(int)currentWeapon].firePoint.position, -transform.up, 3);
-        if (!Physics2D.Raycast(transform.position + transform.right * 0.5f, transform.right * transform.localScale.x, 1) && hit.transform.CompareTag("Ground"))
+        if (hit.collider == null) return;
+        if (!Physics2D.Raycast(transform.position + transform.right * 0.5f * transform.localScale.x, transform.right * transform.localScale.x, 1) && hit.transform.CompareTag("Ground"))
         {
             weapons[(int)currentWeapon].Deploy(hit);
             nextFireTime = Time.time + currentFireRate;
@@ -148,6 +149,6 @@ public class PlayerAttackManager : MonoBehaviour
     private void DrawRays()
     {
         Debug.DrawRay(weapons[(int)currentWeapon].firePoint.position, -transform.up * 3);
-        Debug.DrawRay(transform.position + transform.right * 0.5f, transform.right * transform.localScale.x);
+        Debug.DrawRay(transform.position + transform.right * 0.5f * transform.localScale.x, transform.right * transform.localScale.x);
     }
 }

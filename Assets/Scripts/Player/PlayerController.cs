@@ -137,10 +137,10 @@ public class PlayerController : MonoBehaviour
     }
     private void SetIsGrounded()
     {
-        isGrounded = Physics2D.Raycast(transform.position + transform.right * (0.75f / 2), -transform.up, raycastDistance, 1 << 3) 
-            || Physics2D.Raycast(transform.position - transform.right * (0.75f / 2), -transform.up, raycastDistance, 1 << 3);
-        Debug.DrawRay(transform.position + transform.right * (0.75f / 2), -transform.up * raycastDistance, Color.red);
-        Debug.DrawRay(transform.position - transform.right * (0.75f / 2), -transform.up * raycastDistance, Color.red);
+        isGrounded = Physics2D.Raycast(transform.position + transform.right * ((0.73f / 2) - 0.03f), -transform.up, raycastDistance, 1 << 3) //0.03 is the offset of the collider
+            || Physics2D.Raycast(transform.position - transform.right * ((0.73f / 2) + 0.03f), -transform.up, raycastDistance, 1 << 3);
+        Debug.DrawRay(transform.position + transform.right * ((0.73f / 2) - 0.03f), -transform.up * raycastDistance, Color.red);
+        Debug.DrawRay(transform.position - transform.right * ((0.73f / 2) + 0.03f), -transform.up * raycastDistance, Color.red);
 
         if (isGrounded && !flying && !canFly) canFly = true;
     }

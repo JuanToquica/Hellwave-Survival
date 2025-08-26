@@ -27,6 +27,11 @@ public class BulletControler : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(currentPosition, direction, distanceThisFrame);
         if (hit.collider != null && !hit.transform.CompareTag("Player"))
         {
+            if (hit.transform.CompareTag("Barrel"))
+            {
+                ExplosivesController barrel = hit.transform.GetComponent<ExplosivesController>();
+                barrel.Explode();
+            }
             Debug.Log("IMPACTO"); 
             Destroy(gameObject);
         }
