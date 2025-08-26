@@ -30,7 +30,7 @@ public class BulletControler : MonoBehaviour
             if (hit.transform.CompareTag("Barrel"))
             {
                 ExplosivesController barrel = hit.transform.GetComponent<ExplosivesController>();
-                barrel.Explode();
+                barrel.Explode(false);
             }
             Debug.Log("IMPACTO"); 
             Destroy(gameObject);

@@ -165,5 +165,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70762b525938376448b9519c12e68bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionRadius: 3
+  explosionDelay: 0
+  isExploding: 0
   grenadeData: {fileID: 11400000, guid: 4472181b9397ad349a6db1d4f3b28ae9, type: 2}
   rb: {fileID: 5452425294626090431}

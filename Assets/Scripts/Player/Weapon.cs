@@ -26,7 +26,7 @@ public class Weapon : MonoBehaviour
         Vector3 direction = player.localScale.x == 1 ? firePoint.right : -firePoint.right;
         bullet.Initialize(firePoint.position, direction, projectileSpeed, damage);
     }
-    public virtual void Fire(float force)
+    public virtual void Fire(float force, Vector2 playerVelocity)
     {
 
     }
@@ -34,8 +34,8 @@ public class Weapon : MonoBehaviour
     public void Deploy(RaycastHit2D hit)
     {
         int positionX = Mathf.FloorToInt(firePoint.position.x);
-       
-        Instantiate(bulletPrefab, new Vector2(positionX, hit.point.y), Quaternion.identity);
+        int positionY = Mathf.RoundToInt(hit.point.y);
+        Instantiate(bulletPrefab, new Vector2(positionX, positionY), Quaternion.identity);
     }
     
 }

@@ -71,6 +71,10 @@ public class PlayerController : MonoBehaviour
         Aim();
     }
 
+    public Vector2 GetLinearVelocity()
+    {
+        return rb.linearVelocity;
+    }
     private void ApplyMovement()
     {
          rb.linearVelocity = new Vector2(speed * movement, rb.linearVelocity.y);        

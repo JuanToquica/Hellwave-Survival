@@ -117,7 +117,7 @@ public class PlayerAttackManager : MonoBehaviour
         {
             if (currentWeapon == Weapons.Grenades && Time.time > nextFireTime)
             {               
-                weapons[(int)currentWeapon].Fire(grenadeForce);
+                weapons[(int)currentWeapon].Fire(grenadeForce, playerController.GetLinearVelocity());
                 nextFireTime = Time.time + currentFireRate;
                 grenadeForce = 0;
                 grenadeTimer = 0;
@@ -137,7 +137,7 @@ public class PlayerAttackManager : MonoBehaviour
 
     private void DeployWeapon()
     {
-        RaycastHit2D hit = Physics2D.Raycast(weapons[(int)currentWeapon].firePoint.position, -transform.up, 3);
+        RaycastHit2D hit = Physics2D.Raycast(weapons[(int)currentWeapon].firePoint.position, -transform.up, 3.3f);
         if (hit.collider == null) return;
         if (!Physics2D.Raycast(transform.position + transform.right * 0.5f * transform.localScale.x, transform.right * transform.localScale.x, 1) && hit.transform.CompareTag("Ground"))
         {
@@ -148,7 +148,7 @@ public class PlayerAttackManager : MonoBehaviour
 
     private void DrawRays()
     {
-        Debug.DrawRay(weapons[(int)currentWeapon].firePoint.position, -transform.up * 3);
+        Debug.DrawRay(weapons[(int)currentWeapon].firePoint.position, -transform.up * 3.3f);
         Debug.DrawRay(transform.position + transform.right * 0.5f * transform.localScale.x, transform.right * transform.localScale.x);
     }
 }

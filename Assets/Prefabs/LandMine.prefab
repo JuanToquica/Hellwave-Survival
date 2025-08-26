@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5359015512587070385}
   - component: {fileID: 2959797605590150754}
   - component: {fileID: 66416091777908133}
-  m_Layer: 9
+  - component: {fileID: -6161682759848029656}
+  m_Layer: 0
   m_Name: LandMine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,11 +119,11 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.5, y: 0.20000005}
+  m_Offset: {x: 0.5, y: 0.4}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.37, y: 0.45}
@@ -132,5 +133,20 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 0.4}
+  m_Size: {x: 1, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &-6161682759848029656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5325716644875282932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31cb4f177292ffc45a4befe4a3a9f352, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionRadius: 2
+  explosionDelay: 0.5
+  isExploding: 0

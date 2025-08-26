@@ -1,7 +1,7 @@
 using System.Threading;
 using UnityEngine;
 
-public class GranadeController : MonoBehaviour
+public class GranadeController : ExplosivesController
 {
     [SerializeField] private GrenadeData grenadeData;
     [SerializeField] private Rigidbody2D rb;
@@ -25,8 +25,9 @@ public class GranadeController : MonoBehaviour
             timer += Time.deltaTime;
     }
 
-    public void Launch(Vector2 direction,float force)
+    public void Launch(Vector2 direction,float force, Vector2 playerVelocity)
     {
+        rb.linearVelocity = playerVelocity;
         timer = 0;
         Vector2 dir = direction.normalized;
         rb.AddForce(dir * force, ForceMode2D.Impulse);
@@ -35,6 +36,7 @@ public class GranadeController : MonoBehaviour
     private void Explode()
     {
         Debug.Log("GRANADA HA EXPLOTADO");
+        ApplyExplosionDamage();
         Destroy(gameObject);
     }
 }
