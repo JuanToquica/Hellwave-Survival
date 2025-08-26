@@ -148,5 +148,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionRadius: 2
-  explosionDelay: 0.5
+  explosionDelay: 1
   isExploding: 0
