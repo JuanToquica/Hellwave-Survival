@@ -8,6 +8,11 @@ public class ExplosivesController : MonoBehaviour
     public float explosionDelay;
     [HideInInspector] public bool isExploding = false;
 
+    public virtual void Explode()
+    {
+        ApplyExplosionDamage();
+    }
+
     public virtual void Explode(bool triggeredByExplosion)
     {
         if (isExploding) return;
@@ -15,7 +20,6 @@ public class ExplosivesController : MonoBehaviour
         if (triggeredByExplosion) Invoke("ApplyExplosionDamage", explosionDelay);
         else ApplyExplosionDamage();
     }
-
 
     protected void ApplyExplosionDamage()
     {

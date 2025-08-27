@@ -32,11 +32,4 @@ public class GranadeController : ExplosivesController
         Vector2 dir = direction.normalized;
         rb.AddForce(dir * force, ForceMode2D.Impulse);
     }
-
-    private void Explode()
-    {
-        Debug.Log("GRANADA HA EXPLOTADO");
-        ApplyExplosionDamage();
-        Destroy(gameObject);
-    }
 }

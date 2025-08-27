@@ -1762,7 +1762,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 540114162}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccbfd25c9dbae634f9231e5a305dc1cb, type: 3}
+  m_Script: {fileID: 11500000, guid: 110c2f1a7403f7745aedc2736293798a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 566885207}
@@ -1773,6 +1773,8 @@ MonoBehaviour:
   weaponIndex: 7
   rightGripPoint: {fileID: 2001363324}
   leftGripPoint: {fileID: 211561049}
+  activedC4: []
+  c4sPlaced: 0
 --- !u!1 &566885206
 GameObject:
   m_ObjectHideFlags: 0

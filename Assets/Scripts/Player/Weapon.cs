@@ -31,7 +31,7 @@ public class Weapon : MonoBehaviour
 
     }
 
-    public void Deploy(RaycastHit2D hit)
+    public virtual void Deploy(RaycastHit2D hit)
     {
         int positionX = Mathf.FloorToInt(firePoint.position.x);
         int positionY = Mathf.RoundToInt(hit.point.y);

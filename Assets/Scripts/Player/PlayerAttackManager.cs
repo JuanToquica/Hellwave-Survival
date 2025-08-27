@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -22,6 +23,7 @@ public class PlayerAttackManager : MonoBehaviour
     private bool shooting;
     private float grenadeTimer;
     public float grenadeForce;
+    private bool c4Placed;   
 
     void Start()
     {
@@ -106,10 +108,16 @@ public class PlayerAttackManager : MonoBehaviour
             {
                 grenadeTimer = 0;
             }
-            else if (currentWeapon == Weapons.Barrels || currentWeapon == Weapons.Landmine || currentWeapon == Weapons.ChargePack)
+            else if (currentWeapon == Weapons.Barrels || currentWeapon == Weapons.Landmine)
             {
                 DeployWeapon();
                 shooting = false;
+            }else if (currentWeapon == Weapons.ChargePack && weapons[(int)currentWeapon] is C4Weapon c4Weapon)
+            {                
+                if (!c4Weapon.c4sPlaced)
+                    DeployWeapon();
+                else
+                    c4Weapon.ExplodeAll();             
             }
             
         }        
