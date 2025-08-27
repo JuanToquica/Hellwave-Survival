@@ -4,9 +4,17 @@ using UnityEngine.Rendering;
 
 public class ExplosivesController : MonoBehaviour
 {
-    public float explosionRadius;
-    public float explosionDelay;
     [HideInInspector] public bool isExploding = false;
+    protected float explosionRadius;
+    protected float explosionDelay;    
+    protected int damage;
+
+    public virtual void Initialize(float explosionRadius,float explosionDelay,int damage)
+    {
+        this.explosionRadius = explosionRadius;
+        this.explosionDelay = explosionDelay;
+        this.damage = damage;
+    }
 
     public virtual void Explode()
     {
@@ -31,6 +39,11 @@ public class ExplosivesController : MonoBehaviour
                 ExplosivesController barrel = hit.GetComponent<ExplosivesController>();
                 if (barrel != null && !barrel.isExploding)
                     barrel.Explode(true);
+            }
+            else if (hit.transform.CompareTag("Enemy"))
+            {
+                EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
+                enemy.TakeDamage(damage);
             }
         }
         Destroy(gameObject);

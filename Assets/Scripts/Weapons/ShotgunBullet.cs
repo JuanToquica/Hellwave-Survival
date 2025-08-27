@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ShotgunBullet : BulletControler
 {
-    public int range;
+    [HideInInspector] public int range;
 
     protected override void Update()
     {       

@@ -16,7 +16,7 @@ MonoBehaviour:
   - WeaponType: 0
     cost: 0
     speed: 50
-    damage: 0
+    damage: 2
     fireRate: 0.5
     magazineCapacity: 0
     maxAmmo: 0

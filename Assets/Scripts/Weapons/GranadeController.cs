@@ -1,23 +1,14 @@
 using System.Threading;
 using UnityEngine;
 
-public class GranadeController : ExplosivesController
+public class GrenadeController : ExplosivesController
 {
-    [SerializeField] private GrenadeData grenadeData;
     [SerializeField] private Rigidbody2D rb;
-    private float timer;
-    private float fuseTime;
-    private float extraMultiplier;
-
-    private void OnEnable()
-    {
-        fuseTime = grenadeData.fuseTime;
-        extraMultiplier = grenadeData.extraMultiplier;
-    }
+    private float timer = 0;
 
     private void Update()
     {
-        if (timer >= fuseTime)
+        if (timer >= explosionDelay)
         {
             Explode();
         }

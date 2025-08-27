@@ -7,7 +7,11 @@ public class LandMineController : ExplosivesController
         if (collision.transform.CompareTag("Player"))
         {
             Invoke("Explode",explosionDelay);
-            Explode();
         }
+    }
+
+    public override void Explode()
+    {
+        ApplyExplosionDamage();
     }
 }

@@ -8,22 +8,19 @@ public enum Weapons
     Pistol, Shotgun,
     Carbine, Rifle,
     Barrels, Grenades,
-    Landmine, ChargePack, Rockets
+    Landmine, C4, Rockets
 }
 
 public class PlayerAttackManager : MonoBehaviour
 {
     [SerializeField] private Weapons currentWeapon;
-    [SerializeField] private Weapon[] weapons;
+    [SerializeField] private WeaponBase[] weapons;
     [SerializeField] private WeaponData weaponData;
     [SerializeField] private Animator animator;
     private float currentFireRate;
     private float nextFireTime;
     private PlayerController playerController;
-    private bool shooting;
-    private float grenadeTimer;
-    public float grenadeForce;
-    private bool c4Placed;   
+    public bool shooting;
 
     void Start()
     {
@@ -36,12 +33,6 @@ public class PlayerAttackManager : MonoBehaviour
         if (shooting && Time.time > nextFireTime && ((int)currentWeapon < 4 || currentWeapon == Weapons.Rockets))
         {
             Shot();
-        }
-        else if (shooting && currentWeapon == Weapons.Grenades && weapons[(int)currentWeapon] is GranadeWeapon granade)
-        {
-            grenadeForce = Mathf.Lerp(granade.grenadeMinForce, granade.grenadeMaxForce, grenadeTimer / granade.grenadeMaxLaunchTime);
-            if (grenadeTimer < granade.grenadeMaxLaunchTime) grenadeTimer += Time.deltaTime;
-            else grenadeTimer = granade.grenadeMaxLaunchTime;
         }
         DrawRays();
     }
@@ -88,7 +79,7 @@ public class PlayerAttackManager : MonoBehaviour
     private void ChangeWeapon(int nextWeapon)
     {
         currentWeapon = (Weapons)nextWeapon;
-        foreach(Weapon w in weapons)
+        foreach(WeaponBase w in weapons)
         {
             w.gameObject.SetActive(false);
         }
@@ -104,20 +95,19 @@ public class PlayerAttackManager : MonoBehaviour
         if (ctx.started)
         {
             shooting = true;
-            if (currentWeapon == Weapons.Grenades)
+            if (currentWeapon == Weapons.Grenades && weapons[(int)currentWeapon] is GranadeWeapon granade)
             {
-                grenadeTimer = 0;
+                granade.ResetTimer();
             }
             else if (currentWeapon == Weapons.Barrels || currentWeapon == Weapons.Landmine)
             {
-                DeployWeapon();
+                if (weapons[(int)currentWeapon].DeployExplosive())
+                    nextFireTime = Time.time + currentFireRate;
                 shooting = false;
-            }else if (currentWeapon == Weapons.ChargePack && weapons[(int)currentWeapon] is C4Weapon c4Weapon)
-            {                
-                if (!c4Weapon.c4sPlaced)
-                    DeployWeapon();
-                else
-                    c4Weapon.ExplodeAll();             
+            }
+            else if (currentWeapon == Weapons.C4 && weapons[(int)currentWeapon] is C4Weapon c4Weapon)
+            {
+                c4Weapon.HandleC4Action();            
             }
             
         }        
@@ -125,10 +115,8 @@ public class PlayerAttackManager : MonoBehaviour
         {
             if (currentWeapon == Weapons.Grenades && Time.time > nextFireTime)
             {               
-                weapons[(int)currentWeapon].Fire(grenadeForce, playerController.GetLinearVelocity());
+                weapons[(int)currentWeapon].Fire(playerController.GetLinearVelocity());
                 nextFireTime = Time.time + currentFireRate;
-                grenadeForce = 0;
-                grenadeTimer = 0;
             }
                 
             shooting = false;
@@ -141,17 +129,6 @@ public class PlayerAttackManager : MonoBehaviour
         animator.SetInteger("WeaponType", (int)currentWeapon);
         weapons[(int)currentWeapon].Fire();
         nextFireTime = Time.time + currentFireRate;
-    }
-
-    private void DeployWeapon()
-    {
-        RaycastHit2D hit = Physics2D.Raycast(weapons[(int)currentWeapon].firePoint.position, -transform.up, 3.3f);
-        if (hit.collider == null) return;
-        if (!Physics2D.Raycast(transform.position + transform.right * 0.5f * transform.localScale.x, transform.right * transform.localScale.x, 1) && hit.transform.CompareTag("Ground"))
-        {
-            weapons[(int)currentWeapon].Deploy(hit);
-            nextFireTime = Time.time + currentFireRate;
-        }
     }
 
     private void DrawRays()

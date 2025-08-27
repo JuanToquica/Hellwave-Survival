@@ -3,7 +3,7 @@ using UnityEngine;
 public class BulletControler : MonoBehaviour
 {
     protected float speed;
-    protected int damageAmount;
+    protected int damage;
     protected Vector3 currentPosition;
     protected Vector3 direction;
     protected float travelledDistance;
@@ -14,7 +14,7 @@ public class BulletControler : MonoBehaviour
         currentPosition = startPos;
         direction = dir;
         speed = bulletSpeed;
-        damageAmount = damage;
+        this.damage = damage;
         travelledDistance = 0f;
 
         transform.position = currentPosition;
@@ -32,7 +32,12 @@ public class BulletControler : MonoBehaviour
                 ExplosivesController barrel = hit.transform.GetComponent<ExplosivesController>();
                 barrel.Explode(false);
             }
-            Debug.Log("IMPACTO"); 
+            else if (hit.transform.CompareTag("Enemy"))
+            {
+                EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
+                enemy.TakeDamage(damage);
+            }
+                Debug.Log("IMPACTO"); 
             Destroy(gameObject);
         }
         else
