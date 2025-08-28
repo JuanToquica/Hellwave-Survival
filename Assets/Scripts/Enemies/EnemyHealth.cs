@@ -5,6 +5,11 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private float maxHealth;
     private float health;
 
+    private void OnEnable()
+    {
+        health = maxHealth;
+    }
+
     public void TakeDamage(float damage)
     {
         health -= damage;

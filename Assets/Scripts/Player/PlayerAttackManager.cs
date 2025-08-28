@@ -21,11 +21,13 @@ public class PlayerAttackManager : MonoBehaviour
     private float nextFireTime;
     private PlayerController playerController;
     public bool shooting;
+    //private List<WeaponBase> weapons = new List<WeaponBase>();
 
     void Start()
     {
         playerController = GetComponent<PlayerController>();
-        ChangeWeapon(0);        
+        ChangeWeapon(0);
+        //weapons.Add(weapons[0]);
     }
 
     private void Update()
