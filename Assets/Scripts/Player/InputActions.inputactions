@@ -370,17 +370,6 @@
                     "action": "WeaponSelect",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e2c1d2e7-ce25-421c-aa91-166a82b2a175",
-                    "path": "<Keyboard>/0",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WeaponSelect",
-                    "isComposite": false,
-                    "isPartOfComposite": false
                 }
             ]
         },

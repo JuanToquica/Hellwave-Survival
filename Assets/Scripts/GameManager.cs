@@ -2,15 +2,27 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static GameManager instance;
+    public int deadEnemies;
+    public int nextWeaponCost;
+    public PlayerAttackManager playerAttack;
+
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnEnemyDead()
     {
-        
+        deadEnemies++;
+        if (deadEnemies == nextWeaponCost)
+            playerAttack.UnlockWeapon(playerAttack.GetLatestUnlockedWeapon() + 1);
     }
 }

@@ -33,6 +33,15 @@ public class EnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        if (distanceToPlayer <= distanceToAttackPlayer)
+            Attack();
+        else
+            CalculateMovementAndRepulsion();
+    }
+
+    private void CalculateMovementAndRepulsion()
+    {
         if (path == null) return;
         if (currentWaypoint >= path.vectorPath.Count) return;
 
@@ -66,7 +75,8 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void UpdatePath()
+
+    private void UpdatePath()
     {
         if (seeker.IsDone() && player != null)
         {
@@ -74,7 +84,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    void OnPathComplete(Path p)
+    private void OnPathComplete(Path p)
     {
         if (!p.error)
         {
