@@ -3,7 +3,13 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
+    private EnemyController controller;
     private float health;
+
+    private void Start()
+    {
+        controller = GetComponent<EnemyController>();
+    }
 
     private void OnEnable()
     {
@@ -13,13 +19,22 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         health -= damage;
-        if (health < 0) Die();
+        if (health < 0) 
+            Die();
+        else
+            controller.animator.SetTrigger("TakeDamage");
     }
 
     private void Die()
     {
         Debug.Log("EnemigoMuerto");
         GameManager.instance.OnEnemyDead();
+        controller.animator.SetTrigger("Die");
+        Invoke("Destroy",0.5f);
+    }
+
+    private void Destroy()
+    {
         Destroy(gameObject);
     }
 }

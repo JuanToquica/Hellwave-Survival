@@ -1,10 +1,12 @@
 using Pathfinding;
 using UnityEngine;
 
+
 public class EnemyController : MonoBehaviour
 {
     [Header ("References")]
     [SerializeField] private Transform player;
+    public Animator animator;
     private Path path;
     private int currentWaypoint = 0;
     private Seeker seeker;
@@ -18,6 +20,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float smoothFactor;
     [SerializeField] private float distanceToAttackPlayer;
 
+    [Header("Attack Properties")]
+    [SerializeField] private float cooldown;
+    [SerializeField] private int damage;
     
     void Start()
     {
@@ -97,6 +102,8 @@ public class EnemyController : MonoBehaviour
     private void Attack()
     {
         Debug.Log("Atacando player");
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, new Vector2(0, 0), smoothFactor);
+        animator.SetTrigger("Attack");
     }
 
     void OnDrawGizmosSelected()
