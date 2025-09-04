@@ -37,12 +37,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float currentAimingOffset;
     [SerializeField] private float maxHeadRotation;
     [SerializeField] private float maxArmsRotation;
+    [SerializeField] private float knockbackForce;
+    [SerializeField] private float stunDuration;
     public float raycastDistance;
     private float flightTimer;           
     private float moveInput;
     private float movement;
     private float movementRef;
     private bool activatedAiming;
+    public bool canMove;
 
     [Header("Debugging")]   
     [SerializeField] private bool flying;
@@ -67,8 +70,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (flying) Fly();
-        ApplyMovement();
-        Aim();
+        if (canMove)
+        {
+            ApplyMovement();
+            Aim();
+        }
+            
     }
 
     public Vector2 GetLinearVelocity()
@@ -141,8 +148,9 @@ public class PlayerController : MonoBehaviour
     }
     private void SetIsGrounded()
     {
-        isGrounded = Physics2D.Raycast(transform.position + transform.right * ((0.73f / 2) - 0.03f), -transform.up, raycastDistance, 1 << 3) //0.03 is the offset of the collider
-            || Physics2D.Raycast(transform.position - transform.right * ((0.73f / 2) + 0.03f), -transform.up, raycastDistance, 1 << 3);
+        int layer = 1 << 3 | 1 << 8;
+        isGrounded = Physics2D.Raycast(transform.position + transform.right * ((0.73f / 2) - 0.03f), -transform.up, raycastDistance, layer) //0.03 is the offset of the collider
+            || Physics2D.Raycast(transform.position - transform.right * ((0.73f / 2) + 0.03f), -transform.up, raycastDistance, layer);
         Debug.DrawRay(transform.position + transform.right * ((0.73f / 2) - 0.03f), -transform.up * raycastDistance, Color.red);
         Debug.DrawRay(transform.position - transform.right * ((0.73f / 2) + 0.03f), -transform.up * raycastDistance, Color.red);
 
@@ -212,6 +220,18 @@ public class PlayerController : MonoBehaviour
             currentState = PlayerState.Falling;
         }
         animator.SetInteger("State", (int)currentState);
+    }
+
+    public void ApplyKnockback(Vector2 direction)
+    {
+        rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+        canMove = false;
+        Invoke("RestoreMovement", stunDuration);
+    }
+
+    private void RestoreMovement()
+    {
+        canMove = true;
     }
 
 }

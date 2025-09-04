@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     private int currentWaypoint = 0;
     private Seeker seeker;
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     [Header ("Movement and Repulsion")]
     [SerializeField] private float speed;
@@ -19,6 +20,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float separationForce;
     [SerializeField] private float smoothFactor;
     [SerializeField] private float distanceToAttackPlayer;
+    [SerializeField] private float knockbackForce;
+    private bool dying;
 
     [Header("Attack Properties")]
     [SerializeField] private float cooldown;
@@ -28,7 +31,9 @@ public class EnemyController : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         InvokeRepeating("UpdatePath", 0f, 0.1f);
+        dying = false;
     }
 
     private void Update()
@@ -39,7 +44,7 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer > distanceToAttackPlayer)
+        if (distanceToPlayer > distanceToAttackPlayer && !dying)
             CalculateMovementAndRepulsion();
         else
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, new Vector2(0, 0), smoothFactor);
@@ -107,6 +112,15 @@ public class EnemyController : MonoBehaviour
         }
     }      
 
+    public void ApplyKnockback(Vector2 direction)
+    {
+        rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+    }
+
+    public void OnDie()
+    {
+        dying = true;
+    }
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

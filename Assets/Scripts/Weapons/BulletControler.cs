@@ -37,7 +37,12 @@ public class BulletControler : MonoBehaviour
             else if (hit.transform.CompareTag("Enemy"))
             {
                 EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(damage, direction);
+            }
+            else if (hit.transform.CompareTag("Player"))
+            {
+                PlayerHealth enemy = hit.transform.GetComponent<PlayerHealth>();
+                enemy.TakeDamage(damage, direction);
             }
             Destroy(gameObject);
         }

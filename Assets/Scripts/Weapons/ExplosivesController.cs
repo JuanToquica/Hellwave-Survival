@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
+using UnityEngineInternal;
 
 public class ExplosivesController : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class ExplosivesController : MonoBehaviour
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + transform.right * 0.5f, explosionRadius);
         foreach (Collider2D hit in hits)
         {
+            Vector2 direction = (hit.transform.position - transform.position).normalized;
             if (hit.transform.CompareTag("Barrel"))
             {
                 ExplosivesController barrel = hit.GetComponent<ExplosivesController>();
@@ -42,8 +44,13 @@ public class ExplosivesController : MonoBehaviour
             }
             else if (hit.transform.CompareTag("Enemy"))
             {
-                EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
-                enemy.TakeDamage(damage);
+                EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();                
+                enemy.TakeDamage(damage, direction);
+            }
+            else if (hit.transform.CompareTag("Player"))
+            {
+                PlayerHealth enemy = hit.transform.GetComponent<PlayerHealth>();
+                enemy.TakeDamage(damage, direction);
             }
         }
         Destroy(gameObject);

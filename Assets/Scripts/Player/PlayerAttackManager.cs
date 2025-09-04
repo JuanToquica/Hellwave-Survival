@@ -83,7 +83,6 @@ public class PlayerAttackManager : MonoBehaviour
         currentFireRate = weaponData.weapons[nextWeapon].fireRate;
         playerController.ChangeGripPoints(availableWeapons[nextWeapon].rightGripPoint, availableWeapons[nextWeapon].leftGripPoint, 
             weaponData.weapons[nextWeapon].useLeftArmBackPosition, weaponData.weapons[nextWeapon].requiresAiming, weaponData.weapons[nextWeapon].aimingOffset);
-        shooting = false;
     }
 
     public void OnAttack(InputAction.CallbackContext ctx)

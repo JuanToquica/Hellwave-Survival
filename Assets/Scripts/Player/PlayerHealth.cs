@@ -1,14 +1,27 @@
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
-    private float health;
+    private PlayerController controller;
+    public float health;
 
-    public void TakeDamage(float damage)
+    private void Start()
+    {
+        health = maxHealth;
+        controller = GetComponent<PlayerController>();
+    }
+
+    public void TakeDamage(float damage, Vector2 direction)
     {
         health -= damage;
-        if (health < 0) Die();
+        if (health < 0)
+            Die();
+        else
+        {
+            controller.ApplyKnockback(direction);
+        }
     }
 
     public void Heal(float amount)
@@ -19,6 +32,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void Die()
     {
-
+        Debug.Log("PlayerMuerto");
     }
 }
