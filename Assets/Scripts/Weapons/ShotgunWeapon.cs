@@ -24,7 +24,7 @@ public class ShotgunWeapon : ProjectileWeapon
 
             float angle = i == amountOfBullets/2? 0 : Random.Range(-spreadAngle, spreadAngle);
             Vector3 direction = player.localScale.x == 1 ? Quaternion.Euler(0, 0, angle) * firePoint.right : Quaternion.Euler(0, 0, angle) * -firePoint.right;
-            bullet.Initialize(firePoint.position, direction, projectileSpeed, damage);
+            bullet.Initialize(firePoint.position, direction, projectileSpeed, damage, gameObject);
             bullet.range = range;
         }    
     }

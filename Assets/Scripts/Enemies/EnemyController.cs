@@ -6,7 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     [Header ("References")]
     [SerializeField] private Transform player;
-    public Animator animator;
+    [SerializeField] private Animator animator;
     private Path path;
     private int currentWaypoint = 0;
     private Seeker seeker;
@@ -33,16 +33,17 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-
+        LookAtPlayer();
     }
 
     void FixedUpdate()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer <= distanceToAttackPlayer)
-            Attack();
-        else
+        if (distanceToPlayer > distanceToAttackPlayer)
             CalculateMovementAndRepulsion();
+        else
+            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, new Vector2(0, 0), smoothFactor);
+        
     }
 
     private void CalculateMovementAndRepulsion()
@@ -80,6 +81,14 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void LookAtPlayer()
+    {
+        Vector2 directionToPlayer = (player.position - transform.position).normalized;
+        if (directionToPlayer.normalized.x >= 0)
+            transform.localScale = new Vector3(-1, 1, 1);
+        else
+            transform.localScale = new Vector3(1, 1, 1);
+    }
 
     private void UpdatePath()
     {
@@ -96,15 +105,7 @@ public class EnemyController : MonoBehaviour
             path = p;
             currentWaypoint = 1;
         }
-    }
-    
-
-    private void Attack()
-    {
-        Debug.Log("Atacando player");
-        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, new Vector2(0, 0), smoothFactor);
-        animator.SetTrigger("Attack");
-    }
+    }      
 
     void OnDrawGizmosSelected()
     {

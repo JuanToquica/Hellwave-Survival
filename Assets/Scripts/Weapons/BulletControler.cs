@@ -8,14 +8,16 @@ public class BulletControler : MonoBehaviour
     protected Vector3 direction;
     protected float travelledDistance;
     protected float distanceThisFrame;
+    protected GameObject launcher;
 
-    public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed, int damage)
+    public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed, int damage, GameObject launcher)
     {
         currentPosition = startPos;
         direction = dir;
         speed = bulletSpeed;
         this.damage = damage;
         travelledDistance = 0f;
+        this.launcher = launcher;
 
         transform.position = currentPosition;
         transform.right = direction;
@@ -25,7 +27,7 @@ public class BulletControler : MonoBehaviour
     {
         distanceThisFrame = speed * Time.deltaTime;
         RaycastHit2D hit = Physics2D.Raycast(currentPosition, direction, distanceThisFrame);
-        if (hit.collider != null && !hit.transform.CompareTag("Player"))
+        if (hit.collider != null && hit.transform.gameObject != launcher)
         {
             if (hit.transform.CompareTag("Barrel"))
             {
@@ -37,7 +39,6 @@ public class BulletControler : MonoBehaviour
                 EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
                 enemy.TakeDamage(damage);
             }
-                Debug.Log("IMPACTO"); 
             Destroy(gameObject);
         }
         else

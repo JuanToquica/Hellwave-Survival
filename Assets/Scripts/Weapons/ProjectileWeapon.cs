@@ -17,6 +17,6 @@ public class ProjectileWeapon : WeaponBase
         muzleFlashAnimator.SetTrigger("Shot");
         BulletControler bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation).GetComponent<BulletControler>();
         Vector3 direction = player.localScale.x == 1 ? firePoint.right : -firePoint.right;
-        bullet.Initialize(firePoint.position, direction, projectileSpeed, damage);
+        bullet.Initialize(firePoint.position, direction, projectileSpeed, damage, gameObject);
     }
 }
