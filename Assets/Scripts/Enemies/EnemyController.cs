@@ -6,12 +6,11 @@ public class EnemyController : MonoBehaviour
 {
     [Header ("References")]
     [SerializeField] private Transform player;
-    [SerializeField] private Animator animator;
+    private Animator animator;
     private Path path;
     private int currentWaypoint = 0;
     private Seeker seeker;
     private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
 
     [Header ("Movement and Repulsion")]
     [SerializeField] private float speed;
@@ -31,7 +30,7 @@ public class EnemyController : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         InvokeRepeating("UpdatePath", 0f, 0.1f);
         dying = false;
     }
@@ -90,9 +89,9 @@ public class EnemyController : MonoBehaviour
     {
         Vector2 directionToPlayer = (player.position - transform.position).normalized;
         if (directionToPlayer.normalized.x >= 0)
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.rotation = Quaternion.Euler(0, 180, transform.rotation.eulerAngles.z);
         else
-            transform.localScale = new Vector3(1, 1, 1);
+            transform.rotation = Quaternion.Euler(0, 0, transform.rotation.eulerAngles.z);
     }
 
     private void UpdatePath()

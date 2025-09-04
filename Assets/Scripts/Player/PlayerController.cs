@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         flightTimer = 0;
+        canMove = true;
     }
 
     private void Update()
