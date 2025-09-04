@@ -1,30 +1,13 @@
 using UnityEngine;
 
-public class EnemyShooterAttack : MonoBehaviour
+public class EnemyShooterAttack : EnemyAttackBase
 {
-    [SerializeField] private float cooldown;
-    [SerializeField] private float distanceToAttackPlayer;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
-    [SerializeField] private Transform player;
     [SerializeField] private float projectileSpeed;
-    [SerializeField] private int damage;
-    private Animator animator;
-    private float nextAttack;
-    private float distanceToPlayer;
+    
 
-    private void Start()
-    {       
-        animator = GetComponent<Animator>();
-    }
-
-    private void Update()
-    {
-        distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer <= distanceToAttackPlayer && Time.time >= nextAttack) Attack();       
-    }
-
-    private void Attack()
+    protected override void Attack()
     {
         Vector2 directionToPlayer = (player.position - transform.position).normalized;
         RaycastHit2D[] hits = Physics2D.RaycastAll(firePoint.position, directionToPlayer, distanceToPlayer);
@@ -37,7 +20,7 @@ public class EnemyShooterAttack : MonoBehaviour
         nextAttack = Time.time + cooldown;
     }
 
-    public void LaunchProjectile()
+    public void LaunchProjectile() //Se llamara desde un animation event
     {
         BulletControler bullet = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation).GetComponent<BulletControler>();
         Vector3 direction = (player.position - transform.position).normalized;

@@ -1,29 +1,29 @@
 using UnityEngine;
 
-public class EnemyMeeleAttack : MonoBehaviour
+public class EnemyMeeleAttack : EnemyAttackBase
 {
-    [SerializeField] private float cooldown;
-    [SerializeField] private float distanceToAttackPlayer;
-    [SerializeField] private Transform player;
-    private Animator animator;
-    private float nextAttack;
-    private float distanceToPlayer;
 
-    private void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
-
-    private void Update()
-    {
-        distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer <= distanceToAttackPlayer && Time.time >= nextAttack) Attack();
-    }
-
-    private void Attack()
+    protected override void Attack()
     {
         animator.SetTrigger("Attack");
         
         nextAttack = Time.time + cooldown;
+    }
+
+    public void PerformAttack() //Se llamara desde un animation event
+    {
+        Vector2 directionToPlayer = (player.position - transform.position).normalized;
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, directionToPlayer, distanceToAttackPlayer);
+        foreach (RaycastHit2D hit in hits)
+        {
+            if (hit.transform.gameObject == gameObject) continue;
+            if (hit.transform.CompareTag("Player"))
+            {
+                PlayerHealth player = hit.transform.GetComponent<PlayerHealth>();
+                player.TakeDamage(damage, directionToPlayer);
+                continue;
+            }
+            break;
+        }
     }
 }

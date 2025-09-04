@@ -49,8 +49,8 @@ public class ExplosivesController : MonoBehaviour
             }
             else if (hit.transform.CompareTag("Player"))
             {
-                PlayerHealth enemy = hit.transform.GetComponent<PlayerHealth>();
-                enemy.TakeDamage(damage, direction);
+                PlayerHealth player = hit.transform.GetComponent<PlayerHealth>();
+                player.TakeDamage(damage, direction);
             }
         }
         Destroy(gameObject);
