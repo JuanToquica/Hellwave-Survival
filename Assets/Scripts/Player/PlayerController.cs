@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     private float movement;
     private float movementRef;
     private bool activatedAiming;
-    public bool canMove;
+    public bool takingDamage;
 
     [Header("Debugging")]   
     [SerializeField] private bool flying;
@@ -57,7 +57,6 @@ public class PlayerController : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
         flightTimer = 0;
-        canMove = true;
     }
 
     private void Update()
@@ -71,12 +70,8 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         if (flying) Fly();
-        if (canMove)
-        {
-            ApplyMovement();
-            Aim();
-        }
-            
+        ApplyMovement();
+        Aim();            
     }
 
     public Vector2 GetLinearVelocity()
@@ -85,7 +80,9 @@ public class PlayerController : MonoBehaviour
     }
     private void ApplyMovement()
     {
-         rb.linearVelocity = new Vector2(speed * movement, rb.linearVelocity.y);        
+        Vector2 desiredVelocity = new Vector2(speed * moveInput ,rb.linearVelocity.y);
+        float smoothFactor = takingDamage ? 0.1f : acceleration;
+        rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, desiredVelocity, smoothFactor);
     }
 
     private void SetFlightTimer()
@@ -226,13 +223,13 @@ public class PlayerController : MonoBehaviour
     public void ApplyKnockback(Vector2 direction)
     {
         rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
-        canMove = false;
-        Invoke("RestoreMovement", stunDuration);
+        takingDamage = true;
+        Invoke("SetTakingDamage", stunDuration);
     }
 
-    private void RestoreMovement()
+    private void SetTakingDamage()
     {
-        canMove = true;
+        takingDamage = false;
     }
 
 }
