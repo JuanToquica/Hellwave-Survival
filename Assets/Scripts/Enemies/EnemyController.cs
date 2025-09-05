@@ -32,10 +32,6 @@ public class EnemyController : MonoBehaviour
         dying = false;
     }
 
-    private void Update()
-    {
-        
-    }
 
     void FixedUpdate()
     {

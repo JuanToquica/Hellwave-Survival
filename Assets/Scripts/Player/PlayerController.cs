@@ -1,4 +1,5 @@
 using System.Security;
+using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float acceleration;
     [SerializeField] private float jumpForce;
+    [SerializeField] private float coyoteTime;
     [SerializeField] private float flightTime;
     [SerializeField] private float flightVelocity;
     [SerializeField] private float currentAimingOffset;
@@ -48,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private float movementRef;
     private bool activatedAiming;
     public bool takingDamage;
+    public float coyoteTimer;
 
     [Header("Debugging")]   
     [SerializeField] private bool flying;
@@ -63,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        movement = Mathf.Clamp(Mathf.SmoothDamp(movement, moveInput, ref movementRef, acceleration), -1, 1);
+        //movement = Mathf.Clamp(Mathf.SmoothDamp(movement, moveInput, ref movementRef, acceleration), -1, 1);
         SetIsGrounded();
         SetCurrentState();
         if (flying) SetFlightTimer();
@@ -150,20 +153,32 @@ public class PlayerController : MonoBehaviour
     private void SetIsGrounded()
     {
         int layer = 1 << 3 | 1 << 8;
-        isGrounded = Physics2D.Raycast(transform.position + transform.right * ((0.73f / 2) - 0.03f), -transform.up, raycastDistance, layer) //0.03 is the offset of the collider
-            || Physics2D.Raycast(transform.position - transform.right * ((0.73f / 2) + 0.03f), -transform.up, raycastDistance, layer);
-        Debug.DrawRay(transform.position + transform.right * ((0.73f / 2) - 0.03f), -transform.up * raycastDistance, Color.red);
-        Debug.DrawRay(transform.position - transform.right * ((0.73f / 2) + 0.03f), -transform.up * raycastDistance, Color.red);
+        Vector3 origin = transform.position + transform.right * 0.03f * transform.localScale.x;
+        isGrounded = Physics2D.Raycast(origin  + transform.right * (0.73f / 2), -transform.up, raycastDistance, layer) //0.03 is the offset of the collider
+            || Physics2D.Raycast(origin - transform.right * (0.73f / 2), -transform.up, raycastDistance, layer);
+        Debug.DrawRay(origin + transform.right * (0.73f / 2), -transform.up * raycastDistance, Color.red);
+        Debug.DrawRay(origin - transform.right * (0.73f / 2), -transform.up * raycastDistance, Color.red);
+
+        if (isGrounded)
+        {
+            coyoteTimer = coyoteTime;
+        }
+        else
+        {
+            coyoteTimer -= Time.deltaTime;
+        }
 
         if (isGrounded && !flying && !canFly) canFly = true;
     }
 
     public void OnJump(InputAction.CallbackContext ctx)
     {
-        if (isGrounded && ctx.started)
+        if (coyoteTimer > 0 && ctx.started)
+        {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-
-        if (!isGrounded && (ctx.performed || ctx.started) && canFly)
+            coyoteTimer = 0;
+        }        
+        else if (!isGrounded && coyoteTimer <= 0 &&(ctx.performed || ctx.started) && canFly)
         {
             flying = true;
             canFly = false;
@@ -200,9 +215,9 @@ public class PlayerController : MonoBehaviour
     {
         if (takingDamage)
             currentState = PlayerState.TakingDamage;
-        else if (isGrounded && moveInput == 0)
+        else if (isGrounded && moveInput == 0 && Mathf.Abs(rb.linearVelocity.x) < speed - 1.5f)
             currentState = PlayerState.Idle;
-        else if (isGrounded && moveInput != 0)
+        else if (isGrounded && (moveInput != 0 || Mathf.Abs(rb.linearVelocity.x) >= speed - 1.5f))
         {
             currentState = PlayerState.Running;
             if (moveInput > 0 && transform.localScale.x == 1 || moveInput < 0 && transform.localScale.x == -1)
