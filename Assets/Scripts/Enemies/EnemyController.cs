@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     [Header ("References")]
     [SerializeField] private Transform player;
+    [SerializeField] private Transform firepoint;
     private Animator animator;
     private Path path;
     private int currentWaypoint = 0;
@@ -39,7 +40,7 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer > stopDistance && !dying)
+        if ((distanceToPlayer > stopDistance || Physics2D.Raycast(firepoint.position, (player.position - firepoint.position), stopDistance, 1 << 3)) && !dying)
             CalculateMovementAndRepulsion();
         else
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, new Vector2(0, 0), smoothFactor);
