@@ -1,4 +1,5 @@
 using System.Security;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +10,9 @@ public enum PlayerState
     Running = 1,
     Jumping = 2,
     Flying = 3,
-    Falling = 4
+    Falling = 4,
+    TakingDamage = 5
+        
 }
 
 public class PlayerController : MonoBehaviour
@@ -37,8 +40,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float currentAimingOffset;
     [SerializeField] private float maxHeadRotation;
     [SerializeField] private float maxArmsRotation;
-    [SerializeField] private float knockbackForce;
-    [SerializeField] private float stunDuration;
+    [SerializeField] private float knockbackForce;    
     public float raycastDistance;
     private float flightTimer;           
     private float moveInput;
@@ -71,7 +73,8 @@ public class PlayerController : MonoBehaviour
     {
         if (flying) Fly();
         ApplyMovement();
-        Aim();            
+        if (!takingDamage)
+            Aim();            
     }
 
     public Vector2 GetLinearVelocity()
@@ -195,7 +198,9 @@ public class PlayerController : MonoBehaviour
 
     private void SetCurrentState()
     {
-        if (isGrounded && moveInput == 0)
+        if (takingDamage)
+            currentState = PlayerState.TakingDamage;
+        else if (isGrounded && moveInput == 0)
             currentState = PlayerState.Idle;
         else if (isGrounded && moveInput != 0)
         {
@@ -220,10 +225,14 @@ public class PlayerController : MonoBehaviour
         animator.SetInteger("State", (int)currentState);
     }
 
-    public void ApplyKnockback(Vector2 direction)
+    public void ApplyKnockback(Vector2 direction, float stunDuration)
     {
         rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
         takingDamage = true;
+        head.rotation = Quaternion.identity;        
+        weaponPivot.rotation = Quaternion.identity;
+        rightArmTarget.position = rightGripPoint.position;
+        leftArmTarget.position = leftGripPoint.position;
         Invoke("SetTakingDamage", stunDuration);
     }
 

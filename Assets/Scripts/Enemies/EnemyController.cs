@@ -21,10 +21,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float distanceToAttackPlayer;
     [SerializeField] private float knockbackForce;
     private bool dying;
-
-    [Header("Attack Properties")]
-    [SerializeField] private float cooldown;
-    [SerializeField] private int damage;
     
     void Start()
     {

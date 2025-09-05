@@ -9,7 +9,7 @@ public class EnemyAttackBase : MonoBehaviour
     [SerializeField] protected int damage;
     protected Animator animator;
     protected float nextAttack;
-    protected float distanceToPlayer;
+    protected float distanceToPlayer;   
 
     protected void Start()
     {

@@ -4,13 +4,16 @@ using UnityEngine.InputSystem.XR;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private float maxHealth;
+    [SerializeField] private float stunDuration;
     private PlayerController controller;
+    private PlayerAttackManager playerAttack;
     public float health;
 
     private void Start()
     {
         health = maxHealth;
         controller = GetComponent<PlayerController>();
+        playerAttack = GetComponent<PlayerAttackManager>();
     }
 
     public void TakeDamage(float damage, Vector2 direction)
@@ -20,7 +23,8 @@ public class PlayerHealth : MonoBehaviour
             Die();
         else
         {
-            controller.ApplyKnockback(direction);
+            controller.ApplyKnockback(direction, stunDuration);
+            playerAttack.OnTakeDamage(stunDuration);
         }
     }
 

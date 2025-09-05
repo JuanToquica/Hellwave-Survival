@@ -22,6 +22,7 @@ public class PlayerAttackManager : MonoBehaviour
     private PlayerController playerController;
     public bool shooting;
     private List<WeaponBase> availableWeapons = new List<WeaponBase>();
+    public bool canAttack;
 
     void Start()
     {
@@ -30,11 +31,12 @@ public class PlayerAttackManager : MonoBehaviour
         foreach (WeaponBase w in weapons)
             w.gameObject.SetActive(false);
         ChangeWeapon(0);
+        canAttack = true;
     }
 
     private void Update()
     {
-        if (shooting && Time.time > nextFireTime && ((int)currentWeapon < 4 || currentWeapon == Weapons.Rockets))
+        if (shooting && Time.time > nextFireTime && canAttack &&((int)currentWeapon < 4 || currentWeapon == Weapons.Rockets))
         {
             Shot();
         }
@@ -124,6 +126,17 @@ public class PlayerAttackManager : MonoBehaviour
         animator.SetInteger("WeaponType", (int)currentWeapon);
         availableWeapons[(int)currentWeapon].Fire();
         nextFireTime = Time.time + currentFireRate;
+    }
+
+    public void OnTakeDamage(float duration)
+    {
+        canAttack = false;
+        Invoke("ResetCanAttack", duration);
+    }
+
+    private void ResetCanAttack()
+    {
+        canAttack = true;
     }
 
     private void DrawRays()
