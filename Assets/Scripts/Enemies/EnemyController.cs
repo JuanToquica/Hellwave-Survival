@@ -34,11 +34,12 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
-        LookAtPlayer();
+        
     }
 
     void FixedUpdate()
     {
+        LookAtPlayer();
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         if ((distanceToPlayer > stopDistance || Physics2D.Raycast(firepoint.position, (player.position - firepoint.position), stopDistance, 1 << 3)) && !dying)
             CalculateMovementAndRepulsion();
