@@ -18,7 +18,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float separationRadius;
     [SerializeField] private float separationForce;
     [SerializeField] private float smoothFactor;
-    [SerializeField] private float distanceToAttackPlayer;
+    [SerializeField] private float stopDistance;
     [SerializeField] private float knockbackForce;
     private bool dying;
     
@@ -39,7 +39,7 @@ public class EnemyController : MonoBehaviour
     void FixedUpdate()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer > distanceToAttackPlayer && !dying)
+        if (distanceToPlayer > stopDistance && !dying)
             CalculateMovementAndRepulsion();
         else
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, new Vector2(0, 0), smoothFactor);

@@ -2487,8 +2487,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 725999163
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -3210681692322971873, guid: 398f54dbf54e8e348a90ec2bb4efdb1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2602,7 +2602,7 @@ MonoBehaviour:
   separationRadius: 2
   separationForce: 30
   smoothFactor: 0.1
-  distanceToAttackPlayer: 1.8
+  stopDistance: 0
   knockbackForce: 15
 --- !u!114 &671616001
 MonoBehaviour:
@@ -3004,7 +3004,7 @@ MonoBehaviour:
   currentAimingOffset: 0
   maxHeadRotation: 30
   maxArmsRotation: 60
-  knockbackForce: 10
+  knockbackForce: 12
   raycastDistance: 1.4
   takingDamage: 0
   flying: 0
@@ -3242,7 +3242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  stunDuration: 1
+  stunDuration: 0.4
   health: 0
 --- !u!1 &888224983
 GameObject:
@@ -8953,7 +8953,7 @@ MonoBehaviour:
   separationRadius: 2
   separationForce: 30
   smoothFactor: 0.1
-  distanceToAttackPlayer: 5
+  stopDistance: 0
   knockbackForce: 10
 --- !u!114 &1723813382
 MonoBehaviour:
@@ -9030,11 +9030,11 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
+  m_Mass: 6
+  m_LinearDamping: 0.1
   m_AngularDamping: 50
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1ed453a861b2c0447abad8f66e3a890b, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9525,8 +9525,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 725999163
+  m_SortingLayer: 6
   m_SortingOrder: 0
   m_Sprite: {fileID: -3210681692322971873, guid: 398f54dbf54e8e348a90ec2bb4efdb1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

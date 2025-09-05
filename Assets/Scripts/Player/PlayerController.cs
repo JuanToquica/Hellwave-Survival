@@ -229,6 +229,10 @@ public class PlayerController : MonoBehaviour
     {
         rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
         takingDamage = true;
+        if (direction.x > 0)
+            transform.localScale = new Vector3(-1, 1, 1);
+        else
+            transform.localScale = new Vector3(1, 1, 1);
         head.rotation = Quaternion.identity;        
         weaponPivot.rotation = Quaternion.identity;
         rightArmTarget.position = rightGripPoint.position;
