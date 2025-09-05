@@ -61,8 +61,9 @@ public class EnemyController : MonoBehaviour
         {
             if (enemy != null && enemy.transform != transform && enemy.CompareTag("Enemy"))
             {
-                Vector2 dir = (Vector2)(transform.position - enemy.transform.position);
-                float dist = dir.magnitude;
+                Vector2 closestPoint = enemy.ClosestPoint(transform.position);
+                float dist = Vector2.Distance(transform.position, closestPoint);
+                Vector2 dir = (Vector2)(transform.position - (Vector3)closestPoint);              
                 if (dist > 0)
                 {
                     float repulsion = (separationRadius - dist) / separationRadius;
