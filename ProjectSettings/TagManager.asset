@@ -44,8 +44,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Map
-    uniqueID: 3718469329
+  - name: Background
+    uniqueID: 2306404691
+    locked: 0
+  - name: Background2
+    uniqueID: 1366276689
+    locked: 0
+  - name: Ground
+    uniqueID: 2008089337
     locked: 0
   - name: Left Arm
     uniqueID: 1171373387
