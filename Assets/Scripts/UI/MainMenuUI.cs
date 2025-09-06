@@ -10,7 +10,6 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private SettingsUI settings;
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
-    [SerializeField] private Slider loadBar;
 
     private void Start()
     {
@@ -56,7 +55,6 @@ public class MainMenuUI : MonoBehaviour
         while (!asyncOperation.isDone)
         {
             Debug.Log(asyncOperation.progress);
-            loadBar.value = asyncOperation.progress / 0.9f;
             yield return null;
         }
     }

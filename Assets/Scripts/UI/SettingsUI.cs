@@ -4,22 +4,22 @@ using UnityEngine.UI;
 
 public class SettingsUI : MonoBehaviour
 {
-    //[SerializeField] private SettingsData settingsData;
     [SerializeField] private GameObject mainMenuUI;
     [SerializeField] private Button backButton;
     [SerializeField] private Slider volume;
     [SerializeField] private Button resetControlsSettings;
+    [SerializeField] private RebindManager rebindManager;
 
     private void Start()
     {
         backButton.onClick.AddListener(OnBackButtonClicked);
-        //resetControlsSettings.onClick.AddListener(OnResetControlsClicked);
-        LoadSliderSettins();
+        resetControlsSettings.onClick.AddListener(OnResetControlsClicked);
+        LoadVolumeSettins();
     }
 
-    private void LoadSliderSettins()
+    private void LoadVolumeSettins()
     {
-        volume.value = PlayerPrefs.GetFloat("MasterVolume");
+        volume.value = PlayerPrefs.GetFloat("Volume");
     }
 
     public void OnBackButtonClicked()
@@ -30,22 +30,26 @@ public class SettingsUI : MonoBehaviour
 
     public void OnVolumeChanged()
     {
-        PlayerPrefs.SetFloat("MasterVolume", volume.value);
+        PlayerPrefs.SetFloat("Volume", volume.value);
     }
 
-    //public void OnResetControlsClicked()
-    //{
-    //    PlayerPrefs.SetFloat("Sensitivity", settingsData.defaultSensitivity);
-    //    LoadSliderSettins();
-    //    InputManager.Instance.ResetActionMaps();
-    //    EventSystem.current.SetSelectedGameObject(null);
-    //}
+    [ContextMenu("Eliminar player prefbs")]
+    public void EliminarKeys()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+
+    public void OnResetControlsClicked()
+    {
+        rebindManager.ResetActionMaps();
+        EventSystem.current.SetSelectedGameObject(null);
+    }
 
 
     private void OnEnable()
     {
         EventSystem.current.firstSelectedGameObject = volume.gameObject;
-        LoadSliderSettins();
+        LoadVolumeSettins();
     }
 }
 
