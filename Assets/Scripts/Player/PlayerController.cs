@@ -46,8 +46,6 @@ public class PlayerController : MonoBehaviour
     public float raycastDistance;
     private float flightTimer;           
     private float moveInput;
-    private float movement;
-    private float movementRef;
     private bool activatedAiming;
     public bool takingDamage;
     public float coyoteTimer;
@@ -66,7 +64,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //movement = Mathf.Clamp(Mathf.SmoothDamp(movement, moveInput, ref movementRef, acceleration), -1, 1);
         SetIsGrounded();
         SetCurrentState();
         if (flying) SetFlightTimer();
