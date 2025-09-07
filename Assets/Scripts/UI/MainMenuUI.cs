@@ -19,22 +19,12 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnPlayButtonClicked()
     {
-        StartCoroutine(LoadAsync("GameScene"));
+        SceneManager.LoadSceneAsync("GameScene");
     }
 
     public void OnSettingsButtonClicked()
     {
         settingsIU.SetActive(true);
         gameObject.SetActive(false);
-    }
-
-    private IEnumerator LoadAsync(string scene)
-    {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(scene);
-        while (!asyncOperation.isDone)
-        {
-            Debug.Log(asyncOperation.progress);
-            yield return null;
-        }
     }
 }

@@ -68,5 +68,8 @@ TagManager:
   - name: Right Arm
     uniqueID: 725999163
     locked: 0
+  - name: DeployableWeapons
+    uniqueID: 3629786793
+    locked: 0
   m_RenderingLayers:
   - Default

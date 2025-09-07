@@ -89,7 +89,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 725999163
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Time: 0.01
   m_PreviewTimeScale: 1
@@ -101,37 +101,37 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.09092597
-        inSlope: 0
-        outSlope: 0
+        value: 0.08599633
+        inSlope: -0.03194143
+        outSlope: -0.03194143
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.33333334
+        inWeight: 1
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.9901772
-        value: 0
-        inSlope: -0.37721062
-        outSlope: -0.37721062
+        time: 0.996708
+        value: 0.030303031
+        inSlope: -0.045309614
+        outSlope: -0.045309614
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.1622629
+        inWeight: 0.17767704
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.29752398, b: 1, a: 1}
-      key1: {r: 0.07863116, g: 0.5651332, b: 0.8773585, a: 1}
-      key2: {r: 1, g: 0, b: 0, a: 0}
+      key0: {r: 1, g: 0.09860484, b: 0, a: 1}
+      key1: {r: 1, g: 0.39612737, b: 0.07058823, a: 1}
+      key2: {r: 0.8679245, g: 0.68369526, b: 0.31523672, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
+      ctime1: 31418
       ctime2: 65535
       ctime3: 0
       ctime4: 0
@@ -148,7 +148,7 @@ TrailRenderer:
       atime7: 0
       m_Mode: 0
       m_ColorSpace: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0

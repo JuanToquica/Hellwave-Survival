@@ -8,7 +8,7 @@ public enum Weapons
     Pistol, Shotgun,
     Carbine, Rifle,
     Barrels, Grenades,
-    Landmine, C4, Rockets
+    C4, Rockets
 }
 
 public class PlayerAttackManager : MonoBehaviour
@@ -96,7 +96,7 @@ public class PlayerAttackManager : MonoBehaviour
             {
                 granade.ResetTimer();
             }
-            else if (currentWeapon == Weapons.Barrels || currentWeapon == Weapons.Landmine)
+            else if (currentWeapon == Weapons.Barrels)
             {
                 if (availableWeapons[(int)currentWeapon].DeployExplosive())
                     nextFireTime = Time.time + currentFireRate;
