@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cb525f3155a904d982e457dd151c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 10
 --- !u!114 &1599505225047000032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +159,7 @@ MonoBehaviour:
   firepoint: {fileID: 459172399537427990}
   speed: 4
   nextWaypointDistance: 0.5
-  separationRadius: 0.95
+  separationRadius: 0.9
   separationForce: 30
   smoothFactor: 0.1
   stopDistance: 2
@@ -276,7 +276,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 725999163
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -3210681692322971873, guid: 398f54dbf54e8e348a90ec2bb4efdb1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

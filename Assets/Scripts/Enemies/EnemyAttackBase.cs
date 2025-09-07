@@ -16,6 +16,11 @@ public class EnemyAttackBase : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public void SetPlayer(Transform player)
+    {
+        this.player = player;
+    }
+
     protected void Update()
     {
         distanceToPlayer = Vector2.Distance(transform.position, player.position);

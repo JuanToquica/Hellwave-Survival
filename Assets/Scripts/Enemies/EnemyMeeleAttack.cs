@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class EnemyMeeleAttack : EnemyAttackBase
 {
-
     protected override void Attack()
     {
         animator.SetTrigger("Attack");

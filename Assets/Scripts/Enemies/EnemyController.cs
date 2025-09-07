@@ -44,6 +44,11 @@ public class EnemyController : MonoBehaviour
         
     }
 
+    public void SetPlayer(Transform player)
+    {
+        this.player = player;
+    }
+
     private void CalculateMovementAndRepulsion()
     {
         if (path == null) return;

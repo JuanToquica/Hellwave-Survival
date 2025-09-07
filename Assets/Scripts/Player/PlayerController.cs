@@ -149,7 +149,7 @@ public class PlayerController : MonoBehaviour
     }
     private void SetIsGrounded()
     {
-        int layer = 1 << 3 | 1 << 8;
+        int layer = 1 << 3 | 1 << 8 | 1 << 10;
         Vector3 origin = transform.position + transform.right * 0.03f * transform.localScale.x;
         isGrounded = Physics2D.Raycast(origin  + transform.right * (0.73f / 2), -transform.up, raycastDistance, layer) //0.03 is the offset of the collider
             || Physics2D.Raycast(origin - transform.right * (0.73f / 2), -transform.up, raycastDistance, layer);

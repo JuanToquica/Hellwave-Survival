@@ -22,7 +22,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6468463875398257886
 Transform:
   m_ObjectHideFlags: 0
@@ -182,7 +182,7 @@ MonoBehaviour:
   firepoint: {fileID: 3478873999004747563}
   speed: 4
   nextWaypointDistance: 0.5
-  separationRadius: 0.95
+  separationRadius: 0.9
   separationForce: 30
   smoothFactor: 0.1
   stopDistance: 6
@@ -280,7 +280,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 725999163
-  m_SortingLayer: 6
+  m_SortingLayer: 8
   m_SortingOrder: 0
   m_Sprite: {fileID: -3210681692322971873, guid: 398f54dbf54e8e348a90ec2bb4efdb1e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

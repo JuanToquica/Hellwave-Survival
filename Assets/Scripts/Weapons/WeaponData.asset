@@ -71,7 +71,7 @@ MonoBehaviour:
     magazineCapacity: 0
     maxAmmo: 0
     useLeftArmBackPosition: 1
-    requiresAiming: 0
+    requiresAiming: 1
     aimingOffset: 0
   - WeaponType: 6
     cost: 10
