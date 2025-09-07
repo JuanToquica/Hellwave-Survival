@@ -15,27 +15,6 @@ public class MainMenuUI : MonoBehaviour
     {
         playButton.onClick.AddListener(OnPlayButtonClicked);
         settingsButton.onClick.AddListener(OnSettingsButtonClicked);
-
-        //if (!PlayerPrefs.HasKey("MasterVolume") || !PlayerPrefs.HasKey("MusicVolume") || !PlayerPrefs.HasKey("SFXVolume"))
-        //{
-        //    settingsIU.SetActive(true);
-        //    settings.OnResetVolumeClicked();
-        //    settingsIU.SetActive(false);
-        //}
-        //if (!PlayerPrefs.HasKey("Sensitivity"))
-        //{
-        //    settingsIU.SetActive(true);
-        //    settings.OnResetControlsClicked();
-        //    settingsIU.SetActive(false);
-        //}
-
-        StartCoroutine(Deselect());
-    }
-
-    IEnumerator Deselect()
-    {
-        yield return null;
-        EventSystem.current.SetSelectedGameObject(null);
     }
 
     public void OnPlayButtonClicked()
@@ -57,9 +36,5 @@ public class MainMenuUI : MonoBehaviour
             Debug.Log(asyncOperation.progress);
             yield return null;
         }
-    }
-    public void OnEnable()
-    {
-        EventSystem.current.firstSelectedGameObject = playButton.gameObject;
     }
 }
