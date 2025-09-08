@@ -6,6 +6,8 @@ public class AudioManager : MonoBehaviour
     private AudioSource audioSource;
     [SerializeField] private AudioClip buttonSound;
     [SerializeField] private AudioClip reloadSound;
+    [SerializeField] private AudioClip shotgunReload;
+    [SerializeField] private AudioClip explosionSound;
     [SerializeField] private AudioClip enemyMeeleAttackSound;
     [SerializeField] private AudioClip enemyShooterAttackSound;
     [SerializeField] private AudioClip[] weaponShotSounds;
@@ -49,6 +51,16 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlayReloadSound()
+    {
+        audioSource.PlayOneShot(buttonSound);
+    }
+
+    public void PlayExplosionSound()
+    {
+        audioSource.PlayOneShot(buttonSound);
+    }
+
+    private void PlayShotgunReloadSound()
     {
         audioSource.PlayOneShot(buttonSound);
     }

@@ -26,6 +26,7 @@ public class ExplosivesController : MonoBehaviour
     {
         if (isExploding) return;
         isExploding = true;
+        AudioManager.instance.PlayExplosionSound();
         if (triggeredByExplosion) Invoke("ApplyExplosionDamage", explosionDelay);
         else ApplyExplosionDamage();
     }
