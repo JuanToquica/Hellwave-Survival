@@ -124,6 +124,7 @@ public class PlayerAttackManager : MonoBehaviour
     {
         animator.SetTrigger("Shot");
         animator.SetInteger("WeaponType", (int)currentWeapon);
+        AudioManager.instance.PlayPlayerShotSound((int)currentWeapon);
         availableWeapons[(int)currentWeapon].Fire();
         nextFireTime = Time.time + currentFireRate;
     }

@@ -6127,9 +6127,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSound: {fileID: 0}
+  reloadSound: {fileID: 0}
   enemyMeeleAttackSound: {fileID: 0}
   enemyShooterAttackSound: {fileID: 0}
-  weaponShotSounds: []
+  weaponShotSounds:
+  - {fileID: 8300000, guid: aefa1817532c5d54997f2a5e9843aff7, type: 3}
+  - {fileID: 8300000, guid: db46cc01e923b1340865b9774582fc7f, type: 3}
+  - {fileID: 8300000, guid: d5c2c96a9bec0234aa61c2a8436e4ac9, type: 3}
+  - {fileID: 8300000, guid: c9e836f744fcb74478f0adfa690395b7, type: 3}
+  - {fileID: 8300000, guid: 96a33ba26d78a0d4ea03b9dc912cd610, type: 3}
+  - {fileID: 8300000, guid: 8358709fedee6004e98a608cfedd44e2, type: 3}
+  - {fileID: 8300000, guid: aefa1817532c5d54997f2a5e9843aff7, type: 3}
+  - {fileID: 8300000, guid: e8e4f99c2f4a33648914ef8107139626, type: 3}
 --- !u!82 &1155659187
 AudioSource:
   m_ObjectHideFlags: 0
@@ -44958,7 +44967,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1946006313
 Transform:
   m_ObjectHideFlags: 0

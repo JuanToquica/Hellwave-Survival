@@ -5,6 +5,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     private AudioSource audioSource;
     [SerializeField] private AudioClip buttonSound;
+    [SerializeField] private AudioClip reloadSound;
     [SerializeField] private AudioClip enemyMeeleAttackSound;
     [SerializeField] private AudioClip enemyShooterAttackSound;
     [SerializeField] private AudioClip[] weaponShotSounds;
@@ -43,6 +44,11 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlayButtonSound()
+    {
+        audioSource.PlayOneShot(buttonSound);
+    }
+
+    public void PlayReloadSound()
     {
         audioSource.PlayOneShot(buttonSound);
     }
