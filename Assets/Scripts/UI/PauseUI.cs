@@ -45,7 +45,8 @@ public class PauseUI : MonoBehaviour
 
     public void OnExitButtonClicked()
     {
-        Time.timeScale = 1;
+        AudioManager.instance.PlayButtonSound();
+        Time.timeScale = 1;      
         SceneManager.LoadSceneAsync("MainMenu");
     }
 }

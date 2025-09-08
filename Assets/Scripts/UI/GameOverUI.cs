@@ -17,12 +17,14 @@ public class GameOverUI : MonoBehaviour
 
     public void OnRetryButtonClicked()
     {
+        AudioManager.instance.PlayButtonSound();
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync("GameScene");
     }
 
     public void OnExitButtonClicked()
     {
+        AudioManager.instance.PlayButtonSound();
         Time.timeScale = 1;
         SceneManager.LoadSceneAsync("MainMenu");
     }

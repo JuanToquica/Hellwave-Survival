@@ -8,7 +8,6 @@ public class SettingsUI : MonoBehaviour
     [SerializeField] private Button backButton;
     [SerializeField] private Slider volume;
     [SerializeField] private Button resetControlsSettings;
-    [SerializeField] private RebindManager rebindManager;
 
     private void Start()
     {
@@ -24,6 +23,7 @@ public class SettingsUI : MonoBehaviour
 
     public void OnBackButtonClicked()
     {
+        AudioManager.instance.PlayButtonSound();
         mainMenuUI.SetActive(true);
         gameObject.SetActive(false);
     }
@@ -41,14 +41,14 @@ public class SettingsUI : MonoBehaviour
 
     public void OnResetControlsClicked()
     {
-        rebindManager.ResetActionMaps();
+        AudioManager.instance.PlayButtonSound();
+        InputManager.instance.ResetActionMaps();
         EventSystem.current.SetSelectedGameObject(null);
     }
 
 
     private void OnEnable()
     {
-        EventSystem.current.firstSelectedGameObject = volume.gameObject;
         LoadVolumeSettins();
     }
 }

@@ -2,12 +2,21 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
-public class RebindManager : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
+    public static InputManager instance;
     private PlayerInput playerInput;
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
         playerInput = GetComponent<PlayerInput>();
         LoadActionMaps();
     }
@@ -34,5 +43,15 @@ public class RebindManager : MonoBehaviour
             }
             map.RemoveAllBindingOverrides();
         }
+    }
+
+    public void DisablePlayerInputs()
+    {
+        playerInput.actions.FindActionMap("Player").Disable();
+    }
+
+    public void EnablePlayerInputs()
+    {
+        playerInput.actions.FindActionMap("Player").Enable();
     }
 }

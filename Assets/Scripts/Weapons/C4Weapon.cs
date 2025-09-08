@@ -40,6 +40,7 @@ public class C4Weapon : ExplosiveWeapon
         int positionY = Mathf.RoundToInt(hit.point.y);
         ExplosivesController c4 = Instantiate(explosivePrefab, new Vector2(positionX, positionY), Quaternion.identity).GetComponent<ExplosivesController>();
         c4.Initialize(explosionRadius, explosionDelay, damage);
+        AudioManager.instance.PlayDeployWeaponSound();
         activedC4.Add(c4);
         c4sPlaced = true;
         return true;

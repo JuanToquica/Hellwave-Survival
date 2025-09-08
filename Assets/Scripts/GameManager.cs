@@ -2,6 +2,7 @@ using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.HID;
 
 public class GameManager : MonoBehaviour
@@ -60,6 +61,14 @@ public class GameManager : MonoBehaviour
             playerAttack.UnlockWeapon(playerAttack.GetLatestUnlockedWeapon() + 1);
     }
 
+    public void OnPauseClicked(InputAction.CallbackContext ctx)
+    {
+        if (ctx.started)
+        {
+            PauseAndUnpauseGame();
+        }
+    }
+
     public void PauseAndUnpauseGame()
     {
         if (isTheGamePaused)
@@ -67,6 +76,7 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1;
             pauseUI.SetActive(false);
             isTheGamePaused = false;
+            InputManager.instance.EnablePlayerInputs();
             //Cursor.lockState = CursorLockMode.Locked;
             //Cursor.visible = false;
         }
@@ -75,9 +85,11 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
             pauseUI.SetActive(true);
             isTheGamePaused = true;
+            InputManager.instance.DisablePlayerInputs();
             //Cursor.lockState = CursorLockMode.None;
             //Cursor.visible = true;
         }
+        AudioManager.instance.PlayButtonSound();        
     }
 
     private void StartRound()

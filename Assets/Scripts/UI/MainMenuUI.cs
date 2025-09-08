@@ -19,11 +19,13 @@ public class MainMenuUI : MonoBehaviour
 
     public void OnPlayButtonClicked()
     {
+        AudioManager.instance.PlayButtonSound();
         SceneManager.LoadSceneAsync("GameScene");
     }
 
     public void OnSettingsButtonClicked()
     {
+        AudioManager.instance.PlayButtonSound();
         settingsIU.SetActive(true);
         gameObject.SetActive(false);
     }

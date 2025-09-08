@@ -35,6 +35,7 @@ public class ExplosiveWeapon : WeaponBase
         int positionY = Mathf.RoundToInt(hit.point.y);
         ExplosivesController explosive = Instantiate(explosivePrefab, new Vector2(positionX, positionY), Quaternion.identity).GetComponent<ExplosivesController>();
         explosive.Initialize(explosionRadius, explosionDelay, damage);
+        AudioManager.instance.PlayDeployWeaponSound();
         return true;
     }
 }
