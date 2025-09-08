@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ExplosiveGrenadeData
   m_EditorClassIdentifier: 
   explosionRadius: 2
-  explosionDelay: 3
+  explosionDelay: 1.5

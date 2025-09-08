@@ -19,6 +19,7 @@ public class ExplosivesController : MonoBehaviour
 
     public virtual void Explode()
     {
+        AudioManager.instance.PlayExplosionSound();
         ApplyExplosionDamage();
     }
 

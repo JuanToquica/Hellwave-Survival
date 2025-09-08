@@ -30,6 +30,8 @@ public class BulletControler : MonoBehaviour
         if (hit.collider != null && hit.transform.gameObject != launcher)
         {
             transform.position = hit.point;
+            if (transform.CompareTag("Rocket"))
+                AudioManager.instance.PlayExplosionSound();
             if (hit.transform.CompareTag("Barrel"))
             {
                 ExplosivesController barrel = hit.transform.GetComponent<ExplosivesController>();
@@ -57,6 +59,7 @@ public class BulletControler : MonoBehaviour
 
     protected void OnBecameInvisible()
     {
-        Destroy(gameObject);
+        if (!transform.CompareTag("Rocket"))
+            Destroy(gameObject);
     }
 }
