@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor;
@@ -14,26 +15,30 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
 
     [Header("Gameplay")]
-    [SerializeField] private GameObject enemyMeele;
-    [SerializeField] private GameObject enemyShooter;
-    [SerializeField] private Transform player;
-    [SerializeField] private Transform[] spawners;
-    [SerializeField] private float timeBetweenSpawns;
-    [SerializeField] private int minNumerOfSpawners;
-    [SerializeField] private int maxNumerOfSpawners;    
-    [SerializeField] private int numberOfEnemiesRoundOne;
-    [SerializeField] private int additionOfEnemiesPerRound;
-    [SerializeField] private int maxNumberOfEnemiesPerRound;
-    [SerializeField] private float frenesiTime;
-    public int activedSpawners;
-    public int aliveEnemies;
+    public int currentRound;
     public bool isTheGamePaused;
-    public int deadEnemies;
     public int nextWeaponCost;
     public PlayerAttackManager playerAttack;
-    public bool frenesiActived;
-    private float frenesiTimer;
 
+    [Header("Wave Management")]
+    [SerializeField] private EnemySpawner enemySpawner;
+    [SerializeField] private float timeBetweenRounds;
+    [SerializeField] private int numberOfSpawnersRoundOne;
+    [SerializeField] private int numberOfEnemiesRoundOne;
+    [SerializeField] private int limitOfEnemiesOnSceneRoundOne;
+    [SerializeField] private int maxNumerOfSpawners;   
+    [SerializeField] private int additionOfEnemiesPerRound;
+    [SerializeField] private int additionOfLimitOfEnemiesOnScene;
+    [SerializeField] private int maxLimitOfEnemiesOnScene;
+    public int activedSpawners;
+    public int enemiesToSpawn;
+    public int limitOfEnemiesOnScene;
+    public bool isRoundActive;
+
+
+    public int aliveEnemies;
+    public int deadEnemiesThisRound;
+    public int deadEnemies;
 
     private void Awake()
     {
@@ -49,21 +54,70 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        activedSpawners = minNumerOfSpawners;
+        deadEnemiesThisRound = 0;
+        currentRound = 1;
+        activedSpawners = numberOfSpawnersRoundOne;
+        enemiesToSpawn = numberOfEnemiesRoundOne;
+        limitOfEnemiesOnScene = limitOfEnemiesOnSceneRoundOne;
         StartRound();
+    }
+
+    private void StartRound()
+    {
+        isRoundActive = true;
+        enemySpawner.SpawnWave(limitOfEnemiesOnScene, activedSpawners);
+    }
+
+    private void EndRound()
+    {
+        isRoundActive = false;
+        deadEnemiesThisRound = 0;
+        currentRound++;
+        if (activedSpawners < maxNumerOfSpawners)
+        {
+            if (currentRound == 2)
+                activedSpawners+=3;
+            else
+                activedSpawners++;
+        }
+        enemiesToSpawn += additionOfEnemiesPerRound;
+        if (limitOfEnemiesOnScene < maxLimitOfEnemiesOnScene)
+        {
+            limitOfEnemiesOnScene += additionOfLimitOfEnemiesOnScene;
+            if (limitOfEnemiesOnScene > maxLimitOfEnemiesOnScene)
+                limitOfEnemiesOnScene = maxLimitOfEnemiesOnScene;
+        }
+        Invoke("StartRound", timeBetweenRounds);
     }
 
     private void Update()
     {
-        
+        if (!isRoundActive) return;
+        int remainingEnemiesToSpawn = enemiesToSpawn - (aliveEnemies + deadEnemiesThisRound);
+        if (remainingEnemiesToSpawn == 0 && (deadEnemiesThisRound >= enemiesToSpawn))
+        {
+            EndRound();
+        }
+        else if (!enemySpawner.spawningWave && remainingEnemiesToSpawn > 0 && aliveEnemies < limitOfEnemiesOnScene)
+        {
+            int availableSpace = limitOfEnemiesOnScene - aliveEnemies;
+            int enemiesAmount = remainingEnemiesToSpawn <= availableSpace ? remainingEnemiesToSpawn : availableSpace;
+            enemySpawner.SpawnWave(enemiesAmount, activedSpawners);
+        }     
+    }
+
+    public void AddAliveEnemies(int amount)
+    {
+        aliveEnemies += amount;
     }
 
     public void OnEnemyDead()
     {
         deadEnemies++;
+        deadEnemiesThisRound ++;
+        aliveEnemies--;
         if (deadEnemies == nextWeaponCost)
             playerAttack.UnlockWeapon(playerAttack.GetLatestUnlockedWeapon() + 1);
-        frenesiActived = true;
     }
 
     public void OnPauseClicked(InputAction.CallbackContext ctx)
@@ -82,8 +136,6 @@ public class GameManager : MonoBehaviour
             pauseUI.SetActive(false);
             isTheGamePaused = false;
             InputManager.instance.EnablePlayerInputs();
-            //Cursor.lockState = CursorLockMode.Locked;
-            //Cursor.visible = false;
         }
         else
         {
@@ -91,42 +143,7 @@ public class GameManager : MonoBehaviour
             pauseUI.SetActive(true);
             isTheGamePaused = true;
             InputManager.instance.DisablePlayerInputs();
-            //Cursor.lockState = CursorLockMode.None;
-            //Cursor.visible = true;
         }
         AudioManager.instance.PlayButtonSound();        
-    }
-
-    private void StartRound()
-    {
-        StartCoroutine(spawnAllEnemies(numberOfEnemiesRoundOne));
-    }
-
-    private void EndRound()
-    {
-
-    }
-
-    [ContextMenu("Spawn round")]
-    private void SpawnEnemyWave()
-    {
-        for (int i = 0; i < activedSpawners; i++)
-        {
-            GameObject enemy = Instantiate(enemyMeele, spawners[i].position, Quaternion.identity);
-            EnemyMeeleAttack enemyAttack = enemy.GetComponent<EnemyMeeleAttack>();
-            enemyAttack.SetPlayer(player);
-            EnemyController enemyController = enemy.GetComponent<EnemyController>();
-            enemyController.SetPlayer(player);
-            aliveEnemies++;
-        }
-    }
-
-    private IEnumerator spawnAllEnemies(int numberOfEnemies)
-    {
-        for (int i = 0; i < numberOfEnemies; i++)
-        {
-            SpawnEnemyWave();
-            yield return new WaitForSeconds(timeBetweenSpawns);
-        }
     }
 }
