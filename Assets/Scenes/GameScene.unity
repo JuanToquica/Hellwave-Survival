@@ -445,8 +445,8 @@ MonoBehaviour:
   enemySpawner: {fileID: 1500145989}
   timeBetweenRounds: 2
   numberOfSpawnersRoundOne: 3
-  numberOfEnemiesRoundOne: 12
-  limitOfEnemiesOnSceneRoundOne: 8
+  numberOfEnemiesRoundOne: 50
+  limitOfEnemiesOnSceneRoundOne: 50
   maxNumerOfSpawners: 10
   additionOfEnemiesPerRound: 2
   additionOfLimitOfEnemiesOnScene: 2
@@ -3470,6 +3470,7 @@ MonoBehaviour:
   Ammo: 0
   explosiveData: {fileID: 11400000, guid: 472fc6247c623ae4a8a97c7f8c765182, type: 2}
   explosivePrefab: {fileID: 2485011947335807108, guid: bbdc4d9aeaa25d649ae5f143e018a77a, type: 3}
+  c4sPlaced: 0
 --- !u!1 &548258266
 GameObject:
   m_ObjectHideFlags: 0
@@ -8249,7 +8250,7 @@ MonoBehaviour:
   - {fileID: 1077847511}
   - {fileID: 1776523607}
   probabilityOfEnemyShooterSpawn: 0.07
-  timeBetweenSpawns: 0.5
+  timeBetweenSpawns: 1
   spawningWave: 0
 --- !u!4 &1500145990
 Transform:
@@ -42664,7 +42665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1704890553
 Transform:
   m_ObjectHideFlags: 0

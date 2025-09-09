@@ -39,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
             enemyController.SetPlayer(player);
             spawn ++;
-            if (spawn >= spawnersAmount - 1) spawn = 0;
+            if (spawn >= spawnersAmount) spawn = 0;
         }
         GameManager.instance.AddAliveEnemies(spawnersAmount);
     }
