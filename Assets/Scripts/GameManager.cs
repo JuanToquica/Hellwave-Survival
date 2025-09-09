@@ -9,6 +9,7 @@ using UnityEngine.InputSystem.HID;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public static event Action<int> OnEnemiesKilledChanged;
 
     [Header("UI")]
     [SerializeField] private GameObject pauseUI;
@@ -16,9 +17,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Gameplay")]
     public int currentRound;
-    public bool isTheGamePaused;
-    public int nextWeaponCost;
-    public PlayerAttackManager playerAttack;
+    public bool isTheGamePaused;    
 
     [Header("Wave Management")]
     [SerializeField] private EnemySpawner enemySpawner;
@@ -121,8 +120,7 @@ public class GameManager : MonoBehaviour
         deadEnemies++;
         deadEnemiesThisRound ++;
         aliveEnemies--;
-        if (deadEnemies == nextWeaponCost)
-            playerAttack.UnlockWeapon(playerAttack.GetLatestUnlockedWeapon() + 1);
+        OnEnemiesKilledChanged?.Invoke(deadEnemies);
     }
 
     public void OnPauseClicked(InputAction.CallbackContext ctx)

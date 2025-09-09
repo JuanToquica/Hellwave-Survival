@@ -22,11 +22,13 @@ public class PlayerAttackManager : MonoBehaviour
     private PlayerController playerController;
     public bool shooting;
     private List<WeaponBase> availableWeapons = new List<WeaponBase>();
-    public bool canAttack;
+    private bool canAttack;
+    private int nextWeaponCost;
 
     void Start()
     {
         playerController = GetComponent<PlayerController>();
+        GameManager.OnEnemiesKilledChanged += CheckForWeaponUnlock;
         UnlockWeapon(0);
         foreach (WeaponBase w in weapons)
             w.gameObject.SetActive(false);
@@ -55,12 +57,20 @@ public class PlayerAttackManager : MonoBehaviour
         }       
     }
 
+    private void CheckForWeaponUnlock(int deadEnemies)
+    {
+        if (deadEnemies == nextWeaponCost)
+            UnlockWeapon(availableWeapons.Count);
+    }
+
     public void UnlockWeapon(int newWeapon)
     {
         availableWeapons.Add(weapons[newWeapon]);
         Debug.Log("Arma desbloqueada: " + weaponData.weapons[newWeapon].WeaponType.ToString());
         if (weapons.Length > newWeapon + 1)
-            GameManager.instance.nextWeaponCost = weaponData.weapons[newWeapon + 1].cost;
+            nextWeaponCost = weaponData.weapons[newWeapon + 1].cost;
+        else
+            GameManager.OnEnemiesKilledChanged -= CheckForWeaponUnlock;
     }
 
     public int GetLatestUnlockedWeapon()
