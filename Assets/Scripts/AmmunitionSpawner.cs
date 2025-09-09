@@ -6,6 +6,7 @@ public class AmmunitionSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject ammunitionBoxPrefab;
     [SerializeField] private Transform[] spawners;
+    [SerializeField] private PlayerAttackManager player;
     [SerializeField] private float minTimeToSpawn;
     [SerializeField] private float maxTimeToSpawn;
 
@@ -29,5 +30,6 @@ public class AmmunitionSpawner : MonoBehaviour
             GetComponent<AmmunitionBox>();
         box.spawnIndex = spawnIndex;
         box.spawner = this;
+        box.player = player;
     }
 }

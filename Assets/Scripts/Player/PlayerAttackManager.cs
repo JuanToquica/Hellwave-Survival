@@ -20,6 +20,7 @@ public class PlayerAttackManager : MonoBehaviour
     private float currentFireRate;
     private float nextFireTime;
     private PlayerController playerController;
+    private PlayerHealth playerHealth;
     public bool shooting;
     private List<WeaponBase> availableWeapons = new List<WeaponBase>();
     private bool canAttack;
@@ -28,6 +29,7 @@ public class PlayerAttackManager : MonoBehaviour
     void Start()
     {
         playerController = GetComponent<PlayerController>();
+        playerHealth = GetComponent<PlayerHealth>();
         GameManager.OnEnemiesKilledChanged += CheckForWeaponUnlock;
         UnlockWeapon(0);
         foreach (WeaponBase w in weapons)
@@ -67,6 +69,7 @@ public class PlayerAttackManager : MonoBehaviour
     {
         availableWeapons.Add(weapons[newWeapon]);
         Debug.Log("Arma desbloqueada: " + weaponData.weapons[newWeapon].WeaponType.ToString());
+        availableWeapons[newWeapon].SetAmmo();
         if (weapons.Length > newWeapon + 1)
             nextWeaponCost = weaponData.weapons[newWeapon + 1].cost;
         else
@@ -85,7 +88,21 @@ public class PlayerAttackManager : MonoBehaviour
             Debug.Log("Arma no disponible");
             return;
         }
-            
+        bool canChange = true; 
+        if (availableWeapons[nextWeapon].Ammo == 0)
+        {
+            canChange = false;
+            if (nextWeapon == 6 && availableWeapons[nextWeapon] is C4Weapon c4) //Excepcion para los c4, puede haber algun sin explotar
+            {
+                if (c4.c4sPlaced) canChange = true;
+            }           
+        }
+        if (!canChange)
+        {
+            Debug.Log("Arma sin Municion");
+            return;
+        }
+
         currentWeapon = (Weapons)nextWeapon;
         foreach(WeaponBase w in availableWeapons)
         {
@@ -115,8 +132,7 @@ public class PlayerAttackManager : MonoBehaviour
             else if (currentWeapon == Weapons.C4 && availableWeapons[(int)currentWeapon] is C4Weapon c4Weapon)
             {
                 c4Weapon.HandleC4Action();            
-            }
-            
+            }            
         }        
         else if (ctx.canceled)
         {
@@ -124,8 +140,7 @@ public class PlayerAttackManager : MonoBehaviour
             {               
                 availableWeapons[(int)currentWeapon].Fire(playerController.GetLinearVelocity());
                 nextFireTime = Time.time + currentFireRate;
-            }
-                
+            }             
             shooting = false;
         }     
     }
@@ -148,6 +163,24 @@ public class PlayerAttackManager : MonoBehaviour
     private void ResetCanAttack()
     {
         canAttack = true;
+    }
+
+    public void CollectAmmunition()
+    {
+        int random = Random.Range(0, availableWeapons.Count);
+        if (random == 0)
+        {
+            playerHealth.Heal(); //Curar player, ya que pistol tiene municion infinita
+            return;
+        }
+        Debug.Log("Municion recogida para: " + availableWeapons[random].name);
+        availableWeapons[random].TakeAmmunition();
+    }
+
+
+    public void OnOutOfAmmunition()
+    {
+        ChangeWeapon(0);
     }
 
     private void DrawRays()

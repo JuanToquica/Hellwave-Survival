@@ -28,10 +28,10 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void Heal(float amount)
+    public void Heal()
     {
-        health += amount;
-        if (health > maxHealth) health = maxHealth;
+        Debug.Log("PLAYER CURADO");
+        health = maxHealth;
     }
 
     private void Die()

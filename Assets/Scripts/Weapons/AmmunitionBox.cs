@@ -3,6 +3,7 @@ using UnityEngine;
 public class AmmunitionBox : MonoBehaviour
 {
     public AmmunitionSpawner spawner;
+    public PlayerAttackManager player;
     public int spawnIndex;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -11,6 +12,7 @@ public class AmmunitionBox : MonoBehaviour
         {
             AudioManager.instance.PlayReloadSound();
             spawner.BoxCollected(spawnIndex);
+            player.CollectAmmunition();
             Destroy(gameObject);
         }
     }

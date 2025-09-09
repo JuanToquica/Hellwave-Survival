@@ -180,7 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   firepoint: {fileID: 3478873999004747563}
-  speed: 4
+  speed: 3
   nextWaypointDistance: 0.5
   separationRadius: 0.9
   separationForce: 25

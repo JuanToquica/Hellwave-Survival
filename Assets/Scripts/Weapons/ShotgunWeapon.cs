@@ -26,6 +26,11 @@ public class ShotgunWeapon : ProjectileWeapon
             Vector3 direction = player.localScale.x == 1 ? Quaternion.Euler(0, 0, angle) * firePoint.right : Quaternion.Euler(0, 0, angle) * -firePoint.right;
             bullet.Initialize(firePoint.position, direction, projectileSpeed, damage, transform.root.gameObject);
             bullet.range = range;
-        }    
+        }
+        Ammo--;
+        if (Ammo == 0)
+        {
+            playerAttackManager.OnOutOfAmmunition();
+        }
     }
 }

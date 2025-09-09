@@ -36,6 +36,11 @@ public class ExplosiveWeapon : WeaponBase
         ExplosivesController explosive = Instantiate(explosivePrefab, new Vector2(positionX, positionY), Quaternion.identity).GetComponent<ExplosivesController>();
         explosive.Initialize(explosionRadius, explosionDelay, damage);
         AudioManager.instance.PlayDeployWeaponSound();
+        Ammo--;
+        if (Ammo == 0)
+        {
+            playerAttackManager.OnOutOfAmmunition();
+        }
         return true;
     }
 }

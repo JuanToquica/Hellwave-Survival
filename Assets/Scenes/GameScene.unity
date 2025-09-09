@@ -1581,9 +1581,11 @@ MonoBehaviour:
   firePoint: {fileID: 1389816087}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  playerAttackManager: {fileID: 843021313}
   weaponIndex: 100
   rightGripPoint: {fileID: 1701877666}
   leftGripPoint: {fileID: 1087888487}
+  Ammo: 0
   explosiveData: {fileID: 11400000, guid: 9e68aa2230bc11344b3bcfb3711f4b21, type: 2}
   explosivePrefab: {fileID: 5325716644875282932, guid: 01363b4af7fd1f840bfc5e40d850f702, type: 3}
 --- !u!1 &271170922
@@ -2690,9 +2692,11 @@ MonoBehaviour:
   firePoint: {fileID: 439211501}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  playerAttackManager: {fileID: 843021313}
   weaponIndex: 5
   rightGripPoint: {fileID: 1701877666}
   leftGripPoint: {fileID: 1087888487}
+  Ammo: 0
   explosiveData: {fileID: 11400000, guid: 4dec1f8d68b0e7847a71eb9c9c1f3975, type: 2}
   explosivePrefab: {fileID: 6421684549103839311, guid: fc2f3f6a8dfeeab4d930009aff5e1dcf, type: 3}
   grenadeData: {fileID: 11400000, guid: 4472181b9397ad349a6db1d4f3b28ae9, type: 2}
@@ -3459,9 +3463,11 @@ MonoBehaviour:
   firePoint: {fileID: 566885207}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  playerAttackManager: {fileID: 843021313}
   weaponIndex: 6
   rightGripPoint: {fileID: 2001363324}
   leftGripPoint: {fileID: 211561049}
+  Ammo: 0
   explosiveData: {fileID: 11400000, guid: 472fc6247c623ae4a8a97c7f8c765182, type: 2}
   explosivePrefab: {fileID: 2485011947335807108, guid: bbdc4d9aeaa25d649ae5f143e018a77a, type: 3}
 --- !u!1 &548258266
@@ -3769,9 +3775,11 @@ MonoBehaviour:
   firePoint: {fileID: 1137081422}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  playerAttackManager: {fileID: 843021313}
   weaponIndex: 0
   rightGripPoint: {fileID: 203998124}
   leftGripPoint: {fileID: 1554642846}
+  Ammo: 0
   muzleFlashAnimator: {fileID: 641403396}
   bulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
 --- !u!1 &594593704
@@ -5593,9 +5601,11 @@ MonoBehaviour:
   firePoint: {fileID: 657707482}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  playerAttackManager: {fileID: 843021313}
   weaponIndex: 7
   rightGripPoint: {fileID: 1418604941}
   leftGripPoint: {fileID: 271170923}
+  Ammo: 0
   muzleFlashAnimator: {fileID: 396885325}
   bulletPrefab: {fileID: 1419625756454676176, guid: ad5e12c68ecbf234396b4aa9f8b313c0, type: 3}
 --- !u!1 &940721435
@@ -5704,9 +5714,11 @@ MonoBehaviour:
   firePoint: {fileID: 895383512}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  playerAttackManager: {fileID: 843021313}
   weaponIndex: 4
   rightGripPoint: {fileID: 1860255778}
   leftGripPoint: {fileID: 888224984}
+  Ammo: 0
   explosiveData: {fileID: 11400000, guid: 9644b856631e8f44fa3e6d7207570bc5, type: 2}
   explosivePrefab: {fileID: 5492460584353676895, guid: acc73be99f7497148ab8ef237db3849c, type: 3}
 --- !u!1 &948931998
@@ -6346,6 +6358,7 @@ MonoBehaviour:
   - {fileID: 1061712813}
   - {fileID: 2098901862}
   - {fileID: 1883230738}
+  player: {fileID: 843021313}
   minTimeToSpawn: 5
   maxTimeToSpawn: 15
 --- !u!4 &1138508487
@@ -8370,9 +8383,11 @@ MonoBehaviour:
   firePoint: {fileID: 1678848211}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  playerAttackManager: {fileID: 843021313}
   weaponIndex: 3
   rightGripPoint: {fileID: 1904723293}
   leftGripPoint: {fileID: 279680376}
+  Ammo: 0
   muzleFlashAnimator: {fileID: 317720857}
   bulletPrefab: {fileID: 1419625756454676176, guid: ddc40f99ae5d7264cadfdc97f8af2900, type: 3}
 --- !u!1 &1523065006
@@ -45536,9 +45551,11 @@ MonoBehaviour:
   firePoint: {fileID: 1443571219}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  playerAttackManager: {fileID: 843021313}
   weaponIndex: 1
   rightGripPoint: {fileID: 730285434}
   leftGripPoint: {fileID: 1692778909}
+  Ammo: 0
   muzleFlashAnimator: {fileID: 378082850}
   bulletPrefab: {fileID: 1419625756454676176, guid: e97529901819aff4ca9a8f6c616c5a5f, type: 3}
   shotgunData: {fileID: 11400000, guid: 7a0c49ae03b773d4a982ceb368a2a85e, type: 2}
@@ -45816,9 +45833,11 @@ MonoBehaviour:
   firePoint: {fileID: 568860658}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  playerAttackManager: {fileID: 843021313}
   weaponIndex: 2
   rightGripPoint: {fileID: 682224084}
   leftGripPoint: {fileID: 1278036032}
+  Ammo: 0
   muzleFlashAnimator: {fileID: 2133385868}
   bulletPrefab: {fileID: 1419625756454676176, guid: 8194c5dcd2a3bff4fb38e7f25782e0b1, type: 3}
 --- !u!1 &2098901861

@@ -44,5 +44,10 @@ public class GranadeWeapon : ExplosiveWeapon
         granade.Initialize(explosionRadius, explosionDelay, damage);
         granade.Launch(direction, force, playerVelocity);
         force = 0;
+        Ammo--;
+        if (Ammo == 0)
+        {
+            playerAttackManager.OnOutOfAmmunition();
+        }
     }
 }
