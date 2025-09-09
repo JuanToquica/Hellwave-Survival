@@ -4947,7 +4947,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.73, y: 2.49}
+  m_Size: {x: 0.73, y: 2.43}
   m_EdgeRadius: 0.02
 --- !u!50 &843021308
 Rigidbody2D:
@@ -5006,7 +5006,7 @@ MonoBehaviour:
   maxHeadRotation: 30
   maxArmsRotation: 60
   knockbackForce: 12
-  raycastDistance: 1.4
+  raycastDistance: 1.38
   takingDamage: 0
   coyoteTimer: 0
   flying: 0
