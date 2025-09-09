@@ -9,10 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip reloadSound;
     [SerializeField] private AudioClip shotgunReload;
     [SerializeField] private AudioClip explosionSound;
-    [SerializeField] private AudioClip enemyMeeleAttackSound;
-    [SerializeField] private AudioClip enemyShooterAttackSound;
     [SerializeField] private AudioClip[] weaponShotSounds;
-    public float time;
     
     private void Awake()
     {
@@ -38,22 +35,17 @@ public class AudioManager : MonoBehaviour
         if (index == 7) index = 4; //para reproducir sonido de la bazuca
         audioSource.PlayOneShot(weaponShotSounds[index]);
         if (index == 1)
-            Invoke("PlayShotgunReloadSound", time);
+            Invoke("PlayShotgunReloadSound", 0.22f);
+    }
+
+    public void PlayEnemyGrowlSound(AudioClip clip)
+    {        
+        audioSource.PlayOneShot(clip);
     }
 
     public void PlayDeployWeaponSound()
     {
         audioSource.PlayOneShot(deploySound);
-    }
-
-    public void PlayEnemyMeeleAttackSound()
-    {
-        audioSource.PlayOneShot(enemyMeeleAttackSound);
-    }
-
-    public void PlayEnemyShooterAttackSound()
-    {
-        audioSource.PlayOneShot(enemyShooterAttackSound);
     }
 
     public void PlayButtonSound()

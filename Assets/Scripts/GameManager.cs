@@ -24,12 +24,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int numberOfEnemiesRoundOne;
     [SerializeField] private int additionOfEnemiesPerRound;
     [SerializeField] private int maxNumberOfEnemiesPerRound;
+    [SerializeField] private float frenesiTime;
     public int activedSpawners;
     public int aliveEnemies;
     public bool isTheGamePaused;
     public int deadEnemies;
     public int nextWeaponCost;
     public PlayerAttackManager playerAttack;
+    public bool frenesiActived;
+    private float frenesiTimer;
+
 
     private void Awake()
     {
@@ -59,6 +63,7 @@ public class GameManager : MonoBehaviour
         deadEnemies++;
         if (deadEnemies == nextWeaponCost)
             playerAttack.UnlockWeapon(playerAttack.GetLatestUnlockedWeapon() + 1);
+        frenesiActived = true;
     }
 
     public void OnPauseClicked(InputAction.CallbackContext ctx)
