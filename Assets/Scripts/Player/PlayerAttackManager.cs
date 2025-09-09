@@ -172,9 +172,20 @@ public class PlayerAttackManager : MonoBehaviour
         {
             playerHealth.Heal(); //Curar player, ya que pistol tiene municion infinita
             return;
+        }      
+        for (int i = 0; i < 3; i++) //Escoger arma a recargar 3 veces para mas probabilidad de que sea un arma descargada
+        {
+            if (availableWeapons[random].Ammo == weaponData.weapons[random].maxAmmo)
+            {
+                random = Random.Range(1, availableWeapons.Count);
+                continue;
+            }              
+            availableWeapons[random].TakeAmmunition();
+            Debug.Log("Municion recogida para: " + availableWeapons[random].name);
+            return;
         }
-        Debug.Log("Municion recogida para: " + availableWeapons[random].name);
         availableWeapons[random].TakeAmmunition();
+        Debug.Log("Municion recogida para: " + availableWeapons[random].name);
     }
 
 
