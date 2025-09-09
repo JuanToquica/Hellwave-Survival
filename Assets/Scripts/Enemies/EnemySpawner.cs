@@ -8,6 +8,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemyMeele;
     [SerializeField] private GameObject enemyShooter;
     [SerializeField] private Transform[] spawners;
+    [Range(0, 1)]
+    [SerializeField] private float probabilityOfEnemyShooterSpawn;
     [SerializeField] private float timeBetweenSpawns;
     public bool spawningWave;
 
@@ -19,9 +21,21 @@ public class EnemySpawner : MonoBehaviour
             
         for (int i = 0; i < spawnersAmount; i++)
         {
-            GameObject enemy = Instantiate(enemyMeele, spawners[spawn].position, Quaternion.identity);
-            EnemyMeeleAttack enemyAttack = enemy.GetComponent<EnemyMeeleAttack>();
-            enemyAttack.SetPlayer(player);
+            float random = Random.Range(0f, 1f);
+            GameObject enemy;
+            if (random < probabilityOfEnemyShooterSpawn)
+            {
+                enemy = Instantiate(enemyShooter, spawners[spawn].position, Quaternion.identity);
+                EnemyShooterAttack enemyAttack = enemy.GetComponent<EnemyShooterAttack>();
+                enemyAttack.SetPlayer(player);
+            }
+            else
+            {
+                enemy = Instantiate(enemyMeele, spawners[spawn].position, Quaternion.identity);
+                EnemyMeeleAttack enemyAttack = enemy.GetComponent<EnemyMeeleAttack>();
+                enemyAttack.SetPlayer(player);
+            } 
+            
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
             enemyController.SetPlayer(player);
             spawn ++;

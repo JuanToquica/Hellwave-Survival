@@ -446,7 +446,7 @@ MonoBehaviour:
   playerAttack: {fileID: 843021313}
   enemySpawner: {fileID: 1500145989}
   timeBetweenRounds: 2
-  numberOfSpawnersRoundOne: 10
+  numberOfSpawnersRoundOne: 3
   numberOfEnemiesRoundOne: 12
   limitOfEnemiesOnSceneRoundOne: 8
   maxNumerOfSpawners: 10
@@ -8021,7 +8021,8 @@ MonoBehaviour:
   - {fileID: 690740275}
   - {fileID: 1077847511}
   - {fileID: 1776523607}
-  timeBetweenSpawns: 0.45
+  probabilityOfEnemyShooterSpawn: 0.07
+  timeBetweenSpawns: 0.5
   spawningWave: 0
 --- !u!4 &1500145990
 Transform:

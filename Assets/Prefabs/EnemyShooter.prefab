@@ -183,7 +183,7 @@ MonoBehaviour:
   speed: 4
   nextWaypointDistance: 0.5
   separationRadius: 0.9
-  separationForce: 30
+  separationForce: 25
   smoothFactor: 0.1
   stopDistance: 6
   knockbackForce: 90
