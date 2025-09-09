@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEditor.Search;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -11,26 +12,31 @@ public class EnemySpawner : MonoBehaviour
     public bool spawningWave;
 
 
-    public void SpawnEnemies(int spawnersAmount)
+    public void SpawnEnemies(int spawnersAmount, bool randomSpawn)
     {
+        int spawn = 0;
+        if (randomSpawn) spawn = Random.Range(0, GameManager.instance.GetNumberOfActivedSpawners());
+            
         for (int i = 0; i < spawnersAmount; i++)
         {
-            GameObject enemy = Instantiate(enemyMeele, spawners[i].position, Quaternion.identity);
+            GameObject enemy = Instantiate(enemyMeele, spawners[spawn].position, Quaternion.identity);
             EnemyMeeleAttack enemyAttack = enemy.GetComponent<EnemyMeeleAttack>();
             enemyAttack.SetPlayer(player);
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
             enemyController.SetPlayer(player);
+            spawn ++;
+            if (spawn >= spawnersAmount - 1) spawn = 0;
         }
         GameManager.instance.AddAliveEnemies(spawnersAmount);
     }
 
-    public void SpawnWave(int numberOfEnemies, int spawnersAmount)
+    public void SpawnWave(int numberOfEnemies, int spawnersAmount, bool randomSpawn)
     {
         Debug.Log("Spawneando oleada" + numberOfEnemies + spawnersAmount);
-        StartCoroutine(SpawnWaveCoroutine(numberOfEnemies, spawnersAmount));
+        StartCoroutine(SpawnWaveCoroutine(numberOfEnemies, spawnersAmount, randomSpawn));
     }
 
-    private IEnumerator SpawnWaveCoroutine(int numberOfEnemies, int spawnersAmount)
+    private IEnumerator SpawnWaveCoroutine(int numberOfEnemies, int spawnersAmount, bool randomSpawn)
     {
         spawningWave = true;
         int remainingEnemiesToSpawn = numberOfEnemies;
@@ -39,17 +45,18 @@ public class EnemySpawner : MonoBehaviour
         {
             if (remainingEnemiesToSpawn >= spawnersAmount)
             {
-                SpawnEnemies(spawnersAmount);
+                SpawnEnemies(spawnersAmount, randomSpawn);
                 remainingEnemiesToSpawn -= spawnersAmount;
             }
             else
             {
-                SpawnEnemies(remainingEnemiesToSpawn);
+                SpawnEnemies(remainingEnemiesToSpawn, randomSpawn);
                 remainingEnemiesToSpawn -= remainingEnemiesToSpawn;
             }
             yield return new WaitForSeconds(timeBetweenSpawns);
             if (remainingEnemiesToSpawn <= 0) break;
         }
+        yield return new WaitForSeconds(2);
         spawningWave = false;
     }
 }

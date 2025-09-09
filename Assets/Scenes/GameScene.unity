@@ -446,13 +446,13 @@ MonoBehaviour:
   playerAttack: {fileID: 843021313}
   enemySpawner: {fileID: 1500145989}
   timeBetweenRounds: 2
-  numberOfSpawnersRoundOne: 3
-  numberOfEnemiesRoundOne: 10
-  limitOfEnemiesOnSceneRoundOne: 5
+  numberOfSpawnersRoundOne: 10
+  numberOfEnemiesRoundOne: 12
+  limitOfEnemiesOnSceneRoundOne: 8
   maxNumerOfSpawners: 10
   additionOfEnemiesPerRound: 2
   additionOfLimitOfEnemiesOnScene: 2
-  maxLimitOfEnemiesOnScene: 10
+  maxLimitOfEnemiesOnScene: 20
   activedSpawners: 0
   enemiesToSpawn: 0
   limitOfEnemiesOnScene: 0

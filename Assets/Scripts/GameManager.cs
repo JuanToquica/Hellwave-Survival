@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
     private void StartRound()
     {
         isRoundActive = true;
-        enemySpawner.SpawnWave(limitOfEnemiesOnScene, activedSpawners);
+        enemySpawner.SpawnWave(limitOfEnemiesOnScene, activedSpawners, false);
     }
 
     private void EndRound()
@@ -102,8 +102,13 @@ public class GameManager : MonoBehaviour
         {
             int availableSpace = limitOfEnemiesOnScene - aliveEnemies;
             int enemiesAmount = remainingEnemiesToSpawn <= availableSpace ? remainingEnemiesToSpawn : availableSpace;
-            enemySpawner.SpawnWave(enemiesAmount, activedSpawners);
+            enemySpawner.SpawnWave(enemiesAmount, activedSpawners, true);
         }     
+    }
+
+    public int GetNumberOfActivedSpawners()
+    {
+        return activedSpawners;
     }
 
     public void AddAliveEnemies(int amount)
