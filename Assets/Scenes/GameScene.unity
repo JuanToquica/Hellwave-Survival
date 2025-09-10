@@ -3435,6 +3435,8 @@ MonoBehaviour:
   smoothSpeed: 5
   maxXPosition: {x: -19, y: 25}
   maxYPosition: {x: -22, y: 16}
+  shakeDuration: 0.3
+  shakeMagnitude: 0.1
 --- !u!1 &533313158
 GameObject:
   m_ObjectHideFlags: 0

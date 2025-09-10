@@ -5,6 +5,7 @@ using UnityEngineInternal;
 
 public class ExplosivesController : MonoBehaviour
 {
+    public static event System.Action OnExplosion;
     [HideInInspector] public bool isExploding = false;
     [SerializeField] private Animator animator;
     protected float explosionRadius;
@@ -22,6 +23,7 @@ public class ExplosivesController : MonoBehaviour
     {
         if (isExploding) return;
         animator.SetTrigger("Explode");
+        OnExplosion?.Invoke();
         AudioManager.instance.PlayExplosionSound();      
         ApplyExplosionDamage();
     }
@@ -31,6 +33,7 @@ public class ExplosivesController : MonoBehaviour
         if (isExploding) return;
         isExploding = true;
         animator.SetTrigger("Explode");
+        OnExplosion?.Invoke();
         AudioManager.instance.PlayExplosionSound();
         if (triggeredByExplosion) Invoke("ApplyExplosionDamage", explosionDelay);
         else ApplyExplosionDamage();
