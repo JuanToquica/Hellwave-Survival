@@ -13,7 +13,7 @@ public class EnemyShooterAttack : EnemyAttackBase
         RaycastHit2D[] hits = Physics2D.RaycastAll(firePoint.position, directionToPlayer, distanceToPlayer);
         foreach (RaycastHit2D hit in hits)
         {
-            if (hit.collider.gameObject != gameObject && !hit.transform.CompareTag("Player"))
+            if (hit.collider.gameObject != gameObject && !hit.transform.CompareTag("Player") && !hit.transform.CompareTag("Barrel"))
                 return;
         }
         animator.SetTrigger("Attack");       

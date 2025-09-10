@@ -58,12 +58,12 @@ public class EnemyController : MonoBehaviour
         Vector2 velocity = waypointDir * speed;
 
         Vector2 separation = Vector2.zero;
-        Collider2D[] otherEnemies = Physics2D.OverlapCircleAll(transform.position, separationRadius);
-        foreach (var enemy in otherEnemies)
+        Collider2D[] others = Physics2D.OverlapCircleAll(transform.position, separationRadius);
+        foreach (var other in others)
         {
-            if (enemy != null && enemy.transform != transform && enemy.CompareTag("Enemy"))
+            if (other != null && other.transform != transform && (other.CompareTag("Enemy") || other.CompareTag("Barrel")))
             {
-                Vector2 closestPoint = enemy.ClosestPoint(transform.position);
+                Vector2 closestPoint = other.ClosestPoint(transform.position);
                 float dist = Vector2.Distance(transform.position, closestPoint);
                 Vector2 dir = (Vector2)(transform.position - (Vector3)closestPoint);              
                 if (dist > 0)
