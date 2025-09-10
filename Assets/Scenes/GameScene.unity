@@ -6596,8 +6596,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonSound: {fileID: 8300000, guid: 359a7db9a2d268f49954f34d11c96939, type: 3}
-  deploySound: {fileID: 8300000, guid: 1df09e68625da6e44a2c621e5d85d706, type: 3}
-  reloadSound: {fileID: 8300000, guid: e8e4f99c2f4a33648914ef8107139626, type: 3}
+  deploySound: {fileID: 8300000, guid: 8f97706b27483a7428774aaf0f29848a, type: 3}
+  reloadSound: {fileID: 8300000, guid: 368e05bb4fa35d849bcf79d82f292666, type: 3}
   shotgunReload: {fileID: 8300000, guid: 363e0f718c40ac1488ff3bf00000debf, type: 3}
   explosionSound: {fileID: 8300000, guid: 16f808aea50550146a79a58f7b84c13c, type: 3}
   weaponShotSounds:
