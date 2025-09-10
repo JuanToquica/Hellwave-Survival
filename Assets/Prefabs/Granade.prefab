@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5452425294626090431}
   - component: {fileID: 9083123065981736451}
   - component: {fileID: 5365667876459267429}
+  - component: {fileID: 8906499434384665128}
   m_Layer: 6
   m_Name: Granade
   m_TagString: Untagged
@@ -166,4 +167,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isExploding: 0
+  animator: {fileID: 8906499434384665128}
   rb: {fileID: 5452425294626090431}
+--- !u!95 &8906499434384665128
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6421684549103839311}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c087afdf55172f4a914470e8c29e159, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

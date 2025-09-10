@@ -445,8 +445,8 @@ MonoBehaviour:
   enemySpawner: {fileID: 1500145989}
   timeBetweenRounds: 2
   numberOfSpawnersRoundOne: 3
-  numberOfEnemiesRoundOne: 50
-  limitOfEnemiesOnSceneRoundOne: 50
+  numberOfEnemiesRoundOne: 10
+  limitOfEnemiesOnSceneRoundOne: 10
   maxNumerOfSpawners: 10
   additionOfEnemiesPerRound: 2
   additionOfLimitOfEnemiesOnScene: 2

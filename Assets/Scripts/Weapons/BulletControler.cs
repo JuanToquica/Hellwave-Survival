@@ -9,6 +9,8 @@ public class BulletControler : MonoBehaviour
     protected float travelledDistance;
     protected float distanceThisFrame;
     protected GameObject launcher;
+    [SerializeField] private Animator animator;
+    private bool destroying;
 
     public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed, int damage, GameObject launcher)
     {
@@ -21,15 +23,19 @@ public class BulletControler : MonoBehaviour
 
         transform.position = currentPosition;
         transform.right = direction;
+        destroying = false;
     }
 
     protected virtual void Update()
     {
+        if (destroying) return;
         distanceThisFrame = speed * Time.deltaTime;
         RaycastHit2D hit = Physics2D.Raycast(currentPosition, direction, distanceThisFrame);
         if (hit.collider != null && hit.transform.gameObject != launcher)
         {
             transform.position = hit.point;
+            animator.SetTrigger("Impact");
+            destroying = true;
             if (transform.CompareTag("Rocket"))
                 AudioManager.instance.PlayExplosionSound();
             if (hit.transform.CompareTag("Barrel"))
@@ -47,7 +53,7 @@ public class BulletControler : MonoBehaviour
                 PlayerHealth player = hit.transform.GetComponent<PlayerHealth>();
                 player.TakeDamage(damage, direction);
             }
-            Destroy(gameObject);
+            Invoke("Destroy", 0.4f);
         }
         else
         {
@@ -55,6 +61,11 @@ public class BulletControler : MonoBehaviour
             travelledDistance += distanceThisFrame;
             transform.position = currentPosition;
         }
+    }
+
+    private void Destroy()
+    {
+        Destroy(gameObject);
     }
 
     protected void OnBecameInvisible()

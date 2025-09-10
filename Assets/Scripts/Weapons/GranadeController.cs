@@ -10,7 +10,9 @@ public class GrenadeController : ExplosivesController
     {
         if (timer >= explosionDelay)
         {
+            rb.simulated = false;
             Explode();
+            this.enabled = false;
         }
         else
             timer += Time.deltaTime;
