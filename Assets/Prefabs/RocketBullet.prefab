@@ -132,10 +132,10 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 725999163
+  m_SortingLayer: 8
   m_SortingOrder: 0
-  m_Time: 0.02
+  m_Time: 0.013
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -146,38 +146,38 @@ TrailRenderer:
       - serializedVersion: 3
         time: 0.003276825
         value: 0.39393616
-        inSlope: 0.057789043
-        outSlope: 0.057789043
+        inSlope: -0.059278063
+        outSlope: -0.059278063
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
-        outWeight: 0.13158058
+        outWeight: 0.17945407
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0.84534365
-        outSlope: -0.84534365
+        inSlope: -1.3658535
+        outSlope: -1.3658535
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.13486817
+        inWeight: 0.14690998
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.04892774, b: 0, a: 1}
-      key1: {r: 1, g: 0.04892774, b: 0, a: 1}
-      key2: {r: 1, g: 0.80811393, b: 0, a: 0}
-      key3: {r: 0, g: 0, b: 0, a: 0}
+      key0: {r: 0.4716981, g: 0.046244916, b: 0, a: 1}
+      key1: {r: 1, g: 0.37207502, b: 0, a: 1}
+      key2: {r: 1, g: 0.796458, b: 0, a: 0}
+      key3: {r: 1, g: 0.796458, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
+      ctime1: 58596
       ctime2: 65535
-      ctime3: 0
+      ctime3: 65535
       ctime4: 0
       ctime5: 0
       ctime6: 0
@@ -192,7 +192,7 @@ TrailRenderer:
       atime7: 0
       m_Mode: 0
       m_ColorSpace: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0

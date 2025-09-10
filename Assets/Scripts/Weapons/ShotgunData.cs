@@ -5,6 +5,5 @@ public class ShotgunData : ScriptableObject
 {
     public int spreadAngle;
     public int amountOfBullets;
-    public int range;
 }
 

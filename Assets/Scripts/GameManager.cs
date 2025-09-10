@@ -20,15 +20,15 @@ public class GameManager : MonoBehaviour
     public bool isTheGamePaused;    
 
     [Header("Wave Management")]
+    [SerializeField] private GameConfig gameData;
     [SerializeField] private EnemySpawner enemySpawner;
-    [SerializeField] private float timeBetweenRounds;
-    [SerializeField] private int numberOfSpawnersRoundOne;
-    [SerializeField] private int numberOfEnemiesRoundOne;
-    [SerializeField] private int limitOfEnemiesOnSceneRoundOne;
-    [SerializeField] private int maxNumerOfSpawners;   
-    [SerializeField] private int additionOfEnemiesPerRound;
-    [SerializeField] private int additionOfLimitOfEnemiesOnScene;
-    [SerializeField] private int maxLimitOfEnemiesOnScene;
+    private float timeBetweenRounds;
+    private int numberOfSpawnersRoundOne;
+    private int numberOfEnemiesRoundOne;
+    private int limitOfEnemiesOnSceneRoundOne;
+    private int additionOfEnemiesPerRound;
+    private int additionOfLimitOfEnemiesOnScene;
+    private int maxLimitOfEnemiesOnScene;
     public int activedSpawners;
     public int enemiesToSpawn;
     public int limitOfEnemiesOnScene;
@@ -49,10 +49,17 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        timeBetweenRounds = gameData.timeBetweenRounds;
+        numberOfSpawnersRoundOne = gameData.numberOfSpawnersRoundOne;
+        numberOfEnemiesRoundOne = gameData.numberOfEnemiesRoundOne;
+        limitOfEnemiesOnSceneRoundOne = gameData.limitOfEnemiesOnSceneRoundOne;
+        additionOfEnemiesPerRound = gameData.additionOfEnemiesPerRound;
+        additionOfLimitOfEnemiesOnScene = gameData.additionOfLimitOfEnemiesOnScene;
+        maxLimitOfEnemiesOnScene = gameData.maxLimitOfEnemiesOnScene;
     }
 
     private void Start()
-    {
+    {     
         deadEnemiesThisRound = 0;
         currentRound = 1;
         activedSpawners = numberOfSpawnersRoundOne;
@@ -72,7 +79,7 @@ public class GameManager : MonoBehaviour
         isRoundActive = false;
         deadEnemiesThisRound = 0;
         currentRound++;
-        if (activedSpawners < maxNumerOfSpawners)
+        if (activedSpawners < enemySpawner.spawners.Length)
         {
             if (currentRound == 2)
                 activedSpawners+=3;

@@ -203,7 +203,7 @@ MonoBehaviour:
   cooldown: 1
   distanceToAttackPlayer: 13
   player: {fileID: 0}
-  damage: 0
+  damage: 10
   projectilePrefab: {fileID: 4206259366976673617, guid: 5da0a04c35d10e144a2c1c1576216f48, type: 3}
   firePoint: {fileID: 3478873999004747563}
   projectileSpeed: 20

@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private GameObject enemyMeele;
     [SerializeField] private GameObject enemyShooter;
-    [SerializeField] private Transform[] spawners;
+    public Transform[] spawners;
     [Range(0, 1)]
     [SerializeField] private float probabilityOfEnemyShooterSpawn;
     [SerializeField] private float timeBetweenSpawns;
