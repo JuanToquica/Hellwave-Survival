@@ -48,7 +48,7 @@ MonoBehaviour:
     aimingOffset: 0
   - WeaponType: 3
     cost: 3
-    speed: 30
+    speed: 60
     range: 30
     damage: 5
     fireRate: 0.15
@@ -72,7 +72,7 @@ MonoBehaviour:
     cost: 5
     speed: 0
     range: 0
-    damage: 0
+    damage: 10
     fireRate: 1
     magazineCapacity: 5
     maxAmmo: 20
