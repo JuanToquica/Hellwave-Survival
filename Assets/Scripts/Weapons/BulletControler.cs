@@ -5,6 +5,7 @@ public class BulletControler : MonoBehaviour
 {
     protected float speed;
     protected int damage;
+    protected int range;
     protected Vector3 currentPosition;
     protected Vector3 direction;
     protected float travelledDistance;
@@ -20,11 +21,12 @@ public class BulletControler : MonoBehaviour
         trail.Clear();
     }
 
-    public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed, int damage, GameObject launcher)
+    public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed,int range ,int damage, GameObject launcher)
     {
         currentPosition = startPos;
         direction = dir;
         speed = bulletSpeed;
+        this.range = range;
         this.damage = damage;
         travelledDistance = 0f;
         this.launcher = launcher;
@@ -64,6 +66,9 @@ public class BulletControler : MonoBehaviour
             currentPosition += direction * distanceThisFrame;
             travelledDistance += distanceThisFrame;
             transform.position = currentPosition;
+
+            if (travelledDistance >= range)
+                ObjectPoolManager.instance.ReturnPooledObject(gameObject);
         }
     }
 

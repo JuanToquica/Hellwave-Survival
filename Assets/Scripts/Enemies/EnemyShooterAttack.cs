@@ -5,7 +5,7 @@ public class EnemyShooterAttack : EnemyAttackBase
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpeed;
-    
+    [SerializeField] private int projectileRange;
 
     protected override void Attack()
     {
@@ -24,6 +24,6 @@ public class EnemyShooterAttack : EnemyAttackBase
     {
         BulletControler bullet = ObjectPoolManager.instance.GetPooledObject(projectilePrefab, firePoint.position, firePoint.rotation).GetComponent<BulletControler>();
         Vector3 direction = (player.position - transform.position).normalized;
-        bullet.Initialize(firePoint.position, direction, projectileSpeed, damage, gameObject);
+        bullet.Initialize(firePoint.position, direction, projectileSpeed, projectileRange, damage, gameObject);
     }
 }

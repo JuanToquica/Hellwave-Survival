@@ -4,6 +4,7 @@ using System.Collections;
 public class RocketController : ExplosivesController
 {
     protected float speed;
+    protected int range;
     protected Vector3 currentPosition;
     protected Vector3 direction;
     protected float travelledDistance;

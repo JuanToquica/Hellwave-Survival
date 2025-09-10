@@ -6,6 +6,7 @@ public class WeaponInfo
     public Weapons WeaponType;
     public int cost;
     public int speed;
+    public int range;
     public int damage;
     public float fireRate;
     public int magazineCapacity;
