@@ -6,8 +6,8 @@ using UnityEngineInternal;
 public class ExplosivesController : MonoBehaviour
 {
     public static event System.Action OnExplosion;
-    [HideInInspector] public bool isExploding = false;
-    [SerializeField] private Animator animator;
+    [HideInInspector] public bool isExploding;
+    [SerializeField] protected Animator animator;
     protected float explosionRadius;
     protected float explosionDelay;    
     protected int damage;
@@ -66,9 +66,8 @@ public class ExplosivesController : MonoBehaviour
         Invoke("ReturnToPool", 0.5f);
     }
 
-    private void ReturnToPool()
+    protected void ReturnToPool()
     {
-
         ObjectPoolManager.instance.ReturnPooledObject(gameObject);
     }
 

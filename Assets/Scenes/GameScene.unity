@@ -5713,7 +5713,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 940245618}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5156d7e73bea3e4bac91775ab9d8214, type: 3}
+  m_Script: {fileID: 11500000, guid: b889e48de69065e40811daeb09c1cf08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   firePoint: {fileID: 657707482}
@@ -5726,6 +5726,7 @@ MonoBehaviour:
   Ammo: 0
   muzleFlashAnimator: {fileID: 396885325}
   bulletPrefab: {fileID: 1419625756454676176, guid: ad5e12c68ecbf234396b4aa9f8b313c0, type: 3}
+  rocketData: {fileID: 11400000, guid: adadd470b6668de4fa837d22d538d3b6, type: 2}
 --- !u!1 &940721435
 GameObject:
   m_ObjectHideFlags: 0

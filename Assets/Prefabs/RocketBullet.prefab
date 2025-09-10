@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4723947361734700064}
   - component: {fileID: 8708083063532742032}
-  - component: {fileID: 6821956469099931338}
   - component: {fileID: 8453200972819322127}
   - component: {fileID: -4109389937604965141}
+  - component: {fileID: -7089831981269926298}
   m_Layer: 0
   m_Name: RocketBullet
   m_TagString: Rocket
@@ -90,20 +90,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &6821956469099931338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419625756454676176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81eac7c98403d324a94eee97eade86b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: -4109389937604965141}
-  trail: {fileID: 8453200972819322127}
 --- !u!96 &8453200972819322127
 TrailRenderer:
   serializedVersion: 3
@@ -242,3 +228,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-7089831981269926298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419625756454676176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ef0d0aa3466eec458a779ca533157cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isExploding: 0
+  animator: {fileID: -4109389937604965141}
+  trail: {fileID: 8453200972819322127}

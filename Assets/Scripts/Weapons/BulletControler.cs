@@ -42,8 +42,6 @@ public class BulletControler : MonoBehaviour
         {
             transform.position = hit.point;
             destroying = true;
-            if (transform.CompareTag("Rocket"))
-                AudioManager.instance.PlayExplosionSound();
             if (hit.transform.CompareTag("Barrel"))
             {
                 ExplosivesController barrel = hit.transform.GetComponent<ExplosivesController>();
@@ -75,4 +73,5 @@ public class BulletControler : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         ObjectPoolManager.instance.ReturnPooledObject(gameObject);
     }
+
 }
