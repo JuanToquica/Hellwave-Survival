@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Animator animator;
+    [SerializeField] private Animator jetpackAnimator;
     [SerializeField] private Transform head;
     [SerializeField] private Transform rightArm;
     [SerializeField] private Transform leftArm;
@@ -235,6 +236,7 @@ public class PlayerController : MonoBehaviour
             currentState = PlayerState.Falling;
         }
         animator.SetInteger("State", (int)currentState);
+        jetpackAnimator.SetInteger("State", (int)currentState);
     }
 
     public void ApplyKnockback(Vector2 direction, float stunDuration)
