@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: -3444891675867235300}
+  trail: {fileID: 8453200972819322127}
 --- !u!96 &8453200972819322127
 TrailRenderer:
   serializedVersion: 3

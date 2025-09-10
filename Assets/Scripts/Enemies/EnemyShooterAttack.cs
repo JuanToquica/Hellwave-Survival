@@ -22,7 +22,7 @@ public class EnemyShooterAttack : EnemyAttackBase
 
     public void LaunchProjectile() //Se llamara desde un animation event
     {
-        BulletControler bullet = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation).GetComponent<BulletControler>();
+        BulletControler bullet = ObjectPoolManager.instance.GetPooledObject(projectilePrefab, firePoint.position, firePoint.rotation).GetComponent<BulletControler>();
         Vector3 direction = (player.position - transform.position).normalized;
         bullet.Initialize(firePoint.position, direction, projectileSpeed, damage, gameObject);
     }

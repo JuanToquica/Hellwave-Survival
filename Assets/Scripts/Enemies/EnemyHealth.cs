@@ -6,18 +6,18 @@ public class EnemyHealth : MonoBehaviour
     private Animator animator;
     private float health;
     private EnemyController controller;
-    private CircleCollider2D circleCollider;
+    [SerializeField] private CircleCollider2D circleCollider;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         controller = GetComponent<EnemyController>();
-        circleCollider = GetComponent<CircleCollider2D>();
     }
 
     private void OnEnable()
     {
         health = maxHealth;
+        circleCollider.enabled = true;
     }
 
     public void TakeDamage(float damage, Vector2 direction)
@@ -35,16 +35,15 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("EnemigoMuerto");
         GameManager.instance.OnEnemyDead();
         animator.SetTrigger("Die");
         circleCollider.enabled = false;
         controller.OnDie();
-        Invoke("Destroy",0.5f);
+        Invoke("ReturnToPool", 0.5f);
     }
 
-    private void Destroy()
+    private void ReturnToPool()
     {
-        Destroy(gameObject);
+        ObjectPoolManager.instance.ReturnPooledObject(gameObject);
     }
 }

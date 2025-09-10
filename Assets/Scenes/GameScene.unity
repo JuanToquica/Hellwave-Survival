@@ -6480,7 +6480,7 @@ GameObject:
   - component: {fileID: 1138508487}
   - component: {fileID: 1138508486}
   m_Layer: 0
-  m_Name: BoxAmmunitionSpawnerr
+  m_Name: BoxAmmunitionSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7876,6 +7876,76 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &1433500465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1433500468}
+  - component: {fileID: 1433500467}
+  - component: {fileID: 1433500466}
+  m_Layer: 0
+  m_Name: PoolManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1433500466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433500465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc01ba3b3f1554842962b8001a897bf0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMeelePrefab: {fileID: 6959419707600990854, guid: d06bfbea51ec33f499e473fbf9b32f4f, type: 3}
+  enemyShooterPrefab: {fileID: 644577207595385996, guid: 1dc524023e883b2439c9a64a2b749186, type: 3}
+  enemyProjectilePrefab: {fileID: 4206259366976673617, guid: 5da0a04c35d10e144a2c1c1576216f48, type: 3}
+  pistolBulletPrefab: {fileID: 1419625756454676176, guid: db2b3938cea01a54296a21a8a6f626a4, type: 3}
+  shotgunBulletPrefab: {fileID: 1419625756454676176, guid: e97529901819aff4ca9a8f6c616c5a5f, type: 3}
+  carabineBulletPrefab: {fileID: 1419625756454676176, guid: 8194c5dcd2a3bff4fb38e7f25782e0b1, type: 3}
+  rifleBulletPrefab: {fileID: 1419625756454676176, guid: ddc40f99ae5d7264cadfdc97f8af2900, type: 3}
+  rocketsBulletPrefab: {fileID: 1419625756454676176, guid: ad5e12c68ecbf234396b4aa9f8b313c0, type: 3}
+  barrelsPrefab: {fileID: 5492460584353676895, guid: acc73be99f7497148ab8ef237db3849c, type: 3}
+  grenadePrefab: {fileID: 6421684549103839311, guid: fc2f3f6a8dfeeab4d930009aff5e1dcf, type: 3}
+  c4Prefab: {fileID: 2485011947335807108, guid: bbdc4d9aeaa25d649ae5f143e018a77a, type: 3}
+  ammunitionBoxPrefab: {fileID: 643340722323090486, guid: 87409958ac1d428499a5cf10ca179bbc, type: 3}
+--- !u!114 &1433500467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433500465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33782e05919c61b4aa65b31854d7f9a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  poolParent: {fileID: 1433500468}
+--- !u!4 &1433500468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1433500465}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1434704605
 GameObject:
   m_ObjectHideFlags: 0
@@ -46338,6 +46408,7 @@ SceneRoots:
   - {fileID: 2108743354}
   - {fileID: 407076873}
   - {fileID: 104005449}
+  - {fileID: 1433500468}
   - {fileID: 1500145990}
   - {fileID: 1457568451}
   - {fileID: 1155659188}

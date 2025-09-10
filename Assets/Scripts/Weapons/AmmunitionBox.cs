@@ -13,7 +13,7 @@ public class AmmunitionBox : MonoBehaviour
             AudioManager.instance.PlayReloadSound();
             spawner.BoxCollected(spawnIndex);
             player.CollectAmmunition();
-            Destroy(gameObject);
+            ObjectPoolManager.instance.ReturnPooledObject(gameObject);
         }
     }
 }

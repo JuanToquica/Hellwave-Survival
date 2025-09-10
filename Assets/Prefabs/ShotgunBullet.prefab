@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: -4744318852838849316}
+  trail: {fileID: 8453200972819322127}
   range: 10
 --- !u!96 &8453200972819322127
 TrailRenderer:

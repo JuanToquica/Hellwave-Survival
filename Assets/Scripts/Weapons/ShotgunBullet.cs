@@ -6,7 +6,8 @@ public class ShotgunBullet : BulletControler
 
     protected override void Update()
     {       
-        if (travelledDistance > range) Destroy(gameObject);
+        if (travelledDistance > range) 
+            ObjectPoolManager.instance.ReturnPooledObject(gameObject);
         base.Update();
     }
 }

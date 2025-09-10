@@ -26,7 +26,7 @@ public class AmmunitionSpawner : MonoBehaviour
     private IEnumerator spawnAmmunitionBox(int spawnIndex)
     {
         yield return new WaitForSeconds(Random.Range(minTimeToSpawn, maxTimeToSpawn));
-        AmmunitionBox box = GameObject.Instantiate(ammunitionBoxPrefab, spawners[spawnIndex].position, spawners[spawnIndex].rotation).
+        AmmunitionBox box = ObjectPoolManager.instance.GetPooledObject(ammunitionBoxPrefab, spawners[spawnIndex].position, spawners[spawnIndex].rotation).
             GetComponent<AmmunitionBox>();
         box.spawnIndex = spawnIndex;
         box.spawner = this;

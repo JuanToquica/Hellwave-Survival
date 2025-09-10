@@ -18,7 +18,8 @@ public class ExplosiveWeapon : WeaponBase
     {
         hit = Physics2D.Raycast(firePoint.position, -player.transform.up, 3.3f);
         if (hit.collider == null) return false;
-        if (!Physics2D.Raycast(player.position + player.right * 0.5f * player.localScale.x, player.right * player.localScale.x, 1) && hit.transform.CompareTag("Ground"))
+        if (!Physics2D.Raycast(player.position + player.right * 0.5f * player.localScale.x, player.right * player.localScale.x, 1) 
+            && hit.transform.CompareTag("Ground"))
         {
             return true;
         }
@@ -33,7 +34,7 @@ public class ExplosiveWeapon : WeaponBase
 
         int positionX = Mathf.FloorToInt(firePoint.position.x);
         int positionY = Mathf.RoundToInt(hit.point.y);
-        ExplosivesController explosive = Instantiate(explosivePrefab, new Vector2(positionX, positionY), Quaternion.identity).GetComponent<ExplosivesController>();
+        ExplosivesController explosive = ObjectPoolManager.instance.GetPooledObject(explosivePrefab, new Vector2(positionX, positionY), Quaternion.identity).GetComponent<ExplosivesController>();
         explosive.Initialize(explosionRadius, explosionDelay, damage);
         AudioManager.instance.PlayDeployWeaponSound();
         Ammo--;

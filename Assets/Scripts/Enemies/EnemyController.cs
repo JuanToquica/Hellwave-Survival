@@ -25,13 +25,21 @@ public class EnemyController : MonoBehaviour
     
     void Start()
     {
-        seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-        InvokeRepeating("UpdatePath", 0f, 0.1f);
+        seeker = GetComponent<Seeker>();
+        animator = GetComponent<Animator>();       
+    }
+
+    private void OnEnable()
+    {
+        InvokeRepeating("UpdatePath", 0.05f, 0.1f);
         dying = false;
     }
 
+    private void OnDisable()
+    {
+        CancelInvoke("UpdatePath");
+    }
 
     void FixedUpdate()
     {

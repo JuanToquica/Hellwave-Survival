@@ -38,9 +38,10 @@ public class GranadeWeapon : ExplosiveWeapon
     public override void Fire(Vector2 playerVelocity)
     {
         timer = 0;
-        GrenadeController granade = Instantiate(explosivePrefab, firePoint.position, firePoint.rotation).GetComponent<GrenadeController>();
+        GrenadeController granade = ObjectPoolManager.instance.GetPooledObject(explosivePrefab, firePoint.position, firePoint.rotation).GetComponent<GrenadeController>();
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePos - firePoint.position).normalized;
+        granade.enabled = true;
         granade.Initialize(explosionRadius, explosionDelay, damage);
         granade.Launch(direction, force, playerVelocity);
         force = 0;

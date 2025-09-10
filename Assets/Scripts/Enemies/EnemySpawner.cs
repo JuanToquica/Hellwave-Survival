@@ -25,13 +25,13 @@ public class EnemySpawner : MonoBehaviour
             GameObject enemy;
             if (random < probabilityOfEnemyShooterSpawn)
             {
-                enemy = Instantiate(enemyShooter, spawners[spawn].position, Quaternion.identity);
+                enemy = ObjectPoolManager.instance.GetPooledObject(enemyShooter, spawners[spawn].position, Quaternion.identity);
                 EnemyShooterAttack enemyAttack = enemy.GetComponent<EnemyShooterAttack>();
                 enemyAttack.SetPlayer(player);
             }
             else
             {
-                enemy = Instantiate(enemyMeele, spawners[spawn].position, Quaternion.identity);
+                enemy = ObjectPoolManager.instance.GetPooledObject(enemyMeele, spawners[spawn].position, Quaternion.identity);
                 EnemyMeeleAttack enemyAttack = enemy.GetComponent<EnemyMeeleAttack>();
                 enemyAttack.SetPlayer(player);
             } 

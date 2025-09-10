@@ -6,6 +6,11 @@ public class GrenadeController : ExplosivesController
     [SerializeField] private Rigidbody2D rb;
     private float timer = 0;
 
+    private void OnEnable()
+    {
+        rb.simulated = true;    
+    }
+
     private void Update()
     {
         if (timer >= explosionDelay)

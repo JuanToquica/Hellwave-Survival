@@ -17,6 +17,7 @@ public class ExplosivesController : MonoBehaviour
         this.explosionRadius = explosionRadius;
         this.explosionDelay = explosionDelay;
         this.damage = damage;
+        isExploding = false;
     }
 
     public virtual void Explode()
@@ -62,12 +63,13 @@ public class ExplosivesController : MonoBehaviour
                 player.TakeDamage(damage, direction);
             }
         }
-        Invoke("Destroy", 0.5f);
+        Invoke("ReturnToPool", 0.5f);
     }
 
-    private void Destroy()
+    private void ReturnToPool()
     {
-        Destroy(gameObject);
+
+        ObjectPoolManager.instance.ReturnPooledObject(gameObject);
     }
 
     void OnDrawGizmosSelected()

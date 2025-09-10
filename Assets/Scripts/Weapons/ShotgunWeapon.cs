@@ -20,7 +20,7 @@ public class ShotgunWeapon : ProjectileWeapon
         muzleFlashAnimator.SetTrigger("Shot");
         for (int i = 0; i < amountOfBullets; i++)
         {
-            ShotgunBullet bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation).GetComponent<ShotgunBullet>();
+            ShotgunBullet bullet = ObjectPoolManager.instance.GetPooledObject(bulletPrefab, firePoint.position, firePoint.rotation).GetComponent<ShotgunBullet>();
 
             float angle = i == amountOfBullets/2? 0 : Random.Range(-spreadAngle, spreadAngle);
             Vector3 direction = player.localScale.x == 1 ? Quaternion.Euler(0, 0, angle) * firePoint.right : Quaternion.Euler(0, 0, angle) * -firePoint.right;

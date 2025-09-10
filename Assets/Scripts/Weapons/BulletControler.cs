@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class BulletControler : MonoBehaviour
 {
@@ -10,7 +11,14 @@ public class BulletControler : MonoBehaviour
     protected float distanceThisFrame;
     protected GameObject launcher;
     [SerializeField] private Animator animator;
+    [SerializeField] private TrailRenderer trail;
     private bool destroying;
+
+    private void OnEnable()
+    {
+        destroying = false;
+        trail.Clear();
+    }
 
     public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed, int damage, GameObject launcher)
     {
@@ -22,8 +30,7 @@ public class BulletControler : MonoBehaviour
         this.launcher = launcher;
 
         transform.position = currentPosition;
-        transform.right = direction;
-        destroying = false;
+        transform.right = direction;     
     }
 
     protected virtual void Update()
@@ -34,7 +41,6 @@ public class BulletControler : MonoBehaviour
         if (hit.collider != null && hit.transform.gameObject != launcher)
         {
             transform.position = hit.point;
-            animator.SetTrigger("Impact");
             destroying = true;
             if (transform.CompareTag("Rocket"))
                 AudioManager.instance.PlayExplosionSound();
@@ -53,7 +59,7 @@ public class BulletControler : MonoBehaviour
                 PlayerHealth player = hit.transform.GetComponent<PlayerHealth>();
                 player.TakeDamage(damage, direction);
             }
-            Invoke("Destroy", 0.4f);
+            StartCoroutine(PlayAnimationAndReturnToPool());         
         }
         else
         {
@@ -63,14 +69,10 @@ public class BulletControler : MonoBehaviour
         }
     }
 
-    private void Destroy()
+    private IEnumerator PlayAnimationAndReturnToPool()
     {
-        Destroy(gameObject);
-    }
-
-    protected void OnBecameInvisible()
-    {
-        if (!transform.CompareTag("Rocket"))
-            Destroy(gameObject);
+        animator.SetTrigger("Impact");
+        yield return new WaitForSeconds(0.5f);
+        ObjectPoolManager.instance.ReturnPooledObject(gameObject);
     }
 }

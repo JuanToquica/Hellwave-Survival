@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  circleCollider: {fileID: 1432014896964216265}
 --- !u!114 &1599505225047000032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   firepoint: {fileID: 459172399537427990}
+  seeker: {fileID: 6087207219878780188}
   speed: 3
   nextWaypointDistance: 0.5
   separationRadius: 0.9

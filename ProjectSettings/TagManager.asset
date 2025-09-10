@@ -8,6 +8,7 @@ TagManager:
   - Barrel
   - Enemy
   - Rocket
+  - Box
   layers:
   - Default
   - TransparentFX
