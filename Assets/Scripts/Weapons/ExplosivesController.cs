@@ -8,6 +8,7 @@ public class ExplosivesController : MonoBehaviour
     public static event System.Action OnExplosion;
     [HideInInspector] public bool isExploding;
     [SerializeField] protected Animator animator;
+    [SerializeField] private Transform explosionPoint;
     protected float explosionRadius;
     protected float explosionDelay;    
     protected int damage;
@@ -42,10 +43,12 @@ public class ExplosivesController : MonoBehaviour
 
     protected void ApplyExplosionDamage()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position + transform.right * 0.5f, explosionRadius);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(explosionPoint.position, explosionRadius);
         foreach (Collider2D hit in hits)
         {
-            Vector2 direction = (hit.transform.position - transform.position).normalized;
+            Vector2 direction = (hit.bounds.center - explosionPoint.position).normalized;
+            float distance = Vector2.Distance(explosionPoint.position, hit.bounds.center);
+            if (Physics2D.Raycast(explosionPoint.position, direction, distance, 1 << 3)) continue; //No aplicar daño si hay una pared entre los objetos
             if (hit.transform.CompareTag("Barrel"))
             {
                 ExplosivesController barrel = hit.GetComponent<ExplosivesController>();
@@ -74,6 +77,6 @@ public class ExplosivesController : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireSphere(transform.position + transform.right * 0.5f, explosionRadius); 
+        Gizmos.DrawWireSphere(explosionPoint.position, explosionRadius); 
     }
 }

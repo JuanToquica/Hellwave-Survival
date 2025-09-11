@@ -242,4 +242,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExploding: 0
   animator: {fileID: -4109389937604965141}
+  explosionPoint: {fileID: 4723947361734700064}
   trail: {fileID: 8453200972819322127}

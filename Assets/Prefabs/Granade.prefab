@@ -168,6 +168,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExploding: 0
   animator: {fileID: 8906499434384665128}
+  explosionPoint: {fileID: 4589096767193594108}
   rb: {fileID: 5452425294626090431}
 --- !u!95 &8906499434384665128
 Animator:

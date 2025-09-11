@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -8109073967390977661}
   - component: {fileID: 5406557147350296125}
   - component: {fileID: 2056537516181994958}
-  m_Layer: 3
+  m_Layer: 9
   m_Name: Barrels
   m_TagString: Barrel
   m_Icon: {fileID: 0}
@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: -2, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 6259386092583064785}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7732762066114994130
@@ -150,6 +151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isExploding: 0
   animator: {fileID: 2056537516181994958}
+  explosionPoint: {fileID: 6259386092583064785}
 --- !u!95 &2056537516181994958
 Animator:
   serializedVersion: 7
@@ -172,3 +174,34 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &8543055611402219180
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6259386092583064785}
+  m_Layer: 9
+  m_Name: ExplosionPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6259386092583064785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8543055611402219180}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.42, y: 0.67, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7393496467726543737}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

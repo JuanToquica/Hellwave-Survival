@@ -39,7 +39,7 @@ public class RocketController : ExplosivesController
         RaycastHit2D hit = Physics2D.Raycast(currentPosition, direction, distanceThisFrame);
         if (hit.collider != null && hit.transform.gameObject != launcher)
         {
-            transform.position = hit.point;
+            transform.position = (Vector3)hit.point - direction * 0.1f;
             destroying = true;
             animator.SetTrigger("Impact");
             AudioManager.instance.PlayExplosionSound();

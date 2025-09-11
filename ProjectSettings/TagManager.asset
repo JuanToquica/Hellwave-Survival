@@ -19,7 +19,7 @@ TagManager:
   - Grenade
   - Player
   - Enemy
-  - Explosive
+  - Barrels
   - Spawners
   - PostProcessing
   - 
