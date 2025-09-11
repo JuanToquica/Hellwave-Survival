@@ -40,7 +40,7 @@ public class PlayerAttackManager : MonoBehaviour
 
     private void Update()
     {
-        if (shooting && Time.time > nextFireTime && canAttack &&((int)currentWeapon < 4 || currentWeapon == Weapons.Rockets))
+        if (shooting && Time.time > nextFireTime && canAttack &&((int)currentWeapon < 4 || currentWeapon == Weapons.Rockets) && IsClearToShoot())
         {
             Shot();
         }
@@ -119,6 +119,9 @@ public class PlayerAttackManager : MonoBehaviour
         if (ctx.started)
         {
             shooting = true;
+
+            if (!IsClearToShoot()) return;
+
             if (currentWeapon == Weapons.Grenades && availableWeapons[(int)currentWeapon] is GranadeWeapon granade)
             {
                 granade.ResetTimer();
@@ -136,13 +139,21 @@ public class PlayerAttackManager : MonoBehaviour
         }        
         else if (ctx.canceled)
         {
-            if (currentWeapon == Weapons.Grenades && Time.time > nextFireTime)
+            if (currentWeapon == Weapons.Grenades && Time.time > nextFireTime && IsClearToShoot())
             {               
                 availableWeapons[(int)currentWeapon].Fire(playerController.GetLinearVelocity());
                 nextFireTime = Time.time + currentFireRate;
             }             
             shooting = false;
         }     
+    }
+
+    private bool IsClearToShoot()
+    {
+        Vector3 direction = availableWeapons[(int)currentWeapon].firePoint.position - transform.position;
+        float distance = Vector3.Distance(transform.position, availableWeapons[(int)currentWeapon].firePoint.position) + 0.02f;
+
+        return !Physics2D.Raycast(transform.position, direction, distance, 1 << 3); //Verifica que el arma no este atravesando alguna pared
     }
 
     private void Shot()
@@ -198,5 +209,9 @@ public class PlayerAttackManager : MonoBehaviour
     {
         Debug.DrawRay(availableWeapons[(int)currentWeapon].firePoint.position, -transform.up * 3.3f);
         Debug.DrawRay(transform.position + transform.right * 0.5f * transform.localScale.x, transform.right * transform.localScale.x);
+
+        Vector3 direction = (availableWeapons[(int)currentWeapon].firePoint.position - transform.position).normalized;
+        float distance = Vector3.Distance(transform.position, availableWeapons[(int)currentWeapon].firePoint.position) + 0.02f;
+        Debug.DrawRay(transform.position, direction * distance, Color.red);
     }
 }

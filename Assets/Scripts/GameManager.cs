@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
     public int limitOfEnemiesOnScene;
     public bool isRoundActive;
 
-
     public int aliveEnemies;
     public int deadEnemiesThisRound;
     public int deadEnemies;
