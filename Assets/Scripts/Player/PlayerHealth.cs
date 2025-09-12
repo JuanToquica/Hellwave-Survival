@@ -6,6 +6,7 @@ using UnityEngine.Rendering.Universal;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static event System.Action OnPlayerDeath;
     [SerializeField] private float maxHealth;
     [SerializeField] private float stunDuration;
     [SerializeField] private float vignetteIntensity;
@@ -36,8 +37,12 @@ public class PlayerHealth : MonoBehaviour
             StopCoroutine(damageCoroutine);
         damageCoroutine = StartCoroutine(TakeDamageEffect());
 
-        if (health < 0)
+        
+        if (health <= 0)
+        {
+            controller.ApplyKnockback(direction * 2, stunDuration);
             Die();
+        }          
         else
         {
             controller.ApplyKnockback(direction, stunDuration);
@@ -47,14 +52,15 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal()
     {
-        Debug.Log("PLAYER CURADO");
         health = maxHealth;
     }
 
     private IEnumerator TakeDamageEffect()
     {
         vignette.intensity.value = vignetteIntensity;
-        yield return new WaitForSeconds(vignetteDuration);
+        float duration = health <= 0 ? vignetteDuration * 5 : vignetteDuration;
+
+        yield return new WaitForSeconds(duration);
 
         float intensity = vignette.intensity.value;
         while (vignette.intensity.value > 0)
@@ -70,5 +76,6 @@ public class PlayerHealth : MonoBehaviour
     private void Die()
     {
         Debug.Log("PlayerMuerto");
+        OnPlayerDeath?.Invoke();
     }
 }

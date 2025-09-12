@@ -12,8 +12,7 @@ public enum PlayerState
     Jumping = 2,
     Flying = 3,
     Falling = 4,
-    TakingDamage = 5
-        
+    TakingDamage = 5  
 }
 
 public class PlayerController : MonoBehaviour
@@ -27,8 +26,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform rightArmTarget;
     [SerializeField] private Transform leftArmTarget;
     [SerializeField] private Transform weaponPivot;
-    private Transform rightGripPoint;
-    private Transform leftGripPoint;
+    public Transform rightGripPoint;
+    public Transform leftGripPoint;
     private Rigidbody2D rb;
     private PlayerInput playerInput;
     public PlayerState currentState;
@@ -47,7 +46,7 @@ public class PlayerController : MonoBehaviour
     public float raycastDistance;
     private float flightTimer;           
     private float moveInput;
-    private bool activatedAiming;
+    public bool activatedAiming;
     public bool takingDamage;
     public float coyoteTimer;
 
@@ -55,6 +54,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool flying;
     [SerializeField] private bool canFly;
     public bool isGrounded;
+
+    private void OnEnable() => PlayerHealth.OnPlayerDeath += OnDie;
+    private void OnDisable() => PlayerHealth.OnPlayerDeath -= OnDie;
 
     private void Start()
     {
@@ -259,6 +261,16 @@ public class PlayerController : MonoBehaviour
         takingDamage = false;
     }
 
+    public void OnDie()
+    {
+        animator.SetTrigger("Die");
+        rb.constraints = RigidbodyConstraints2D.None;
+        rb.linearDamping = 1;
+        rb.angularDamping = 0;
+        rb.AddTorque(5, ForceMode2D.Impulse);
+        head.rotation = Quaternion.identity;
+        this.enabled = false;
+    }
 }
 
 

@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30cb525f3155a904d982e457dd151c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
+  maxHealth: 10
   circleCollider: {fileID: 578113517513856902}
 --- !u!114 &3240629450957406834
 MonoBehaviour:
@@ -203,7 +203,7 @@ MonoBehaviour:
   cooldown: 1
   distanceToAttackPlayer: 13
   player: {fileID: 0}
-  damage: 10
+  damage: 2
   projectilePrefab: {fileID: 4206259366976673617, guid: 5da0a04c35d10e144a2c1c1576216f48, type: 3}
   firePoint: {fileID: 3478873999004747563}
   projectileSpeed: 20

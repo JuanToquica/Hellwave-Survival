@@ -158,7 +158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   firepoint: {fileID: 459172399537427990}
-  seeker: {fileID: 6087207219878780188}
   speed: 3
   nextWaypointDistance: 0.5
   separationRadius: 0.9
@@ -181,7 +180,7 @@ MonoBehaviour:
   cooldown: 1
   distanceToAttackPlayer: 2.5
   player: {fileID: 0}
-  damage: 0
+  damage: 3
 --- !u!95 &2154489192658426142
 Animator:
   serializedVersion: 7

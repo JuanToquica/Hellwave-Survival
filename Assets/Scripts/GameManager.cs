@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.HID;
@@ -54,11 +55,12 @@ public class GameManager : MonoBehaviour
         limitOfEnemiesOnSceneRoundOne = gameData.limitOfEnemiesOnSceneRoundOne;
         additionOfEnemiesPerRound = gameData.additionOfEnemiesPerRound;
         additionOfLimitOfEnemiesOnScene = gameData.additionOfLimitOfEnemiesOnScene;
-        maxLimitOfEnemiesOnScene = gameData.maxLimitOfEnemiesOnScene;
+        maxLimitOfEnemiesOnScene = gameData.maxLimitOfEnemiesOnScene;        
     }
 
     private void Start()
-    {     
+    {
+        InputManager.instance.EnablePlayerInputs();
         deadEnemiesThisRound = 0;
         currentRound = 1;
         activedSpawners = numberOfSpawnersRoundOne;
@@ -155,4 +157,20 @@ public class GameManager : MonoBehaviour
         }
         AudioManager.instance.PlayButtonSound();        
     }
+
+    public void OnPlayerDead()
+    {
+        StartCoroutine(OnPlayerDeadCorutine());
+    }
+
+    private IEnumerator OnPlayerDeadCorutine()
+    {
+        isRoundActive = false;
+        InputManager.instance.DisablePlayerInputs();
+        yield return new WaitForSeconds(2.5f);
+        gameOverPanel.SetActive(true);
+    }
+
+    private void OnEnable() => PlayerHealth.OnPlayerDeath += OnPlayerDead;
+    private void OnDisable() => PlayerHealth.OnPlayerDeath -= OnPlayerDead;
 }

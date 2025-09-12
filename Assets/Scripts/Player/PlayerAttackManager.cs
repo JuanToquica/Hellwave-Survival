@@ -17,6 +17,7 @@ public class PlayerAttackManager : MonoBehaviour
     [SerializeField] private WeaponBase[] weapons;
     [SerializeField] private WeaponData weaponData;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject weaponsParent;
     private float currentFireRate;
     private float nextFireTime;
     private PlayerController playerController;
@@ -25,6 +26,11 @@ public class PlayerAttackManager : MonoBehaviour
     private List<WeaponBase> availableWeapons = new List<WeaponBase>();
     private bool canAttack;
     private int nextWeaponCost;
+
+
+    private void OnEnable() => PlayerHealth.OnPlayerDeath += OnDie;
+    private void OnDisable() => PlayerHealth.OnPlayerDeath -= OnDie;
+
 
     void Start()
     {
@@ -213,5 +219,12 @@ public class PlayerAttackManager : MonoBehaviour
         Vector3 direction = (availableWeapons[(int)currentWeapon].firePoint.position - transform.position).normalized;
         float distance = Vector3.Distance(transform.position, availableWeapons[(int)currentWeapon].firePoint.position) + 0.02f;
         Debug.DrawRay(transform.position, direction * distance, Color.red);
+    }
+
+    public void OnDie()
+    {
+        shooting = false;
+        weaponsParent.SetActive(false);
+        this.enabled = false;
     }
 }

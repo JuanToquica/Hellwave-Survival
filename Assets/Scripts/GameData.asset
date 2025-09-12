@@ -15,7 +15,7 @@ MonoBehaviour:
   timeBetweenRounds: 2
   maxLimitOfEnemiesOnScene: 20
   numberOfSpawnersRoundOne: 3
-  numberOfEnemiesRoundOne: 10
+  numberOfEnemiesRoundOne: 20
   limitOfEnemiesOnSceneRoundOne: 10
-  additionOfEnemiesPerRound: 2
+  additionOfEnemiesPerRound: 10
   additionOfLimitOfEnemiesOnScene: 2
