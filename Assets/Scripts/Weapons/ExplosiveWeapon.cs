@@ -9,9 +9,9 @@ public class ExplosiveWeapon : WeaponBase
 
     protected override void OnEnable()
     {
+        base.OnEnable();
         explosionRadius = explosiveData.explosionRadius;
-        explosionDelay = explosiveData.explosionDelay;
-        damage = weaponData.weapons[weaponIndex].damage;
+        explosionDelay = explosiveData.explosionDelay;       
     }
 
     public bool TryGetDeployPoint(out RaycastHit2D hit)

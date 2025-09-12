@@ -9,8 +9,8 @@ public class ProjectileWeapon : WeaponBase
 
     protected override void OnEnable()
     {
+        base.OnEnable();
         projectileSpeed = weaponData.weapons[weaponIndex].speed;
-        damage = weaponData.weapons[weaponIndex].damage;
         projectileRange = weaponData.weapons[weaponIndex].range;
     }
 

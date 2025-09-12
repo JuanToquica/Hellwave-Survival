@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using System.Collections;
+using TMPro;
 
 public class MainMenuUI : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class MainMenuUI : MonoBehaviour
     [SerializeField] private SettingsUI settings;
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
+    [SerializeField] private TextMeshProUGUI highScore;
+
+    private void OnEnable()
+    {
+        highScore.text = PlayerPrefs.GetInt("HighScore",0).ToString();
+    }
 
     private void Start()
     {
@@ -27,6 +34,5 @@ public class MainMenuUI : MonoBehaviour
     {
         AudioManager.instance.PlayButtonSound();
         settingsIU.SetActive(true);
-        gameObject.SetActive(false);
     }
 }

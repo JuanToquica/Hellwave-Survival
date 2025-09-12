@@ -1,18 +1,44 @@
+using System;
 using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
+    public event Action<int, int> OnAmmoChanged;
     public Transform firePoint;
     [SerializeField] protected Transform player;    
     [SerializeField] protected WeaponData weaponData;
     [SerializeField] protected PlayerAttackManager playerAttackManager;
     [SerializeField] protected int weaponIndex;
+    public Sprite ammoIcon;
     public Transform rightGripPoint;
     public Transform leftGripPoint;
     protected int damage;
-    public int Ammo;
+    public int MaxAmmo;
+    public int _Ammo;
+    public int Ammo
+    {
+        get { return _Ammo; }
+        protected set
+        {
+            if (_Ammo != value)
+            {
+                _Ammo = value;
+                OnAmmoChanged?.Invoke(_Ammo, MaxAmmo);
+            }
+        }
+    }
 
-    protected virtual void OnEnable() { }
+    protected void Awake()
+    {
+        Ammo = weaponData.weapons[weaponIndex].maxAmmo;
+    }
+
+    protected virtual void OnEnable() 
+    {
+        MaxAmmo = weaponData.weapons[weaponIndex].maxAmmo;
+        damage = weaponData.weapons[weaponIndex].damage;     
+    }
+
     public virtual void Fire() { }
     public virtual void Fire(Vector2 playerVelocity) { }
     public virtual bool DeployExplosive() { return true; }
@@ -25,7 +51,7 @@ public class WeaponBase : MonoBehaviour
     public void TakeAmmunition()
     {
         Ammo += weaponData.weapons[weaponIndex].magazineCapacity;
-        if (Ammo > weaponData.weapons[weaponIndex].maxAmmo)
-            Ammo = weaponData.weapons[weaponIndex].maxAmmo;
+        if (Ammo > MaxAmmo)
+            Ammo = MaxAmmo;
     }
 }

@@ -1,5 +1,5 @@
+using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -13,7 +13,8 @@ public enum Weapons
 
 public class PlayerAttackManager : MonoBehaviour
 {
-    [SerializeField] private Weapons currentWeapon;
+    public static event Action<WeaponBase> OnWeaponChanged;
+
     [SerializeField] private WeaponBase[] weapons;
     [SerializeField] private WeaponData weaponData;
     [SerializeField] private Animator animator;
@@ -23,21 +24,46 @@ public class PlayerAttackManager : MonoBehaviour
     private PlayerController playerController;
     private PlayerHealth playerHealth;
     public bool shooting;
-    private List<WeaponBase> availableWeapons = new List<WeaponBase>();
+    private List<WeaponBase> availableWeapons;
     private bool canAttack;
     private int nextWeaponCost;
 
+    private Weapons _currentWeapon;
+    public Weapons currentWeapon
+    {
+        get { return _currentWeapon; }
+        set
+        {
+            if (_currentWeapon != value)
+            {
+                _currentWeapon = value;
+                OnWeaponChanged?.Invoke(availableWeapons[(int)_currentWeapon]);
+            }
+        }
+    }
 
-    private void OnEnable() => PlayerHealth.OnPlayerDeath += OnDie;
-    private void OnDisable() => PlayerHealth.OnPlayerDeath -= OnDie;
+    private void OnEnable()
+    {
+        GameManager.OnEnemiesKilledChanged += CheckForWeaponUnlock;
+        PlayerHealth.OnPlayerDeath += OnDie;
+    }
+       
+    private void OnDisable()
+    {
+        GameManager.OnEnemiesKilledChanged -= CheckForWeaponUnlock;
+        PlayerHealth.OnPlayerDeath -= OnDie;
+    }
 
+    private void Awake()
+    {
+        availableWeapons = new List<WeaponBase>();
+    }
 
     void Start()
     {
         playerController = GetComponent<PlayerController>();
-        playerHealth = GetComponent<PlayerHealth>();
-        GameManager.OnEnemiesKilledChanged += CheckForWeaponUnlock;
-        UnlockWeapon(0);
+        playerHealth = GetComponent<PlayerHealth>();      
+        UnlockWeapon(0);       
         foreach (WeaponBase w in weapons)
             w.gameObject.SetActive(false);
         ChangeWeapon(0);
@@ -67,12 +93,14 @@ public class PlayerAttackManager : MonoBehaviour
 
     private void CheckForWeaponUnlock(int deadEnemies)
     {
+        if (availableWeapons == null) return;
         if (deadEnemies == nextWeaponCost)
             UnlockWeapon(availableWeapons.Count);
     }
 
     public void UnlockWeapon(int newWeapon)
     {
+        if (newWeapon < availableWeapons.Count) return;
         availableWeapons.Add(weapons[newWeapon]);
         Debug.Log("Arma desbloqueada: " + weaponData.weapons[newWeapon].WeaponType.ToString());
         availableWeapons[newWeapon].SetAmmo();
@@ -184,7 +212,7 @@ public class PlayerAttackManager : MonoBehaviour
 
     public void CollectAmmunition()
     {
-        int random = Random.Range(0, availableWeapons.Count);
+        int random = UnityEngine.Random.Range(0, availableWeapons.Count);
         if (random == 0)
         {
             playerHealth.Heal(); //Curar player, ya que pistol tiene municion infinita
@@ -194,7 +222,7 @@ public class PlayerAttackManager : MonoBehaviour
         {
             if (availableWeapons[random].Ammo == weaponData.weapons[random].maxAmmo)
             {
-                random = Random.Range(1, availableWeapons.Count);
+                random = UnityEngine.Random.Range(1, availableWeapons.Count);
                 continue;
             }              
             availableWeapons[random].TakeAmmunition();

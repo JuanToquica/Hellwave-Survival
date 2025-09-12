@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public static event Action<int> OnEnemiesKilledChanged;
 
     [Header("UI")]
+    [SerializeField] private GameObject hud;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject gameOverPanel;
 
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
     private int additionOfEnemiesPerRound;
     private int additionOfLimitOfEnemiesOnScene;
     private int maxLimitOfEnemiesOnScene;
+    private int highScore;
     public int activedSpawners;
     public int enemiesToSpawn;
     public int limitOfEnemiesOnScene;
@@ -60,12 +62,16 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
         InputManager.instance.EnablePlayerInputs();
+        hud.SetActive(true);
+        deadEnemies = 0;
+        OnEnemiesKilledChanged?.Invoke(deadEnemies);
         deadEnemiesThisRound = 0;
         currentRound = 1;
         activedSpawners = numberOfSpawnersRoundOne;
         enemiesToSpawn = numberOfEnemiesRoundOne;
-        limitOfEnemiesOnScene = limitOfEnemiesOnSceneRoundOne;
+        limitOfEnemiesOnScene = limitOfEnemiesOnSceneRoundOne;    
         StartRound();
     }
 
@@ -118,6 +124,11 @@ public class GameManager : MonoBehaviour
         return activedSpawners;
     }
 
+    public int GetScore()
+    {
+        return deadEnemies;
+    }
+
     public void AddAliveEnemies(int amount)
     {
         aliveEnemies += amount;
@@ -145,6 +156,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
             pauseUI.SetActive(false);
+            hud.SetActive(true);
             isTheGamePaused = false;
             InputManager.instance.EnablePlayerInputs();
         }
@@ -152,6 +164,7 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 0;
             pauseUI.SetActive(true);
+            hud.SetActive(false);
             isTheGamePaused = true;
             InputManager.instance.DisablePlayerInputs();
         }
@@ -168,7 +181,20 @@ public class GameManager : MonoBehaviour
         isRoundActive = false;
         InputManager.instance.DisablePlayerInputs();
         yield return new WaitForSeconds(2.5f);
+        hud.SetActive(false);
         gameOverPanel.SetActive(true);
+    }
+
+    public bool TrySetNewScore(int score)
+    {
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("HighScore", highScore);
+            PlayerPrefs.Save();
+            return true;
+        }
+        return false;
     }
 
     private void OnEnable() => PlayerHealth.OnPlayerDeath += OnPlayerDead;

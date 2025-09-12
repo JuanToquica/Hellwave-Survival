@@ -1,3 +1,4 @@
+using System;
 using System.Security;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
@@ -17,6 +18,8 @@ public enum PlayerState
 
 public class PlayerController : MonoBehaviour
 {
+    public static event Action<float, float> OnFlyingTimerChanged;
+
     [Header("References")]
     [SerializeField] private Animator animator;
     [SerializeField] private Animator jetpackAnimator;
@@ -43,8 +46,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float maxHeadRotation;
     [SerializeField] private float maxArmsRotation;
     [SerializeField] private float knockbackForce;    
-    public float raycastDistance;
-    private float flightTimer;           
+    public float raycastDistance;         
     private float moveInput;
     public bool activatedAiming;
     public bool takingDamage;
@@ -55,6 +57,22 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool canFly;
     public bool isGrounded;
 
+
+    private float _flightTimer;
+    public float flightTimer
+    {
+        get { return _flightTimer; }
+        set
+        {
+            if (_flightTimer != value)
+            {
+                _flightTimer = value;
+                OnFlyingTimerChanged?.Invoke(_flightTimer, flightTime);
+            }
+        }
+    }
+
+
     private void OnEnable() => PlayerHealth.OnPlayerDeath += OnDie;
     private void OnDisable() => PlayerHealth.OnPlayerDeath -= OnDie;
 
@@ -62,7 +80,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = GetComponent<PlayerInput>();
         rb = GetComponent<Rigidbody2D>();
-        flightTimer = 0;
+        flightTimer = flightTime;
     }
 
     private void Update()
@@ -93,10 +111,10 @@ public class PlayerController : MonoBehaviour
 
     private void SetFlightTimer()
     {
-        if (flightTimer < flightTime)
+        if (flightTimer > 0)
         {
-            flightTimer += Time.deltaTime;
-            if (flightTimer > flightTime)
+            flightTimer -= Time.deltaTime;
+            if (flightTimer <= 0)
             {
                 flying = false;
                 flightTimer = 0;
@@ -162,6 +180,7 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             coyoteTimer = coyoteTime;
+            flightTimer = flightTime;
         }
         else
         {
@@ -182,7 +201,7 @@ public class PlayerController : MonoBehaviour
         {
             flying = true;
             canFly = false;
-            flightTimer = 0;
+            flightTimer = flightTime;
         }
         if (ctx.canceled)
             flying = false;
@@ -267,7 +286,7 @@ public class PlayerController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.None;
         rb.linearDamping = 1;
         rb.angularDamping = 0;
-        rb.AddTorque(5, ForceMode2D.Impulse);
+        rb.AddTorque(5 , ForceMode2D.Impulse);
         head.rotation = Quaternion.identity;
         this.enabled = false;
     }

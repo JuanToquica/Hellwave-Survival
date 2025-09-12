@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class SettingsUI : MonoBehaviour
 {
-    [SerializeField] private GameObject mainMenuUI;
     [SerializeField] private Button backButton;
     [SerializeField] private Slider volume;
     [SerializeField] private Button resetControlsSettings;
@@ -24,7 +23,6 @@ public class SettingsUI : MonoBehaviour
     public void OnBackButtonClicked()
     {
         AudioManager.instance.PlayButtonSound();
-        mainMenuUI.SetActive(true);
         gameObject.SetActive(false);
     }
 
@@ -50,6 +48,11 @@ public class SettingsUI : MonoBehaviour
     private void OnEnable()
     {
         LoadVolumeSettins();
+    }
+
+    private void OnDisable()
+    {
+        PlayerPrefs.Save();
     }
 }
 
