@@ -137,7 +137,7 @@ public class PlayerAttackManager : MonoBehaviour
         }
         if (!canChange)
         {
-            Debug.Log("Arma sin Municion");
+            AudioManager.instance.PlayDryFireSound();
             return;
         }
 
