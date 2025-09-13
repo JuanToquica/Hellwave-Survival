@@ -10,6 +10,7 @@ using Unity.VisualScripting;
 public class PlayerHealth : MonoBehaviour
 {
     public static event System.Action OnPlayerDeath;
+    public static event Action<string> OnPlayerHealed;
     public static event Action<Transform> OnTargetChanged;
     public static event Action<float, float> OnHealthChanged;
     [SerializeField] private GameObject PlayerRagdollRightPrefab;
@@ -77,8 +78,19 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void HealOnKill(int amount) => health = Mathf.Clamp(health += healthPerKill, 0f, maxHealth);
-    public void Heal() => health = maxHealth;
+    private void HealOnKill(int amount)
+    {
+        if (takingDamage) return;
+        health = Mathf.Clamp(health += healthPerKill, 0f, maxHealth);
+    }
+        
+    public void Heal()
+    {
+        if (health <= 0) return;
+        health = maxHealth;
+        OnPlayerHealed?.Invoke("Health Restored");
+    }
+        
 
     private IEnumerator TakeDamageEffect()
     {

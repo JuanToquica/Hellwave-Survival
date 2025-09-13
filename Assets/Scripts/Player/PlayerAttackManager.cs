@@ -14,6 +14,8 @@ public enum Weapons
 public class PlayerAttackManager : MonoBehaviour
 {
     public static event Action<WeaponBase> OnWeaponChanged;
+    public static event Action<string> OnWeaponUnlocked;
+    public static event Action<string> OnCollectedAmmo;
 
     [SerializeField] private WeaponBase[] weapons;
     [SerializeField] private WeaponData weaponData;
@@ -103,7 +105,8 @@ public class PlayerAttackManager : MonoBehaviour
     {
         if (newWeapon < availableWeapons.Count) return;
         availableWeapons.Add(weapons[newWeapon]);
-        Debug.Log("Arma desbloqueada: " + weaponData.weapons[newWeapon].WeaponType.ToString());
+        if (newWeapon != 0)
+            OnWeaponUnlocked?.Invoke(weaponData.weapons[newWeapon].WeaponType.ToString() + " Unlocked");
         availableWeapons[newWeapon].SetAmmo();
         if (weapons.Length > newWeapon + 1)
             nextWeaponCost = weaponData.weapons[newWeapon + 1].cost;
@@ -219,7 +222,7 @@ public class PlayerAttackManager : MonoBehaviour
             playerHealth.Heal(); //Curar player, ya que pistol tiene municion infinita
             return;
         }      
-        for (int i = 0; i < 3; i++) //Escoger arma a recargar 3 veces para mas probabilidad de que sea un arma descargada
+        for (int i = 0; i < 5; i++) //Escoger arma a recargar 5 veces para mas probabilidad de que sea un arma descargada
         {
             if (availableWeapons[random].Ammo == weaponData.weapons[random].maxAmmo)
             {
@@ -228,10 +231,12 @@ public class PlayerAttackManager : MonoBehaviour
             }              
             availableWeapons[random].TakeAmmunition();
             Debug.Log("Municion recogida para: " + availableWeapons[random].name);
+            OnCollectedAmmo?.Invoke(weaponData.weapons[random].WeaponType.ToString() + " Ammo Collected");
             return;
         }
         availableWeapons[random].TakeAmmunition();
         Debug.Log("Municion recogida para: " + availableWeapons[random].name);
+        OnCollectedAmmo?.Invoke(weaponData.weapons[random].WeaponType.ToString() + " Ammo Collected");
     }
 
 

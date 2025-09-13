@@ -23,14 +23,13 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(float damage, Vector2 direction)
     {
         health -= damage;
+        controller.ApplyKnockback(direction);
         if (health < 0) 
             Die();
         else
         {
-            animator.SetTrigger("TakeDamage");
-            controller.ApplyKnockback(direction);
-        }
-            
+            animator.SetTrigger("TakeDamage");           
+        }          
     }
 
     private void Die()

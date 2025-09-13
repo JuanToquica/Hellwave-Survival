@@ -47,6 +47,7 @@ public class WeaponBase : MonoBehaviour
     
     public void SetAmmo()
     {
+        MaxAmmo = weaponData.weapons[weaponIndex].maxAmmo;
         Ammo = weaponData.weapons[weaponIndex].maxAmmo;
     }
 
