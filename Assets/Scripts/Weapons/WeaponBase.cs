@@ -8,7 +8,7 @@ public class WeaponBase : MonoBehaviour
     [SerializeField] protected Transform player;    
     [SerializeField] protected WeaponData weaponData;
     [SerializeField] protected PlayerAttackManager playerAttackManager;
-    [SerializeField] protected int weaponIndex;
+    public int weaponIndex;
     public Sprite ammoIcon;
     public Transform rightGripPoint;
     public Transform leftGripPoint;
@@ -31,12 +31,14 @@ public class WeaponBase : MonoBehaviour
     protected void Awake()
     {
         Ammo = weaponData.weapons[weaponIndex].maxAmmo;
+        MaxAmmo = weaponData.weapons[weaponIndex].maxAmmo;
     }
 
     protected virtual void OnEnable() 
     {
         MaxAmmo = weaponData.weapons[weaponIndex].maxAmmo;
-        damage = weaponData.weapons[weaponIndex].damage;     
+        damage = weaponData.weapons[weaponIndex].damage;
+        OnAmmoChanged?.Invoke(_Ammo, MaxAmmo);
     }
 
     public virtual void Fire() { }

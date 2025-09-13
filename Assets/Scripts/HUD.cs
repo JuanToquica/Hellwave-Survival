@@ -14,6 +14,7 @@ public class HUD : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnHealthChanged += UpdateHealthBar;
+        PlayerHealth.OnPlayerDeath += SetToCeroHealthBar;
         PlayerController.OnFlyingTimerChanged += UpdateJetpackBar;
         GameManager.OnEnemiesKilledChanged += UpdateScore;
         PlayerAttackManager.OnWeaponChanged += OnWeaponChanged;
@@ -29,8 +30,14 @@ public class HUD : MonoBehaviour
 
     private void UpdateHealthBar(float currentHealth, float maxHealth)
     {
-        healthBar.fillAmount = currentHealth / maxHealth;
+        healthBar.fillAmount = Mathf.Clamp(currentHealth / maxHealth, 0.015f, 1);
     }
+
+    private void SetToCeroHealthBar()
+    {
+        healthBar.fillAmount = 0;
+    }
+
 
     private void UpdateJetpackBar(float currentFuel, float maxFuel)
     {
@@ -60,6 +67,9 @@ public class HUD : MonoBehaviour
 
     private void UpdateAmmo(int ammo, int maxAmmo)
     {
-        ammoText.text = ammo.ToString();
+        if (currentWeapon.weaponIndex == 0)
+            ammoText.text = "\u221E";
+        else
+            ammoText.text = ammo.ToString() + "/" + maxAmmo.ToString();
     }
 }

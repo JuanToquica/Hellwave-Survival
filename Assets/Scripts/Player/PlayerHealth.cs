@@ -42,29 +42,20 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        GameManager.OnEnemiesKilledChanged += HealOnKill;
-    }
-
     private void Start()
     {
-        health = maxHealth;
         controller = GetComponent<PlayerController>();
         playerAttack = GetComponent<PlayerAttackManager>();
+        health = maxHealth;
         takingDamage = false;
         if (globalVolume.profile.TryGet(out vignette))
-        {
             vignette.intensity.value = 0f;
-        }
     }
 
     private void Update()
     {
         if  (health < maxHealth && !takingDamage)
-        {
             health = Mathf.Clamp(health += healthRegenRate * Time.deltaTime, 0f, maxHealth);
-        }
     }
 
     public void TakeDamage(float damage, Vector2 direction)
@@ -85,15 +76,8 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    private void HealOnKill(int amount)
-    {
-        health = Mathf.Clamp(health += healthPerKill, 0f, maxHealth);
-    }
-
-    public void Heal()
-    {
-        health = maxHealth;
-    }
+    private void HealOnKill(int amount) => health = Mathf.Clamp(health += healthPerKill, 0f, maxHealth);
+    public void Heal() => health = maxHealth;
 
     private IEnumerator TakeDamageEffect()
     {
@@ -115,13 +99,11 @@ public class PlayerHealth : MonoBehaviour
         takingDamage = false;
     }
 
-    private void OnDisable()
-    {
-        GameManager.OnEnemiesKilledChanged -= HealOnKill;
-    }
 
     private IEnumerator Die()
     {
+        health = 0;
+        takingDamage = true;
         OnPlayerDeath?.Invoke();
 
         yield return new WaitForSeconds(0.05f);
@@ -134,19 +116,23 @@ public class PlayerHealth : MonoBehaviour
         cameraController.player = ragdollInstance.transform.Find("Body").GetComponent<Transform>();
         
         Rigidbody2D[] ragdollBodies = ragdollInstance.GetComponentsInChildren<Rigidbody2D>();
-        foreach (var rb in ragdollBodies)
+        foreach (var rb in ragdollBodies) //Heredar la velocidad que tenia el player
         {
             rb.linearVelocity = controller.GetLinearVelocity();
         }
+
         Collider2D[] colliders = ragdollInstance.GetComponentsInChildren<Collider2D>();
-        for (int i = 0; i < colliders.Length; i++)
+        for (int i = 0; i < colliders.Length; i++) //Desactivar la colision entre si
         {
             for (int j = i + 1; j < colliders.Length; j++)
             {
                 Physics2D.IgnoreCollision(colliders[i], colliders[j], true);
             }
         }
-
         gameObject.SetActive(false);       
     }
+
+
+    private void OnEnable() => GameManager.OnEnemiesKilledChanged += HealOnKill;
+    private void OnDisable() => GameManager.OnEnemiesKilledChanged -= HealOnKill;
 }

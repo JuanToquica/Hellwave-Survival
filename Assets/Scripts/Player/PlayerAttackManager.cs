@@ -63,7 +63,8 @@ public class PlayerAttackManager : MonoBehaviour
     {
         playerController = GetComponent<PlayerController>();
         playerHealth = GetComponent<PlayerHealth>();      
-        UnlockWeapon(0);       
+        UnlockWeapon(0);
+        OnWeaponChanged?.Invoke(availableWeapons[(int)_currentWeapon]);
         foreach (WeaponBase w in weapons)
             w.gameObject.SetActive(false);
         ChangeWeapon(0);
