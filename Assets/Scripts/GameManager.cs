@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
     {
         isRoundActive = false;
         InputManager.instance.DisablePlayerInputs();
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(4);
         hud.SetActive(false);
         gameOverPanel.SetActive(true);
     }

@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float currentAimingOffset;
     [SerializeField] private float maxHeadRotation;
     [SerializeField] private float maxArmsRotation;
-    [SerializeField] private float knockbackForce;    
+    public float knockbackForce;    
     public float raycastDistance;         
     private float moveInput;
     public bool activatedAiming;

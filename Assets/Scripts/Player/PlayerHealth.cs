@@ -5,11 +5,15 @@ using UnityEngine.InputSystem.XR;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using Unity.VisualScripting;
 
 public class PlayerHealth : MonoBehaviour
 {
     public static event System.Action OnPlayerDeath;
     public static event Action<float, float> OnHealthChanged;
+    [SerializeField] private GameObject PlayerRagdollRightPrefab;
+    [SerializeField] private GameObject PlayerRagdollLeftPrefab;
+    [SerializeField] private CameraController cameraController;
     [SerializeField] private float maxHealth;
     [SerializeField] private float healthPerKill;
     [SerializeField] private float healthRegenRate;
@@ -70,15 +74,13 @@ public class PlayerHealth : MonoBehaviour
             StopCoroutine(damageCoroutine);
         damageCoroutine = StartCoroutine(TakeDamageEffect());
 
-        
+        controller.ApplyKnockback(direction, stunDuration);
         if (health <= 0)
         {
-            controller.ApplyKnockback(direction * 2, stunDuration);
-            Die();
+            StartCoroutine(Die());
         }          
         else
         {
-            controller.ApplyKnockback(direction, stunDuration);
             playerAttack.OnTakeDamage(stunDuration);
         }
     }
@@ -118,9 +120,33 @@ public class PlayerHealth : MonoBehaviour
         GameManager.OnEnemiesKilledChanged -= HealOnKill;
     }
 
-    private void Die()
+    private IEnumerator Die()
     {
-        Debug.Log("PlayerMuerto");
         OnPlayerDeath?.Invoke();
+
+        yield return new WaitForSeconds(0.05f);
+
+        GameObject prefab = PlayerRagdollRightPrefab;
+        if (transform.localScale.x < 0)
+            prefab = PlayerRagdollLeftPrefab;
+
+        GameObject ragdollInstance = Instantiate(prefab, transform.position, transform.rotation);
+        cameraController.player = ragdollInstance.transform.Find("Body").GetComponent<Transform>();
+        
+        Rigidbody2D[] ragdollBodies = ragdollInstance.GetComponentsInChildren<Rigidbody2D>();
+        foreach (var rb in ragdollBodies)
+        {
+            rb.linearVelocity = controller.GetLinearVelocity();
+        }
+        Collider2D[] colliders = ragdollInstance.GetComponentsInChildren<Collider2D>();
+        for (int i = 0; i < colliders.Length; i++)
+        {
+            for (int j = i + 1; j < colliders.Length; j++)
+            {
+                Physics2D.IgnoreCollision(colliders[i], colliders[j], true);
+            }
+        }
+
+        gameObject.SetActive(false);       
     }
 }
