@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Rocket
   - Box
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

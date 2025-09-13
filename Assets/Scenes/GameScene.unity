@@ -8412,7 +8412,7 @@ MonoBehaviour:
   fireBallLaunchSound:
   - {fileID: 8300000, guid: f0481a0e5d32261489c71cd84f4d93b3, type: 3}
   - {fileID: 8300000, guid: a555d9e4742eaba419d6e107f1ad9a0d, type: 3}
-  fireBallImpactSound: {fileID: 0}
+  fireBallImpactSound: {fileID: 8300000, guid: 4a974d0ebe1fef54ca43fcc389bfe5c6, type: 3}
   dryFireSound: {fileID: 8300000, guid: c867cf460dcb5c0409c63e363c7c5ead, type: 3}
   playerDeathSound: {fileID: 8300000, guid: 9f0b68da2ee9b334ebc1e7b2998be18f, type: 3}
   weaponShotSounds:

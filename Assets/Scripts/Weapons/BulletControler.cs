@@ -44,6 +44,7 @@ public class BulletControler : MonoBehaviour
         {
             transform.position = hit.point;
             destroying = true;
+            if (transform.CompareTag("EnemyProjectile")) AudioManager.instance.PlayFireBallImpactSound();
             if (hit.transform.CompareTag("Barrel"))
             {
                 ExplosivesController barrel = hit.transform.GetComponent<ExplosivesController>();
