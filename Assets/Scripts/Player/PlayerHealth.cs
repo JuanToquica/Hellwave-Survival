@@ -117,7 +117,8 @@ public class PlayerHealth : MonoBehaviour
     {
         health = 0;
         takingDamage = true;
-        OnPlayerDeath?.Invoke();       
+        OnPlayerDeath?.Invoke();
+        AudioManager.instance.PlayPlayerDeathSound();
 
         yield return new WaitForSeconds(0.05f);
 
