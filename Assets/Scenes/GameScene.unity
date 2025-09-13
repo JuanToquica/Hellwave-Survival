@@ -8409,7 +8409,9 @@ MonoBehaviour:
   reloadSound: {fileID: 8300000, guid: 368e05bb4fa35d849bcf79d82f292666, type: 3}
   shotgunReload: {fileID: 8300000, guid: 363e0f718c40ac1488ff3bf00000debf, type: 3}
   explosionSound: {fileID: 8300000, guid: 16f808aea50550146a79a58f7b84c13c, type: 3}
-  fireBallLaunchSound: {fileID: 0}
+  fireBallLaunchSound:
+  - {fileID: 8300000, guid: f0481a0e5d32261489c71cd84f4d93b3, type: 3}
+  - {fileID: 8300000, guid: a555d9e4742eaba419d6e107f1ad9a0d, type: 3}
   fireBallImpactSound: {fileID: 0}
   dryFireSound: {fileID: 8300000, guid: c867cf460dcb5c0409c63e363c7c5ead, type: 3}
   playerDeathSound: {fileID: 8300000, guid: 9f0b68da2ee9b334ebc1e7b2998be18f, type: 3}

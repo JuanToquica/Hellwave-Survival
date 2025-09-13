@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip reloadSound;
     [SerializeField] private AudioClip shotgunReload;
     [SerializeField] private AudioClip explosionSound;
-    [SerializeField] private AudioClip fireBallLaunchSound;
+    [SerializeField] private AudioClip[] fireBallLaunchSound;
     [SerializeField] private AudioClip fireBallImpactSound;
     [SerializeField] private AudioClip dryFireSound;
     [SerializeField] private AudioClip playerDeathSound;
@@ -84,7 +84,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlayFireballLaunchSound()
     {
-        audioSource.PlayOneShot(fireBallLaunchSound);
+        audioSource.PlayOneShot(fireBallLaunchSound[Random.Range(0,2)]);
     }
 
     public void PlayPlayerDeathSound()

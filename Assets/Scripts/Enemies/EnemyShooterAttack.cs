@@ -25,5 +25,6 @@ public class EnemyShooterAttack : EnemyAttackBase
         BulletControler bullet = ObjectPoolManager.instance.GetPooledObject(projectilePrefab, firePoint.position, firePoint.rotation).GetComponent<BulletControler>();
         Vector3 direction = (player.position - transform.position).normalized;
         bullet.Initialize(firePoint.position, direction, projectileSpeed, projectileRange, damage, gameObject);
+        AudioManager.instance.PlayFireballLaunchSound();
     }
 }
