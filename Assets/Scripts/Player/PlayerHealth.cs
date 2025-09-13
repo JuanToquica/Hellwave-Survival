@@ -10,6 +10,7 @@ using Unity.VisualScripting;
 public class PlayerHealth : MonoBehaviour
 {
     public static event System.Action OnPlayerDeath;
+    public static event Action<Transform> OnTargetChanged;
     public static event Action<float, float> OnHealthChanged;
     [SerializeField] private GameObject PlayerRagdollRightPrefab;
     [SerializeField] private GameObject PlayerRagdollLeftPrefab;
@@ -104,7 +105,7 @@ public class PlayerHealth : MonoBehaviour
     {
         health = 0;
         takingDamage = true;
-        OnPlayerDeath?.Invoke();
+        OnPlayerDeath?.Invoke();       
 
         yield return new WaitForSeconds(0.05f);
 
@@ -113,7 +114,8 @@ public class PlayerHealth : MonoBehaviour
             prefab = PlayerRagdollLeftPrefab;
 
         GameObject ragdollInstance = Instantiate(prefab, transform.position, transform.rotation);
-        cameraController.player = ragdollInstance.transform.Find("Body").GetComponent<Transform>();
+        Transform ragDollBody = ragdollInstance.transform.Find("Body").GetComponent<Transform>();
+        cameraController.player = ragDollBody;
         
         Rigidbody2D[] ragdollBodies = ragdollInstance.GetComponentsInChildren<Rigidbody2D>();
         foreach (var rb in ragdollBodies) //Heredar la velocidad que tenia el player
@@ -129,6 +131,7 @@ public class PlayerHealth : MonoBehaviour
                 Physics2D.IgnoreCollision(colliders[i], colliders[j], true);
             }
         }
+        OnTargetChanged?.Invoke(ragDollBody);
         gameObject.SetActive(false);       
     }
 

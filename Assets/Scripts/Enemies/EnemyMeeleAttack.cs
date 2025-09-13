@@ -12,7 +12,7 @@ public class EnemyMeeleAttack : EnemyAttackBase
     public void PerformAttack() //Se llamara desde un animation event
     {
         Vector2 directionToPlayer = (player.position - transform.position).normalized;
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, directionToPlayer, distanceToAttackPlayer);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, directionToPlayer, 2);
         foreach (RaycastHit2D hit in hits)
         {
             if (hit.transform.gameObject == gameObject) continue;

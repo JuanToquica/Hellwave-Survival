@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour
 {
+    [SerializeField] private GameObject loadingScreen;
     [SerializeField] private Button retryButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private TextMeshProUGUI scoreText;
@@ -45,6 +47,20 @@ public class GameOverUI : MonoBehaviour
     {
         AudioManager.instance.PlayButtonSound();
         Time.timeScale = 1;
-        SceneManager.LoadSceneAsync("MainMenu");
+        StartCoroutine(LoadSceneAsync("MainMenu"));
+    }
+
+    public IEnumerator LoadSceneAsync(string sceneName)
+    {
+        loadingScreen.SetActive(true);
+
+        yield return null;
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+
+        while (!operation.isDone)
+        {
+            yield return null;
+        }
     }
 }

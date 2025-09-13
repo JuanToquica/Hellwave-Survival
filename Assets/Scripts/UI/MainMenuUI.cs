@@ -8,6 +8,7 @@ using TMPro;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] private GameObject settingsIU;
+    [SerializeField] private GameObject loadingScreen;
     [SerializeField] private SettingsUI settings;
     [SerializeField] private Button playButton;
     [SerializeField] private Button settingsButton;
@@ -22,17 +23,33 @@ public class MainMenuUI : MonoBehaviour
     {
         playButton.onClick.AddListener(OnPlayButtonClicked);
         settingsButton.onClick.AddListener(OnSettingsButtonClicked);
+        loadingScreen.SetActive(false);
+        settingsIU.SetActive(false);
     }
 
     public void OnPlayButtonClicked()
     {
         AudioManager.instance.PlayButtonSound();
-        SceneManager.LoadSceneAsync("GameScene");
+        StartCoroutine(LoadSceneAsync("GameScene"));
     }
 
     public void OnSettingsButtonClicked()
     {
         AudioManager.instance.PlayButtonSound();
         settingsIU.SetActive(true);
+    }
+
+    public IEnumerator LoadSceneAsync(string sceneName)
+    {
+        loadingScreen.SetActive(true);
+
+        yield return null;
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
+
+        while (!operation.isDone)
+        {
+            yield return null;
+        }
     }
 }

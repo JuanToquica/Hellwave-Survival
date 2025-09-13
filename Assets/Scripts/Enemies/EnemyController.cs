@@ -32,12 +32,14 @@ public class EnemyController : MonoBehaviour
 
     private void OnEnable()
     {
+        PlayerHealth.OnTargetChanged += SetPlayer;
         InvokeRepeating("UpdatePath", 0.05f, 0.1f);
         dying = false;
     }
 
     private void OnDisable()
     {
+        PlayerHealth.OnTargetChanged -= SetPlayer;
         CancelInvoke("UpdatePath");
     }
 

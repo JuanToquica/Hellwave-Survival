@@ -9,7 +9,10 @@ public class EnemyAttackBase : MonoBehaviour
     [SerializeField] protected int damage;
     protected Animator animator;
     protected float nextAttack;
-    protected float distanceToPlayer;   
+    protected float distanceToPlayer;
+
+    private void OnEnable() => PlayerHealth.OnTargetChanged += SetPlayer;
+    private void OnDisable() => PlayerHealth.OnTargetChanged -= SetPlayer;
 
     protected void Start()
     {
