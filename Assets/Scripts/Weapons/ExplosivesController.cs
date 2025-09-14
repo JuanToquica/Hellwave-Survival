@@ -12,12 +12,14 @@ public class ExplosivesController : MonoBehaviour
     protected float explosionRadius;
     protected float explosionDelay;    
     protected int damage;
+    protected float knockbackForce;
 
-    public virtual void Initialize(float explosionRadius,float explosionDelay,int damage)
+    public virtual void Initialize(float explosionRadius,float explosionDelay,int damage, float knockbackForce)
     {
         this.explosionRadius = explosionRadius;
         this.explosionDelay = explosionDelay;
         this.damage = damage;
+        this.knockbackForce  = knockbackForce;
         isExploding = false;
     }
 
@@ -58,7 +60,7 @@ public class ExplosivesController : MonoBehaviour
             else if (hit.transform.CompareTag("Enemy"))
             {
                 EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();                
-                enemy.TakeDamage(damage, direction);
+                enemy.TakeDamage(damage, direction, knockbackForce);
             }
             else if (hit.transform.CompareTag("Player"))
             {

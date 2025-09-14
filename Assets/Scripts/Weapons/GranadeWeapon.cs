@@ -42,7 +42,7 @@ public class GranadeWeapon : ExplosiveWeapon
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePos - firePoint.position).normalized;
         granade.enabled = true;
-        granade.Initialize(explosionRadius, explosionDelay, damage);
+        granade.Initialize(explosionRadius, explosionDelay, damage, knockBackForce);
         granade.Launch(direction, force, playerVelocity);
         force = 0;
         Ammo--;

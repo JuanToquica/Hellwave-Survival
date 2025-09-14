@@ -14,6 +14,7 @@ public class BulletControler : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private TrailRenderer trail;
     private bool destroying;
+    private float knockbackForce;
 
     private void OnEnable()
     {
@@ -21,7 +22,7 @@ public class BulletControler : MonoBehaviour
         trail.Clear();
     }
 
-    public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed,int range ,int damage, GameObject launcher)
+    public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed,int range ,int damage,float knockbackForce, GameObject launcher)
     {
         currentPosition = startPos;
         direction = dir;
@@ -29,6 +30,7 @@ public class BulletControler : MonoBehaviour
         this.range = range;
         this.damage = damage;
         travelledDistance = 0f;
+        this.knockbackForce = knockbackForce;
         this.launcher = launcher;
 
         transform.position = currentPosition;
@@ -53,7 +55,7 @@ public class BulletControler : MonoBehaviour
             else if (hit.transform.CompareTag("Enemy"))
             {
                 EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
-                enemy.TakeDamage(damage, direction);
+                enemy.TakeDamage(damage, direction, knockbackForce);
             }
             else if (hit.transform.CompareTag("Player"))
             {

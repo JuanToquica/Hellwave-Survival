@@ -87,7 +87,7 @@ public class PlayerController : MonoBehaviour
     {
         SetIsGrounded();
         SetCurrentState();
-        if (flying) SetFlightTimer();
+        if (flying || !canFly || (isGrounded && flightTimer < flightTime)) SetFlightTimer();
     }
 
     private void FixedUpdate()
@@ -111,15 +111,17 @@ public class PlayerController : MonoBehaviour
 
     private void SetFlightTimer()
     {
-        if (flightTimer > 0)
-        {
-            flightTimer -= Time.deltaTime;
-            if (flightTimer <= 0)
-            {
-                flying = false;
-                flightTimer = 0;
-            }
-        }
+        float delta = 0f;
+
+        if (flying && flightTimer > 0)
+            delta = -Time.deltaTime;
+        else if (!flying && !canFly && flightTimer > 0)
+            delta = -Time.deltaTime * 5f;
+        else if (isGrounded && flightTimer < flightTime)
+            delta = Time.deltaTime * 5f;
+
+        flightTimer = Mathf.Clamp(flightTimer + delta, 0f, flightTime);
+        if (flightTimer <= 0f) flying = false;
     }
 
     private void Fly()
@@ -180,7 +182,6 @@ public class PlayerController : MonoBehaviour
         if (isGrounded)
         {
             coyoteTimer = coyoteTime;
-            flightTimer = flightTime;
         }
         else
         {
@@ -196,6 +197,7 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
             coyoteTimer = 0;
+            flightTimer = flightTime;
         }        
         else if (!isGrounded && coyoteTimer <= 0 &&(ctx.performed || ctx.started) && canFly)
         {

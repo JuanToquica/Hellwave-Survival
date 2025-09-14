@@ -13,6 +13,7 @@ public class WeaponBase : MonoBehaviour
     public Transform rightGripPoint;
     public Transform leftGripPoint;
     protected int damage;
+    protected float knockBackForce;
     public int MaxAmmo;
     public int _Ammo;
     public int Ammo
@@ -38,6 +39,7 @@ public class WeaponBase : MonoBehaviour
     {
         MaxAmmo = weaponData.weapons[weaponIndex].maxAmmo;
         damage = weaponData.weapons[weaponIndex].damage;
+        knockBackForce = weaponData.weapons[weaponIndex].knockBackForce;
         OnAmmoChanged?.Invoke(_Ammo, MaxAmmo);
     }
 

@@ -20,7 +20,6 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float separationForce;
     [SerializeField] private float smoothFactor;
     [SerializeField] private float stopDistance;
-    [SerializeField] private float knockbackForce;
     private bool dying;
     
     void Start()
@@ -121,7 +120,7 @@ public class EnemyController : MonoBehaviour
         }
     }      
 
-    public void ApplyKnockback(Vector2 direction)
+    public void ApplyKnockback(Vector2 direction, float knockbackForce)
     {
         rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
     }

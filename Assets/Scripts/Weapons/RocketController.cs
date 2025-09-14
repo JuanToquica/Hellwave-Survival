@@ -19,9 +19,9 @@ public class RocketController : ExplosivesController
         trail.Clear();
     }
 
-    public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed, int damage, GameObject launcher, float explosionRadius, float explosionDelay)
+    public virtual void Initialize(Vector3 startPos, Vector3 dir, float bulletSpeed, int damage,float knockBackForce, GameObject launcher, float explosionRadius, float explosionDelay)
     {
-        base.Initialize(explosionRadius, explosionDelay, damage);
+        base.Initialize(explosionRadius, explosionDelay, damage, knockBackForce);
         currentPosition = startPos;
         direction = dir;
         speed = bulletSpeed;

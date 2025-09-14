@@ -35,7 +35,7 @@ public class ExplosiveWeapon : WeaponBase
         int positionX = Mathf.FloorToInt(firePoint.position.x);
         int positionY = Mathf.RoundToInt(hit.point.y);
         ExplosivesController explosive = ObjectPoolManager.instance.GetPooledObject(explosivePrefab, new Vector2(positionX, positionY), Quaternion.identity).GetComponent<ExplosivesController>();
-        explosive.Initialize(explosionRadius, explosionDelay, damage);
+        explosive.Initialize(explosionRadius, explosionDelay, damage, knockBackForce);
         AudioManager.instance.PlayDeployWeaponSound();
         Ammo--;
         if (Ammo == 0)

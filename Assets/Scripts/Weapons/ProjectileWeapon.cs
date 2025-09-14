@@ -19,7 +19,7 @@ public class ProjectileWeapon : WeaponBase
         muzleFlashAnimator.SetTrigger("Shot");
         BulletControler bullet = ObjectPoolManager.instance.GetPooledObject(bulletPrefab, firePoint.position, firePoint.rotation).GetComponent<BulletControler>();
         Vector3 direction = player.localScale.x == 1 ? firePoint.right : -firePoint.right;
-        bullet.Initialize(firePoint.position, direction, projectileSpeed, projectileRange, damage, transform.root.gameObject);
+        bullet.Initialize(firePoint.position, direction, projectileSpeed, projectileRange, damage, knockBackForce, transform.root.gameObject);
         if (weaponIndex == 0) return; //Si es la primera arma, no disminuir municion, es infinita
         Ammo--;
         if (Ammo == 0)

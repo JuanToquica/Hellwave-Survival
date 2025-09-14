@@ -20,10 +20,10 @@ public class EnemyHealth : MonoBehaviour
         circleCollider.enabled = true;
     }
 
-    public void TakeDamage(float damage, Vector2 direction)
+    public void TakeDamage(float damage, Vector2 direction, float knockbackForce)
     {
         health -= damage;
-        controller.ApplyKnockback(direction);
+        controller.ApplyKnockback(direction, knockbackForce);
         if (health < 0) 
             Die();
         else
