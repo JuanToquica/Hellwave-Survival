@@ -187,7 +187,6 @@ MonoBehaviour:
   separationForce: 25
   smoothFactor: 0.1
   stopDistance: 6
-  knockbackForce: 90
 --- !u!114 &3814431541950997368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,10 +199,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cba61166648bba40ab059d84c82c53d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 1
+  cooldown: 1.5
   distanceToAttackPlayer: 13
   player: {fileID: 0}
-  damage: 2
+  damage: 5
   projectilePrefab: {fileID: 4206259366976673617, guid: 5da0a04c35d10e144a2c1c1576216f48, type: 3}
   firePoint: {fileID: 3478873999004747563}
   projectileSpeed: 20

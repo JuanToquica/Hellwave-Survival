@@ -88,6 +88,9 @@ public class PlayerHealth : MonoBehaviour
     {
         if (health <= 0) return;
         health = maxHealth;
+        if (damageCoroutine != null)
+            StopCoroutine(damageCoroutine);
+        vignette.intensity.value = 0;
         OnPlayerHealed?.Invoke("Health Restored");
     }
         

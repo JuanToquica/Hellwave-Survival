@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class C4Weapon : ExplosiveWeapon
@@ -9,17 +10,18 @@ public class C4Weapon : ExplosiveWeapon
     public void HandleC4Action()
     {
         if (c4sPlaced)
-            ExplodeAll();
+            StartCoroutine(ExplodeAll());
         else
             DeployExplosive();
         
     }
 
-    public void ExplodeAll()
+    public IEnumerator ExplodeAll()
     {
         foreach (ExplosivesController c4 in activedC4)
         {
             c4?.Explode();
+            yield return new WaitForSeconds(explosionDelay);
         }
         activedC4.Clear();
         c4sPlaced = false;

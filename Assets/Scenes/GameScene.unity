@@ -5984,14 +5984,14 @@ MonoBehaviour:
   currentState: 0
   speed: 5
   acceleration: 0.2
-  jumpForce: 8
+  jumpForce: 8.5
   coyoteTime: 0.2
   flightTime: 1.5
   flightVelocity: 6
   currentAimingOffset: 0
-  maxHeadRotation: 30
-  maxArmsRotation: 60
-  knockbackForce: 12
+  maxHeadRotation: 25
+  maxArmsRotation: 64
+  knockbackForce: 13
   raycastDistance: 1.38
   activatedAiming: 0
   takingDamage: 0
@@ -6093,13 +6093,13 @@ MonoBehaviour:
   PlayerRagdollRightPrefab: {fileID: 8926581268054746211, guid: 4050751beb8e18f4a81516828343f7ee, type: 3}
   PlayerRagdollLeftPrefab: {fileID: 8926581268054746211, guid: 49a4da6d4ecfce542b15bf579e1d720a, type: 3}
   cameraController: {fileID: 519420033}
-  maxHealth: 10
-  healthPerKill: 1
-  healthRegenRate: 0.01
+  maxHealth: 20
+  healthPerKill: 0.3
+  healthRegenRate: 0.2
   stunDuration: 0.4
-  vignetteIntensity: 0.4
-  vignetteDuration: 0.5
-  vignetteDecreaseFactor: 0.002
+  vignetteIntensity: 0.5
+  vignetteDuration: 0.7
+  vignetteDecreaseFactor: 0.0018
   globalVolume: {fileID: 1801024566}
 --- !u!1 &875855433
 GameObject:
@@ -8316,6 +8316,7 @@ MonoBehaviour:
   - {fileID: 1883230738}
   - {fileID: 996546467}
   - {fileID: 1003455092}
+  - {fileID: 1807603986}
   player: {fileID: 843021313}
   minTimeToSpawn: 5
   maxTimeToSpawn: 15
@@ -8341,6 +8342,7 @@ Transform:
   - {fileID: 1883230738}
   - {fileID: 996546467}
   - {fileID: 1003455092}
+  - {fileID: 1807603986}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1141046049
@@ -10820,7 +10822,7 @@ MonoBehaviour:
   - {fileID: 1077847511}
   - {fileID: 1776523607}
   probabilityOfEnemyShooterSpawn: 0.07
-  timeBetweenSpawns: 1
+  timeBetweenSpawns: 0.9
   spawningWave: 0
 --- !u!4 &1500145990
 Transform:
@@ -47730,6 +47732,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1807603985
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1807603986}
+  m_Layer: 0
+  m_Name: Spawner10
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1807603986
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1807603985}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -19.63, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1138508487}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1820689617
 GameObject:

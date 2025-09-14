@@ -164,7 +164,6 @@ MonoBehaviour:
   separationForce: 25
   smoothFactor: 0.1
   stopDistance: 2
-  knockbackForce: 90
 --- !u!114 &4749957551837837380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,7 +179,7 @@ MonoBehaviour:
   cooldown: 1
   distanceToAttackPlayer: 2.5
   player: {fileID: 0}
-  damage: 3
+  damage: 5
 --- !u!95 &2154489192658426142
 Animator:
   serializedVersion: 7

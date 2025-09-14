@@ -17,7 +17,7 @@ MonoBehaviour:
     cost: 0
     speed: 50
     range: 30
-    damage: 5
+    damage: 4
     fireRate: 0.5
     magazineCapacity: 100
     maxAmmo: 100
@@ -26,85 +26,85 @@ MonoBehaviour:
     aimingOffset: 0.22
     knockBackForce: 90
   - WeaponType: 1
-    cost: 1
+    cost: 10
     speed: 50
     range: 15
     damage: 2
     fireRate: 0.8
-    magazineCapacity: 5
-    maxAmmo: 10
+    magazineCapacity: 25
+    maxAmmo: 50
     useLeftArmBackPosition: 0
     requiresAiming: 1
     aimingOffset: 0
     knockBackForce: 50
   - WeaponType: 2
-    cost: 2
+    cost: 25
     speed: 50
     range: 30
-    damage: 20
-    fireRate: 0.7
-    magazineCapacity: 10
-    maxAmmo: 20
+    damage: 12
+    fireRate: 0.6
+    magazineCapacity: 50
+    maxAmmo: 100
     useLeftArmBackPosition: 0
     requiresAiming: 1
     aimingOffset: 0
     knockBackForce: 100
   - WeaponType: 3
-    cost: 3
+    cost: 50
     speed: 60
     range: 30
-    damage: 5
+    damage: 4
     fireRate: 0.15
-    magazineCapacity: 25
-    maxAmmo: 50
+    magazineCapacity: 100
+    maxAmmo: 300
     useLeftArmBackPosition: 0
     requiresAiming: 1
     aimingOffset: 0.06
     knockBackForce: 100
   - WeaponType: 4
-    cost: 4
+    cost: 65
     speed: 0
     range: 0
-    damage: 10
+    damage: 11
     fireRate: 1
-    magazineCapacity: 5
-    maxAmmo: 20
+    magazineCapacity: 15
+    maxAmmo: 30
     useLeftArmBackPosition: 1
     requiresAiming: 0
     aimingOffset: 0
     knockBackForce: 130
   - WeaponType: 5
-    cost: 5
+    cost: 80
     speed: 0
     range: 0
-    damage: 10
+    damage: 11
     fireRate: 1
-    magazineCapacity: 5
-    maxAmmo: 20
+    magazineCapacity: 15
+    maxAmmo: 30
     useLeftArmBackPosition: 1
     requiresAiming: 1
     aimingOffset: 0
     knockBackForce: 130
   - WeaponType: 6
-    cost: 6
+    cost: 100
     speed: 0
     range: 0
-    damage: 50
+    damage: 11
     fireRate: 1
-    magazineCapacity: 5
-    maxAmmo: 10
+    magazineCapacity: 15
+    maxAmmo: 30
     useLeftArmBackPosition: 0
     requiresAiming: 0
     aimingOffset: 0
     knockBackForce: 130
   - WeaponType: 7
-    cost: 7
+    cost: 120
     speed: 40
     range: 0
-    damage: 20
+    damage: 11
     fireRate: 0.5
-    magazineCapacity: 5
-    maxAmmo: 10
+    magazineCapacity: 10
+    maxAmmo: 20
     useLeftArmBackPosition: 0
     requiresAiming: 1
     aimingOffset: 0.23

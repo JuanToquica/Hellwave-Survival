@@ -24,7 +24,7 @@ public class EnemyHealth : MonoBehaviour
     {
         health -= damage;
         controller.ApplyKnockback(direction, knockbackForce);
-        if (health < 0) 
+        if (health <= 0) 
             Die();
         else
         {

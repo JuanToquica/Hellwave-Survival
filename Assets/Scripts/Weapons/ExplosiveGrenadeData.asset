@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43896d6236bee9f48a77f61cf1b1e8fa, type: 3}
   m_Name: ExplosiveGrenadeData
   m_EditorClassIdentifier: 
-  explosionRadius: 10
+  explosionRadius: 2.8
   explosionDelay: 1.5

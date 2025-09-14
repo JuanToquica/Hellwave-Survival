@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
             if (limitOfEnemiesOnScene > maxLimitOfEnemiesOnScene)
                 limitOfEnemiesOnScene = maxLimitOfEnemiesOnScene;
         }
-        Invoke("StartRound", timeBetweenRounds);
+        Invoke("StartRound", 1.5f);
     }
 
     private void Update()
