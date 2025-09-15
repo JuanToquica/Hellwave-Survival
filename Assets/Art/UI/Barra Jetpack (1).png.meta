@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: df043d8e3dbd25342914027adf34caf8
+guid: c5c154745a99b50429454e2d1b0012c3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1493218785622255153
-    second: Barra Relleno (1)_0
+      213: -2939673734269235878
+    second: Barra Jetpack (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Barra Relleno (1)_0
+      name: Barra Jetpack (1)_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 461
-        height: 29
+        width: 381
+        height: 37
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc99b070d65074be0800000000000000
-      internalID: -1493218785622255153
+      spriteID: a5d0651505e2437d0800000000000000
+      internalID: -2939673734269235878
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Barra Relleno (1)_0: -1493218785622255153
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

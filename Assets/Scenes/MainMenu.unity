@@ -1714,6 +1714,10 @@ MonoBehaviour:
   reloadSound: {fileID: 8300000, guid: e8e4f99c2f4a33648914ef8107139626, type: 3}
   shotgunReload: {fileID: 8300000, guid: 363e0f718c40ac1488ff3bf00000debf, type: 3}
   explosionSound: {fileID: 0}
+  fireBallLaunchSound: []
+  fireBallImpactSound: {fileID: 0}
+  dryFireSound: {fileID: 0}
+  playerDeathSound: {fileID: 0}
   weaponShotSounds:
   - {fileID: 8300000, guid: aefa1817532c5d54997f2a5e9843aff7, type: 3}
   - {fileID: 8300000, guid: db46cc01e923b1340865b9774582fc7f, type: 3}
@@ -4013,15 +4017,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1919527, g: 0.1740833, b: 0.2264151, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -3732100569629671291, guid: 0820034ed58d7f546a1ae3ae94290c18, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -7720,7 +7724,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 150}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 150, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1539539397
 MonoBehaviour:
@@ -7735,14 +7739,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7176471, g: 0.89411765, b: 0.94509804, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 5263177223324661382, guid: 55a3f111eef4640459f6aae5bf7f7e9a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

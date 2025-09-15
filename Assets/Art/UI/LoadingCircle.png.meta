@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: df043d8e3dbd25342914027adf34caf8
+guid: 55a3f111eef4640459f6aae5bf7f7e9a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1493218785622255153
-    second: Barra Relleno (1)_0
+      213: 5263177223324661382
+    second: LoadingCircle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Barra Relleno (1)_0
+      name: LoadingCircle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 461
-        height: 29
+        x: 3
+        y: 56
+        width: 1019
+        height: 963
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: fc99b070d65074be0800000000000000
-      internalID: -1493218785622255153
+      spriteID: 68671329ccf8a0940800000000000000
+      internalID: 5263177223324661382
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Barra Relleno (1)_0: -1493218785622255153
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

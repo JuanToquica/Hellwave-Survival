@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Icono Granada_0: -4826390629464021971
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

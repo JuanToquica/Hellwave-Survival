@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public static event Action<int> OnEnemiesKilledChanged;
-    public static event Action<string> OnRoundStarted;
+    public static event Action<string, bool> OnRoundStarted;
 
     [Header("UI")]
     [SerializeField] private GameObject hud;
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
     private void StartRound()
     {
         isRoundActive = true;
-        OnRoundStarted?.Invoke($"Round {currentRound}");
+        OnRoundStarted?.Invoke($"Round {currentRound}", true);
         enemySpawner.SpawnWave(limitOfEnemiesOnScene, activedSpawners, false);
     }
 
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
             if (limitOfEnemiesOnScene > maxLimitOfEnemiesOnScene)
                 limitOfEnemiesOnScene = maxLimitOfEnemiesOnScene;
         }
-        Invoke("StartRound", 1.5f);
+        Invoke("StartRound", timeBetweenRounds);
     }
 
     private void Update()

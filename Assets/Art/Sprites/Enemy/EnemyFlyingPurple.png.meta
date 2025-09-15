@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: d172e9d2a2597cc469aeaf8cea587960
+guid: b6f201ffa7c4ad04fa57fae8a76355e0
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8358652284428310350
-    second: Inicio (1)_0
+      213: -787969976576773990
+    second: EnemyFlyingPurple_0
+  - first:
+      213: 6402316363729141865
+    second: EnemyFlyingPurple_1
+  - first:
+      213: 8980170007045120589
+    second: EnemyFlyingPurple_2
+  - first:
+      213: 5759690531472715747
+    second: EnemyFlyingPurple_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +46,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -51,7 +60,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 700
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +109,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Inicio (1)_0
+      name: EnemyFlyingPurple_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1920
-        height: 1080
+        x: 19
+        y: 1539
+        width: 1562
+        height: 1182
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +124,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2b8a4a9880a100c80800000000000000
-      internalID: -8358652284428310350
+      spriteID: a90f77c2b719015f0800000000000000
+      internalID: -787969976576773990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyFlyingPurple_1
+      rect:
+        serializedVersion: 2
+        x: 1779
+        y: 1459
+        width: 1282
+        height: 1302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9600fb7dfc899d850800000000000000
+      internalID: 6402316363729141865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyFlyingPurple_2
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 119
+        width: 1362
+        height: 1222
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d42aa8cda09ff9c70800000000000000
+      internalID: 8980170007045120589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EnemyFlyingPurple_3
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 119
+        width: 1342
+        height: 1202
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3efac90b5088eef40800000000000000
+      internalID: 5759690531472715747
       vertices: []
       indices: 
       edges: []
@@ -134,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      EnemyFlyingPurple_0: -787969976576773990
+      EnemyFlyingPurple_1: 6402316363729141865
+      EnemyFlyingPurple_2: 8980170007045120589
+      EnemyFlyingPurple_3: 5759690531472715747
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -10,7 +10,7 @@ using Unity.VisualScripting;
 public class PlayerHealth : MonoBehaviour
 {
     public static event System.Action OnPlayerDeath;
-    public static event Action<string> OnPlayerHealed;
+    public static event Action<string, bool> OnPlayerHealed;
     public static event Action<Transform> OnTargetChanged;
     public static event Action<float, float> OnHealthChanged;
     [SerializeField] private GameObject PlayerRagdollRightPrefab;
@@ -91,7 +91,7 @@ public class PlayerHealth : MonoBehaviour
         if (damageCoroutine != null)
             StopCoroutine(damageCoroutine);
         vignette.intensity.value = 0;
-        OnPlayerHealed?.Invoke("Health Restored");
+        OnPlayerHealed?.Invoke("Health Restored", false);
     }
         
 

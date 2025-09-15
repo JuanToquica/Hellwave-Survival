@@ -14,8 +14,8 @@ public enum Weapons
 public class PlayerAttackManager : MonoBehaviour
 {
     public static event Action<WeaponBase> OnWeaponChanged;
-    public static event Action<string> OnWeaponUnlocked;
-    public static event Action<string> OnCollectedAmmo;
+    public static event Action<string, bool> OnWeaponUnlocked;
+    public static event Action<string, bool> OnCollectedAmmo;
 
     [SerializeField] private WeaponBase[] weapons;
     [SerializeField] private WeaponData weaponData;
@@ -106,7 +106,7 @@ public class PlayerAttackManager : MonoBehaviour
         if (newWeapon < availableWeapons.Count) return;
         availableWeapons.Add(weapons[newWeapon]);
         if (newWeapon != 0)
-            OnWeaponUnlocked?.Invoke(weaponData.weapons[newWeapon].WeaponType.ToString() + " Unlocked");
+            OnWeaponUnlocked?.Invoke(weaponData.weapons[newWeapon].WeaponType.ToString() + " Unlocked", false);
         availableWeapons[newWeapon].SetAmmo();
         if (weapons.Length > newWeapon + 1)
             nextWeaponCost = weaponData.weapons[newWeapon + 1].cost;
@@ -231,12 +231,12 @@ public class PlayerAttackManager : MonoBehaviour
             }              
             availableWeapons[random].TakeAmmunition();
             Debug.Log("Municion recogida para: " + availableWeapons[random].name);
-            OnCollectedAmmo?.Invoke(weaponData.weapons[random].WeaponType.ToString() + " Ammo Collected");
+            OnCollectedAmmo?.Invoke(weaponData.weapons[random].WeaponType.ToString() + " Ammo Collected", false);
             return;
         }
         availableWeapons[random].TakeAmmunition();
         Debug.Log("Municion recogida para: " + availableWeapons[random].name);
-        OnCollectedAmmo?.Invoke(weaponData.weapons[random].WeaponType.ToString() + " Ammo Collected");
+        OnCollectedAmmo?.Invoke(weaponData.weapons[random].WeaponType.ToString() + " Ammo Collected", false);
     }
 
 

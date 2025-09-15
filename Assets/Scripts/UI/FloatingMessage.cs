@@ -16,9 +16,10 @@ public class FloatingMessage : MonoBehaviour
         originalColor = text.color;
     }
 
-    public void Show(string message)
+    public void Show(string message, float size)
     {
         text.text = message;
+        text.fontSize = size;
         StartCoroutine(MoveAndFadeAway());
     }
 

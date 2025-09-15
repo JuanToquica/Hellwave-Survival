@@ -13,7 +13,10 @@ public class HUD : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
     [SerializeField] private TextMeshProUGUI ammoText;
     [SerializeField] private GameObject floatingMessagePrefab;
+    [SerializeField] private Transform roundMessageContainer;
     [SerializeField] private Transform messageContainer;
+    [SerializeField] private float roundMessageSize;
+    [SerializeField] private float messageSize;
     [SerializeField] private float timeBetweenMessages;
     private WeaponBase currentWeapon;
     private Queue<string> messages = new Queue<string>();
@@ -91,22 +94,25 @@ public class HUD : MonoBehaviour
             ammoText.text = ammo.ToString() + "/" + maxAmmo.ToString();
     }
 
-    public void EnqueueMessage(string text)
+    public void EnqueueMessage(string text, bool roundMessage)
     {
         messages.Enqueue(text);
 
         if (!isShowing)
-            StartCoroutine(ShowMessages());
+            StartCoroutine(ShowMessages(roundMessage));
     }
 
-    private IEnumerator ShowMessages()
+    private IEnumerator ShowMessages(bool roundMessage)
     {
         isShowing = true;
 
         while (messages.Count > 0)
         {
             string msg = messages.Dequeue();
-            SpawnMessage(msg);
+            if (roundMessage)
+                SpawnMessage(msg, roundMessageContainer, roundMessageSize);
+            else
+                SpawnMessage(msg, messageContainer, messageSize);
 
             yield return new WaitForSeconds(timeBetweenMessages);
         }
@@ -114,9 +120,9 @@ public class HUD : MonoBehaviour
         isShowing = false;
     }
 
-    public void SpawnMessage(string message)
+    public void SpawnMessage(string message, Transform container, float size)
     {
-        GameObject instance = Instantiate(floatingMessagePrefab, messageContainer);
-        instance.GetComponent<FloatingMessage>().Show(message);
+        GameObject instance = Instantiate(floatingMessagePrefab, container);
+        instance.GetComponent<FloatingMessage>().Show(message, size);
     }
 }
