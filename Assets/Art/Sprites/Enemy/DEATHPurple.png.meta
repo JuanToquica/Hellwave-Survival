@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: bd468cb0c74fbaa4f96c28fc416ee066
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4555487210184089963
+    second: DEATHPurple_0
+  - first:
+      213: 2041635091323767247
+    second: DEATHPurple_1
+  - first:
+      213: -2184643219050015365
+    second: DEATHPurple_2
+  - first:
+      213: -4519429780817698660
+    second: DEATHPurple_3
+  - first:
+      213: -901652138755997733
+    second: DEATHPurple_4
+  - first:
+      213: 7997841032600255511
+    second: DEATHPurple_5
+  - first:
+      213: 5968737449324355581
+    second: DEATHPurple_6
+  - first:
+      213: -9174257854306486665
+    second: DEATHPurple_7
+  - first:
+      213: -6881467724109588317
+    second: DEATHPurple_8
+  - first:
+      213: 8273382473541174148
+    second: DEATHPurple_9
+  - first:
+      213: 6441981911068781919
+    second: DEATHPurple_10
+  - first:
+      213: -6771373628951760132
+    second: DEATHPurple_11
+  - first:
+      213: -3432570364377098410
+    second: DEATHPurple_12
+  - first:
+      213: 399379489507093023
+    second: DEATHPurple_13
+  - first:
+      213: 3245237955561238720
+    second: DEATHPurple_14
+  - first:
+      213: 5385008969875670835
+    second: DEATHPurple_15
+  - first:
+      213: -636104664560867071
+    second: DEATHPurple_16
+  - first:
+      213: 6465843617239790903
+    second: DEATHPurple_17
+  - first:
+      213: 8944641806549460260
+    second: DEATHPurple_18
+  - first:
+      213: -9163562495168233719
+    second: DEATHPurple_19
+  - first:
+      213: -7786076835139900430
+    second: DEATHPurple_20
+  - first:
+      213: 5115097910309766557
+    second: DEATHPurple_21
+  - first:
+      213: 7590088716883815538
+    second: DEATHPurple_22
+  - first:
+      213: -6723478364512521345
+    second: DEATHPurple_23
+  - first:
+      213: 3395292209843645610
+    second: DEATHPurple_24
+  - first:
+      213: -1407965417641548328
+    second: DEATHPurple_25
+  - first:
+      213: 1052423647060592133
+    second: DEATHPurple_26
+  - first:
+      213: 8350888413272978298
+    second: DEATHPurple_27
+  - first:
+      213: 8004223542424135588
+    second: DEATHPurple_28
+  - first:
+      213: 8953350309523683629
+    second: DEATHPurple_29
+  - first:
+      213: 5729528696430834177
+    second: DEATHPurple_30
+  - first:
+      213: -4869870110569964520
+    second: DEATHPurple_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 700
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DEATHPurple_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2840
+        width: 1620
+        height: 1420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59e5422b488a7c0c0800000000000000
+      internalID: -4555487210184089963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEATHPurple_1
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 2840
+        width: 1620
+        height: 1420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc9435b6c48555c10800000000000000
+      internalID: 2041635091323767247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEATHPurple_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1420
+        width: 1620
+        height: 1420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b75de8721969ea1e0800000000000000
+      internalID: -2184643219050015365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEATHPurple_3
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 1420
+        width: 1620
+        height: 1420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c902a0f2f82c741c0800000000000000
+      internalID: -4519429780817698660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEATHPurple_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1620
+        height: 1420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdf3a7e2820bc73f0800000000000000
+      internalID: -901652138755997733
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DEATHPurple_5
+      rect:
+        serializedVersion: 2
+        x: 1620
+        y: 0
+        width: 1620
+        height: 1420
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71c7e267b0a0efe60800000000000000
+      internalID: 7997841032600255511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6e1e7ec5545f7cb42b5d4964a8f68c68
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      DEATHPurple_0: -4555487210184089963
+      DEATHPurple_1: 2041635091323767247
+      DEATHPurple_2: -2184643219050015365
+      DEATHPurple_3: -4519429780817698660
+      DEATHPurple_4: -901652138755997733
+      DEATHPurple_5: 7997841032600255511
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
