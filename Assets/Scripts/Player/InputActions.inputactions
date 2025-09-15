@@ -45,7 +45,7 @@
                     "name": "WeaponScroll",
                     "type": "Value",
                     "id": "882b2d50-e52e-4939-b5b3-5e65aa902d78",
-                    "expectedControlType": "",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true

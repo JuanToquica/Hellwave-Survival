@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,8 +15,8 @@ public enum Weapons
 public class PlayerAttackManager : MonoBehaviour
 {
     public static event Action<WeaponBase> OnWeaponChanged;
-    public static event Action<string, bool> OnWeaponUnlocked;
-    public static event Action<string, bool> OnCollectedAmmo;
+    public static event Action<string> OnWeaponUnlocked;
+    public static event Action<string> OnCollectedAmmo;
 
     [SerializeField] private WeaponBase[] weapons;
     [SerializeField] private WeaponData weaponData;
@@ -29,6 +30,9 @@ public class PlayerAttackManager : MonoBehaviour
     private List<WeaponBase> availableWeapons;
     private bool canAttack;
     private int nextWeaponCost;
+    private int currentWeaponIndex;
+    private Vector2 scrollInput;
+
 
     private Weapons _currentWeapon;
     public Weapons currentWeapon
@@ -93,6 +97,47 @@ public class PlayerAttackManager : MonoBehaviour
             ChangeWeapon(weaponIndex - 1);
         }       
     }
+    
+    public void OnScrollWeapon(InputAction.CallbackContext context)
+    {
+        scrollInput = context.ReadValue<Vector2>();
+
+        if (context.performed)
+        {
+            if (scrollInput.y > 0)
+            {
+                currentWeaponIndex++;
+
+                for (int i = 0; i <= availableWeapons.Count; i ++)
+                {
+                    if (currentWeaponIndex >= availableWeapons.Count) currentWeaponIndex = 0;
+                    if (availableWeapons[currentWeaponIndex].Ammo == 0)
+                    {
+                        currentWeaponIndex++;
+                        continue;
+                    }                        
+                    break;
+                }
+                ChangeWeapon(currentWeaponIndex);
+            }
+            else if (scrollInput.y < 0)
+            {
+                currentWeaponIndex--;
+
+                for (int i = 0; i <= availableWeapons.Count; i++)
+                {
+                    if (currentWeaponIndex < 0) currentWeaponIndex = availableWeapons.Count -1;
+                    if (availableWeapons[currentWeaponIndex].Ammo == 0)
+                    {
+                        currentWeaponIndex--;
+                        continue;
+                    }
+                    break;
+                }
+                ChangeWeapon(currentWeaponIndex);
+            }
+        }
+    }
 
     private void CheckForWeaponUnlock(int deadEnemies)
     {
@@ -106,7 +151,7 @@ public class PlayerAttackManager : MonoBehaviour
         if (newWeapon < availableWeapons.Count) return;
         availableWeapons.Add(weapons[newWeapon]);
         if (newWeapon != 0)
-            OnWeaponUnlocked?.Invoke(weaponData.weapons[newWeapon].WeaponType.ToString() + " Unlocked", false);
+            OnWeaponUnlocked?.Invoke(weaponData.weapons[newWeapon].WeaponType.ToString() + " Unlocked");
         availableWeapons[newWeapon].SetAmmo();
         if (weapons.Length > newWeapon + 1)
             nextWeaponCost = weaponData.weapons[newWeapon + 1].cost;
@@ -150,6 +195,7 @@ public class PlayerAttackManager : MonoBehaviour
         currentFireRate = weaponData.weapons[nextWeapon].fireRate;
         playerController.ChangeGripPoints(availableWeapons[nextWeapon].rightGripPoint, availableWeapons[nextWeapon].leftGripPoint, 
             weaponData.weapons[nextWeapon].useLeftArmBackPosition, weaponData.weapons[nextWeapon].requiresAiming, weaponData.weapons[nextWeapon].aimingOffset);
+        currentWeaponIndex = nextWeapon;
     }
 
     public void OnAttack(InputAction.CallbackContext ctx)
@@ -231,12 +277,12 @@ public class PlayerAttackManager : MonoBehaviour
             }              
             availableWeapons[random].TakeAmmunition();
             Debug.Log("Municion recogida para: " + availableWeapons[random].name);
-            OnCollectedAmmo?.Invoke(weaponData.weapons[random].WeaponType.ToString() + " Ammo Collected", false);
+            OnCollectedAmmo?.Invoke(weaponData.weapons[random].WeaponType.ToString() + " Ammo Collected");
             return;
         }
         availableWeapons[random].TakeAmmunition();
         Debug.Log("Municion recogida para: " + availableWeapons[random].name);
-        OnCollectedAmmo?.Invoke(weaponData.weapons[random].WeaponType.ToString() + " Ammo Collected", false);
+        OnCollectedAmmo?.Invoke(weaponData.weapons[random].WeaponType.ToString() + " Ammo Collected");
     }
 
 

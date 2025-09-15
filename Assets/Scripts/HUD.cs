@@ -30,7 +30,7 @@ public class HUD : MonoBehaviour
         PlayerHealth.OnPlayerHealed += EnqueueMessage;
         PlayerController.OnFlyingTimerChanged += UpdateJetpackBar;
         GameManager.OnEnemiesKilledChanged += UpdateScore;
-        GameManager.OnRoundStarted += EnqueueMessage;
+        GameManager.OnRoundStarted += SpawnRoundMessage;
         PlayerAttackManager.OnWeaponChanged += OnWeaponChanged;
         PlayerAttackManager.OnWeaponUnlocked += EnqueueMessage;
         PlayerAttackManager.OnCollectedAmmo += EnqueueMessage;
@@ -43,7 +43,7 @@ public class HUD : MonoBehaviour
         PlayerHealth.OnPlayerHealed -= EnqueueMessage;
         PlayerController.OnFlyingTimerChanged -= UpdateJetpackBar;
         GameManager.OnEnemiesKilledChanged -= UpdateScore;
-        GameManager.OnRoundStarted -= EnqueueMessage;
+        GameManager.OnRoundStarted -= SpawnRoundMessage;
         PlayerAttackManager.OnWeaponChanged -= OnWeaponChanged;
         PlayerAttackManager.OnWeaponUnlocked -= EnqueueMessage;
         PlayerAttackManager.OnCollectedAmmo -= EnqueueMessage;
@@ -94,25 +94,22 @@ public class HUD : MonoBehaviour
             ammoText.text = ammo.ToString() + "/" + maxAmmo.ToString();
     }
 
-    public void EnqueueMessage(string text, bool roundMessage)
+    public void EnqueueMessage(string text)
     {
         messages.Enqueue(text);
 
         if (!isShowing)
-            StartCoroutine(ShowMessages(roundMessage));
+            StartCoroutine(ShowMessages());
     }
 
-    private IEnumerator ShowMessages(bool roundMessage)
+    private IEnumerator ShowMessages()
     {
         isShowing = true;
 
         while (messages.Count > 0)
         {
             string msg = messages.Dequeue();
-            if (roundMessage)
-                SpawnMessage(msg, roundMessageContainer, roundMessageSize);
-            else
-                SpawnMessage(msg, messageContainer, messageSize);
+            SpawnMessage(msg);
 
             yield return new WaitForSeconds(timeBetweenMessages);
         }
@@ -120,9 +117,15 @@ public class HUD : MonoBehaviour
         isShowing = false;
     }
 
-    public void SpawnMessage(string message, Transform container, float size)
+    public void SpawnMessage(string message)
     {
-        GameObject instance = Instantiate(floatingMessagePrefab, container);
-        instance.GetComponent<FloatingMessage>().Show(message, size);
+        GameObject instance = Instantiate(floatingMessagePrefab, messageContainer);
+        instance.GetComponent<FloatingMessage>().Show(message, messageSize);
+    }
+
+    public void SpawnRoundMessage(string message)
+    {
+        GameObject instance = Instantiate(floatingMessagePrefab, roundMessageContainer);
+        instance.GetComponent<FloatingMessage>().Show(message, roundMessageSize);
     }
 }
