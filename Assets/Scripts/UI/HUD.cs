@@ -48,6 +48,11 @@ public class HUD : MonoBehaviour
         PlayerAttackManager.OnCollectedAmmo -= EnqueueMessage;
     }
 
+    private void Start()
+    {
+        SpawnRoundMessage("Face the hellwave, Survive.");
+    }
+
     private void UpdateHealthBar(float currentHealth, float maxHealth)
     {
         healthBar.fillAmount = Mathf.Clamp(currentHealth / maxHealth, 0.015f, 1);
