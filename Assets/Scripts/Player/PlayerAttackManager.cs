@@ -30,7 +30,7 @@ public class PlayerAttackManager : MonoBehaviour
     private List<WeaponBase> availableWeapons;
     private bool canAttack;
     private int nextWeaponCost;
-    private int currentWeaponIndex;
+    public int currentWeaponIndex;
     private Vector2 scrollInput;
 
 
@@ -110,7 +110,11 @@ public class PlayerAttackManager : MonoBehaviour
 
                 for (int i = 0; i <= availableWeapons.Count; i ++)
                 {
-                    if (currentWeaponIndex >= availableWeapons.Count) currentWeaponIndex = 0;
+                    if (currentWeaponIndex >= availableWeapons.Count)
+                    {
+                        currentWeaponIndex = (int)currentWeapon;
+                        return;
+                    }                      
                     if (availableWeapons[currentWeaponIndex].Ammo == 0)
                     {
                         currentWeaponIndex++;
@@ -126,7 +130,11 @@ public class PlayerAttackManager : MonoBehaviour
 
                 for (int i = 0; i <= availableWeapons.Count; i++)
                 {
-                    if (currentWeaponIndex < 0) currentWeaponIndex = availableWeapons.Count -1;
+                    if (currentWeaponIndex < 0)
+                    {
+                        currentWeaponIndex = (int)currentWeapon;
+                        return;
+                    }                      
                     if (availableWeapons[currentWeaponIndex].Ammo == 0)
                     {
                         currentWeaponIndex--;

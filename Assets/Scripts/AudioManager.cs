@@ -30,7 +30,12 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        audioSource.volume = PlayerPrefs.GetFloat("Volume");
+        SetVolume();
+    }
+
+    public void SetVolume()
+    {
+        audioSource.volume = PlayerPrefs.GetFloat("Volume", 0.3f);
     }
 
     public void PlayPlayerShotSound(int weapon)

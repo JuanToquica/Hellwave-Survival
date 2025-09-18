@@ -17,7 +17,7 @@ public class SettingsUI : MonoBehaviour
 
     private void LoadVolumeSettins()
     {
-        volume.value = PlayerPrefs.GetFloat("Volume");
+        volume.value = PlayerPrefs.GetFloat("Volume", 0.3f);
     }
 
     public void OnBackButtonClicked()
@@ -29,6 +29,7 @@ public class SettingsUI : MonoBehaviour
     public void OnVolumeChanged()
     {
         PlayerPrefs.SetFloat("Volume", volume.value);
+        AudioManager.instance.SetVolume();
     }
 
     [ContextMenu("Eliminar player prefbs")]

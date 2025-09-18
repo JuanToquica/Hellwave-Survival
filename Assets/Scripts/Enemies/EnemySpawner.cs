@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-using UnityEditor.Search;
 
 public class EnemySpawner : MonoBehaviour
 {
