@@ -1,9 +1,13 @@
 using UnityEngine;
+using UnityEngine.Audio;
+using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioClip buttonSound;
     [SerializeField] private AudioClip deploySound;
     [SerializeField] private AudioClip reloadSound;
@@ -14,28 +18,40 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip dryFireSound;
     [SerializeField] private AudioClip playerDeathSound;
     [SerializeField] private AudioClip[] weaponShotSounds;
-    
+
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
         audioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
-        SetVolume();
+        LoadVolume();
     }
 
-    public void SetVolume()
+    private void LoadVolume()
     {
-        audioSource.volume = PlayerPrefs.GetFloat("Volume", 0.3f);
+        SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 0.5f));
+        SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume", 0.5f));
+    }
+
+    public void SetMusicVolume(float value)
+    {
+        float v = Mathf.Clamp(value, 0.0001f, 1f);
+        audioMixer.SetFloat("MusicVolume", Mathf.Log10(v) * 20);
+    }
+
+    public void SetSFXVolume(float value)
+    {
+        float v = Mathf.Clamp(value, 0.0001f, 1f);
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(v) * 20);
     }
 
     public void PlayPlayerShotSound(int weapon)
@@ -95,5 +111,30 @@ public class AudioManager : MonoBehaviour
     public void PlayPlayerDeathSound()
     {
         audioSource.PlayOneShot(playerDeathSound);
+    }
+
+    public void PlayMusic()
+    {
+        if (!musicSource.isPlaying)
+            musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        StartCoroutine(MusicFadeOut());
+    }
+
+    public IEnumerator MusicFadeOut()
+    {
+        float startVolume = musicSource.volume;
+
+        while (musicSource.volume > 0)
+        {
+            musicSource.volume -= startVolume * Time.deltaTime / 2;
+            yield return null;
+        }
+
+        musicSource.Stop();
+        musicSource.volume = startVolume;
     }
 }

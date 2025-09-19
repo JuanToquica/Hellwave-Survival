@@ -60,6 +60,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        AudioManager.instance.StopMusic();
         highScore = PlayerPrefs.GetInt("HighScore", 0);
         InputManager.instance.EnablePlayerInputs();
         hud.SetActive(true);

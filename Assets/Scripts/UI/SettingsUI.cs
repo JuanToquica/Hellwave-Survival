@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class SettingsUI : MonoBehaviour
 {
     [SerializeField] private Button backButton;
-    [SerializeField] private Slider volume;
+    [SerializeField] private Slider sfxVolume;
+    [SerializeField] private Slider musicVolume;
     [SerializeField] private Button resetControlsSettings;
 
     private void Start()
@@ -17,7 +18,8 @@ public class SettingsUI : MonoBehaviour
 
     private void LoadVolumeSettins()
     {
-        volume.value = PlayerPrefs.GetFloat("Volume", 0.3f);
+        sfxVolume.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+        musicVolume.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
     }
 
     public void OnBackButtonClicked()
@@ -26,10 +28,16 @@ public class SettingsUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void OnVolumeChanged()
+    public void OnSFXVolumeChanged()
     {
-        PlayerPrefs.SetFloat("Volume", volume.value);
-        AudioManager.instance.SetVolume();
+        PlayerPrefs.SetFloat("SFXVolume", sfxVolume.value);
+        AudioManager.instance.SetSFXVolume(sfxVolume.value);
+    }
+
+    public void OnMusicVolumeChanged()
+    {
+        PlayerPrefs.SetFloat("MusicVolume", musicVolume.value);
+        AudioManager.instance.SetMusicVolume(musicVolume.value);
     }
 
     [ContextMenu("Eliminar player prefbs")]
