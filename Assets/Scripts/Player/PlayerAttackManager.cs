@@ -86,18 +86,54 @@ public class PlayerAttackManager : MonoBehaviour
         DrawRays();
     }
 
-
-    public void OnChangeWeapon(InputAction.CallbackContext ctx)
+    public void OnChangeToPistol(InputAction.CallbackContext ctx)
     {
         if (!ctx.performed) return;
-        string keyPressed = ctx.control.name;
-
-        if (int.TryParse(keyPressed, out int weaponIndex))
-        {
-            ChangeWeapon(weaponIndex - 1);
-        }       
+        ChangeWeapon(0);
     }
-    
+
+    public void OnChangeToShotgun(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        ChangeWeapon(1);
+    }
+
+    public void OnChangeToCarabine(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        ChangeWeapon(2);
+    }
+
+    public void OnChangeToRifle(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        ChangeWeapon(3);
+    }
+
+    public void OnChangeToBarrels(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        ChangeWeapon(4);
+    }
+
+    public void OnChangeToGrenades(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        ChangeWeapon(5);
+    }
+
+    public void OnChangeToC4(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        ChangeWeapon(6);
+    }
+
+    public void OnChangeToRockets(InputAction.CallbackContext ctx)
+    {
+        if (!ctx.performed) return;
+        ChangeWeapon(7);
+    }
+
     public void OnScrollWeapon(InputAction.CallbackContext context)
     {
         scrollInput = context.ReadValue<Vector2>();

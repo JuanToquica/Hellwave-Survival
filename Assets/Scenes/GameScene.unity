@@ -10784,7 +10784,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 843021313}
         m_TargetAssemblyTypeName: PlayerAttackManager, Assembly-CSharp
-        m_MethodName: OnChangeWeapon
+        m_MethodName: OnChangeToPistol
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10828,6 +10828,118 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 882b2d50-e52e-4939-b5b3-5e65aa902d78
     m_ActionName: 'Player/WeaponScroll[/Mouse/scroll]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843021313}
+        m_TargetAssemblyTypeName: PlayerAttackManager, Assembly-CSharp
+        m_MethodName: OnChangeToShotgun
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: cd798da1-4996-4585-adc9-6cac33e4b007
+    m_ActionName: 'Player/ChangeToShotgun[/Keyboard/2]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843021313}
+        m_TargetAssemblyTypeName: PlayerAttackManager, Assembly-CSharp
+        m_MethodName: OnChangeToCarabine
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: e47c4b64-ada7-413a-8ace-f0da989b4ba8
+    m_ActionName: 'Player/ChangeToCarabine[/Keyboard/3]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843021313}
+        m_TargetAssemblyTypeName: PlayerAttackManager, Assembly-CSharp
+        m_MethodName: OnChangeToRifle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 81a8cfc5-ad27-4ff6-9b57-d7fba37bb1c6
+    m_ActionName: 'Player/ChangeToRifle[/Keyboard/4]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843021313}
+        m_TargetAssemblyTypeName: PlayerAttackManager, Assembly-CSharp
+        m_MethodName: OnChangeToBarrels
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 69cf348e-a73f-42e9-a6ad-5d5e22072082
+    m_ActionName: 'Player/ChangeToBarrels[/Keyboard/5]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843021313}
+        m_TargetAssemblyTypeName: PlayerAttackManager, Assembly-CSharp
+        m_MethodName: OnChangeToGrenades
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 866570a2-5883-42e6-a7e7-4a77649f018a
+    m_ActionName: 'Player/ChangeToGrenades[/Keyboard/6]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843021313}
+        m_TargetAssemblyTypeName: PlayerAttackManager, Assembly-CSharp
+        m_MethodName: OnChangeToC4
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 195a6aea-dfab-4b5f-89aa-dd6fc49b0d96
+    m_ActionName: 'Player/ChangeToC4[/Keyboard/7]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 843021313}
+        m_TargetAssemblyTypeName: PlayerAttackManager, Assembly-CSharp
+        m_MethodName: OnChangeToRockets
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: d5669482-1580-4ea4-a907-202e0069745b
+    m_ActionName: 'Player/ChangeToRockets[/Keyboard/8]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
