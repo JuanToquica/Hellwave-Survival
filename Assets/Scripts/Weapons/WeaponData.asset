@@ -18,7 +18,7 @@ MonoBehaviour:
     speed: 50
     range: 30
     damage: 4
-    fireRate: 0.5
+    fireRate: 0.4
     magazineCapacity: 100
     maxAmmo: 100
     useLeftArmBackPosition: 1
@@ -29,7 +29,7 @@ MonoBehaviour:
     cost: 10
     speed: 50
     range: 15
-    damage: 2
+    damage: 3
     fireRate: 0.8
     magazineCapacity: 25
     maxAmmo: 50
@@ -39,10 +39,10 @@ MonoBehaviour:
     knockBackForce: 50
   - WeaponType: 2
     cost: 25
-    speed: 50
+    speed: 70
     range: 30
     damage: 12
-    fireRate: 0.6
+    fireRate: 0.4
     magazineCapacity: 50
     maxAmmo: 100
     useLeftArmBackPosition: 0
@@ -51,11 +51,11 @@ MonoBehaviour:
     knockBackForce: 100
   - WeaponType: 3
     cost: 50
-    speed: 60
+    speed: 70
     range: 30
-    damage: 4
-    fireRate: 0.15
-    magazineCapacity: 100
+    damage: 6
+    fireRate: 0.12
+    magazineCapacity: 150
     maxAmmo: 300
     useLeftArmBackPosition: 0
     requiresAiming: 1

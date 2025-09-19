@@ -117,6 +117,10 @@ public class PlayerAttackManager : MonoBehaviour
                     }                      
                     if (availableWeapons[currentWeaponIndex].Ammo == 0)
                     {
+                        if (currentWeaponIndex == 6 && availableWeapons[currentWeaponIndex] is C4Weapon c4) //Excepcion para los c4, puede haber algun sin explotar
+                        {
+                            if (c4.c4sPlaced) continue;
+                        }
                         currentWeaponIndex++;
                         continue;
                     }                        
@@ -137,6 +141,10 @@ public class PlayerAttackManager : MonoBehaviour
                     }                      
                     if (availableWeapons[currentWeaponIndex].Ammo == 0)
                     {
+                        if (currentWeaponIndex == 6 && availableWeapons[currentWeaponIndex] is C4Weapon c4) //Excepcion para los c4, puede haber algun sin explotar
+                        {
+                            if (c4.c4sPlaced) continue;
+                        }
                         currentWeaponIndex--;
                         continue;
                     }

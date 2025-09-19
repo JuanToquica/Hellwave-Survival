@@ -18,10 +18,11 @@ public class C4Weapon : ExplosiveWeapon
 
     public IEnumerator ExplodeAll()
     {
-        foreach (ExplosivesController c4 in activedC4)
+        for (int i = 0; i < activedC4.Count; i++) //
         {
+            var c4 = activedC4[i];
             c4?.Explode();
-            yield return new WaitForSeconds(explosionDelay);
+            yield return new WaitForSeconds(0.1f);
         }
         activedC4.Clear();
         c4sPlaced = false;

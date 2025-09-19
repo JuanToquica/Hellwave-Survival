@@ -17,8 +17,8 @@ public class PoolInitializer : MonoBehaviour
 
     private void Start()
     {
-        ObjectPoolManager.instance.CreatePool(enemyMeelePrefab,20);
-        ObjectPoolManager.instance.CreatePool(enemyShooterPrefab, 10);
+        ObjectPoolManager.instance.CreatePool(enemyMeelePrefab,80);
+        ObjectPoolManager.instance.CreatePool(enemyShooterPrefab, 20);
         ObjectPoolManager.instance.CreatePool(enemyProjectilePrefab, 10);
         ObjectPoolManager.instance.CreatePool(pistolBulletPrefab, 5);
         ObjectPoolManager.instance.CreatePool(shotgunBulletPrefab, 15);

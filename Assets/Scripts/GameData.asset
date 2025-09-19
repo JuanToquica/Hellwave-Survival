@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 346079a469b191842989f77cc82aefb4, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  timeBetweenRounds: 4
-  maxLimitOfEnemiesOnScene: 150
+  timeBetweenRounds: 5
+  maxLimitOfEnemiesOnScene: 140
   numberOfSpawnersRoundOne: 3
   numberOfEnemiesRoundOne: 50
-  limitOfEnemiesOnSceneRoundOne: 40
-  additionOfEnemiesPerRound: 15
-  additionOfLimitOfEnemiesOnScene: 10
+  limitOfEnemiesOnSceneRoundOne: 35
+  additionOfEnemiesPerRound: 12
+  additionOfLimitOfEnemiesOnScene: 8
