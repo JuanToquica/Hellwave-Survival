@@ -74,6 +74,9 @@ TagManager:
   - name: DeployableWeapons
     uniqueID: 3629786793
     locked: 0
+  - name: Spawners
+    uniqueID: 4103411471
+    locked: 0
   - name: Bullet
     uniqueID: 3460493089
     locked: 0

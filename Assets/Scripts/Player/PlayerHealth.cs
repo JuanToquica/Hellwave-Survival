@@ -151,7 +151,11 @@ public class PlayerHealth : MonoBehaviour
         gameObject.SetActive(false);       
     }
 
-
+    public void OnLeavingMap()
+    {
+        health = 0;
+        Die();
+    }
     private void OnEnable() => GameManager.OnEnemiesKilledChanged += HealOnKill;
     private void OnDisable() => GameManager.OnEnemiesKilledChanged -= HealOnKill;
 }

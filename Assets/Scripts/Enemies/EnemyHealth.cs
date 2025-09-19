@@ -41,6 +41,12 @@ public class EnemyHealth : MonoBehaviour
         Invoke("ReturnToPool", 0.5f);
     }
 
+    public void OnLeavingMap()
+    {
+        health = 0;
+        Die();
+    }
+
     private void ReturnToPool()
     {
         ObjectPoolManager.instance.ReturnPooledObject(gameObject);
