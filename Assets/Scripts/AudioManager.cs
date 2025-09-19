@@ -118,23 +118,4 @@ public class AudioManager : MonoBehaviour
         if (!musicSource.isPlaying)
             musicSource.Play();
     }
-
-    public void StopMusic()
-    {
-        StartCoroutine(MusicFadeOut());
-    }
-
-    public IEnumerator MusicFadeOut()
-    {
-        float startVolume = musicSource.volume;
-
-        while (musicSource.volume > 0)
-        {
-            musicSource.volume -= startVolume * Time.deltaTime / 2;
-            yield return null;
-        }
-
-        musicSource.Stop();
-        musicSource.volume = startVolume;
-    }
 }
