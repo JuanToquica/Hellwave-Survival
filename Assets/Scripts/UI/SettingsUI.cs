@@ -25,6 +25,7 @@ public class SettingsUI : MonoBehaviour
     public void OnBackButtonClicked()
     {
         AudioManager.instance.PlayButtonSound();
+        InputManager.instance.playerInput.actions["Pause"].Enable();
         gameObject.SetActive(false);
     }
 

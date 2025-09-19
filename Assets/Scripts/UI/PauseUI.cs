@@ -8,11 +8,13 @@ using TMPro;
 public class PauseUI : MonoBehaviour
 {
     [SerializeField] private Button resumeButton;
+    [SerializeField] private Button settingsButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private PlayerAttackManager playerAttack;
     [SerializeField] private TextMeshProUGUI[] weaponsState;
     [SerializeField] private Color lockedWeaponTextColor;
     [SerializeField] private Color unlockedWeaponTextColor;
+    [SerializeField] private GameObject settingsUI;
 
     private void OnEnable()
     {
@@ -36,11 +38,19 @@ public class PauseUI : MonoBehaviour
     {
         resumeButton.onClick.AddListener(OnResumeButtonClicked);
         exitButton.onClick.AddListener(OnExitButtonClicked);
+        settingsButton.onClick.AddListener(OnSettingsButton);
     }
 
     public void OnResumeButtonClicked()
     {
         GameManager.instance.PauseAndUnpauseGame();
+    }
+
+    public void OnSettingsButton()
+    {
+        AudioManager.instance.PlayButtonSound();
+        InputManager.instance.playerInput.actions["Pause"].Disable();
+        settingsUI.SetActive(true);
     }
 
     public void OnExitButtonClicked()

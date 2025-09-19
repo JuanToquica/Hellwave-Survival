@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class InputManager : MonoBehaviour
 {
     public static InputManager instance;
-    private PlayerInput playerInput;
+    public PlayerInput playerInput;
 
     private void Awake()
     {
