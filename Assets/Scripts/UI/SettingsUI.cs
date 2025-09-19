@@ -54,6 +54,12 @@ public class SettingsUI : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
     }
 
+    public void OnRebindButton()
+    {
+        AudioManager.instance.PlayButtonSound();
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
 
     private void OnEnable()
     {
