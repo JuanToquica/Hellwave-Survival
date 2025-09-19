@@ -15,15 +15,17 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemies(int spawnersAmount, bool randomSpawn)
     {
+        int spawnedEnemies = 0;
         int spawn = 0;
         if (randomSpawn) spawn = Random.Range(0, GameManager.instance.GetNumberOfActivedSpawners());
             
         for (int i = 0; i < spawnersAmount; i++)
         {
+            if (Physics2D.OverlapCircle(spawners[spawn].position, 0.7f, 1 << 8)) continue; //Comprobar que no haya acumulacion de enemigos en el spawn
             float random = Random.Range(0f, 1f);
             GameObject enemy;
             if (random < probabilityOfEnemyShooterSpawn)
-            {
+            {               
                 enemy = ObjectPoolManager.instance.GetPooledObject(enemyShooter, spawners[spawn].position, Quaternion.identity);
                 EnemyShooterAttack enemyAttack = enemy.GetComponent<EnemyShooterAttack>();
                 enemyAttack.SetPlayer(player);
@@ -38,9 +40,10 @@ public class EnemySpawner : MonoBehaviour
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
             enemyController.SetPlayer(player);
             spawn ++;
+            spawnedEnemies++;
             if (spawn >= spawnersAmount) spawn = 0;
         }
-        GameManager.instance.AddAliveEnemies(spawnersAmount);
+        GameManager.instance.AddAliveEnemies(spawnedEnemies);
     }
 
     public void SpawnWave(int numberOfEnemies, int spawnersAmount, bool randomSpawn)
