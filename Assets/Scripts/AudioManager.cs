@@ -34,11 +34,12 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         LoadVolume();
+        PlayMusic();
     }
 
     private void LoadVolume()
     {
-        SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 0.5f));
+        SetMusicVolume(PlayerPrefs.GetFloat("MusicVolume", 0.2f));
         SetSFXVolume(PlayerPrefs.GetFloat("SFXVolume", 0.5f));
     }
 

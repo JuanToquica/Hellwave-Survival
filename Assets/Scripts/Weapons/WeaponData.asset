@@ -74,7 +74,7 @@ MonoBehaviour:
     aimingOffset: 0
     knockBackForce: 130
   - WeaponType: 5
-    cost: 80
+    cost: 85
     speed: 0
     range: 0
     damage: 11

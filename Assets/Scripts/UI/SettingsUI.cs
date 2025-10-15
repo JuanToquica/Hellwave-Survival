@@ -19,7 +19,7 @@ public class SettingsUI : MonoBehaviour
     private void LoadVolumeSettins()
     {
         sfxVolume.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
-        musicVolume.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        musicVolume.value = PlayerPrefs.GetFloat("MusicVolume", 0.2f);
     }
 
     public void OnBackButtonClicked()

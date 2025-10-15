@@ -677,6 +677,65 @@ MonoBehaviour:
   lockedWeaponTextColor: {r: 0.14117648, g: 0, b: 0, a: 1}
   unlockedWeaponTextColor: {r: 0.65882355, g: 0.38431373, b: 0.16470589, a: 1}
   settingsUI: {fileID: 733166}
+--- !u!1 &123979262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 123979263}
+  - component: {fileID: 123979264}
+  m_Layer: 7
+  m_Name: C4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &123979263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123979262}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 540114164}
+  m_Father: {fileID: 1428190642}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &123979264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123979262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110c2f1a7403f7745aedc2736293798a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponGameobject: {fileID: 540114162}
+  firePoint: {fileID: 566885207}
+  player: {fileID: 843021306}
+  weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
+  playerAttackManager: {fileID: 843021313}
+  weaponIndex: 6
+  ammoIcon: {fileID: 1373048476648459621, guid: 2e3d1c9eb8ed59e468d617449aeadf8f, type: 3}
+  rightGripPoint: {fileID: 2001363324}
+  leftGripPoint: {fileID: 211561049}
+  MaxAmmo: 0
+  _Ammo: 0
+  explosiveData: {fileID: 11400000, guid: 472fc6247c623ae4a8a97c7f8c765182, type: 2}
+  explosivePrefab: {fileID: 2485011947335807108, guid: bbdc4d9aeaa25d649ae5f143e018a77a, type: 3}
+  c4sPlaced: 0
 --- !u!1 &126616308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1867,6 +1926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befca66f5a1eb3740b781729ee54144c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponGameobject: {fileID: 265754157}
   firePoint: {fileID: 1389816087}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
@@ -3329,6 +3389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 330acb2155e92564c88c24105792a495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponGameobject: {fileID: 439211500}
   firePoint: {fileID: 439211501}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
@@ -3547,7 +3608,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -119}
-  m_SizeDelta: {x: 200, y: 130}
+  m_SizeDelta: {x: 600, y: 130}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &468417015
 CanvasRenderer:
@@ -3710,7 +3771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -102}
+  m_AnchoredPosition: {x: 300, y: -102}
   m_SizeDelta: {x: 200, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &507876668
@@ -4088,9 +4149,8 @@ GameObject:
   m_Component:
   - component: {fileID: 540114164}
   - component: {fileID: 540114163}
-  - component: {fileID: 540114165}
   m_Layer: 7
-  m_Name: C4
+  m_Name: C4Weapon
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4160,40 +4220,15 @@ Transform:
   m_GameObject: {fileID: 540114162}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.791, y: -0.217, z: 0}
+  m_LocalPosition: {x: 0.791, y: -0.21700001, z: 0}
   m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2001363324}
   - {fileID: 211561049}
   - {fileID: 566885207}
-  m_Father: {fileID: 1428190642}
+  m_Father: {fileID: 123979263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &540114165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 540114162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 110c2f1a7403f7745aedc2736293798a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 566885207}
-  player: {fileID: 843021306}
-  weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
-  playerAttackManager: {fileID: 843021313}
-  weaponIndex: 6
-  ammoIcon: {fileID: 1373048476648459621, guid: 2e3d1c9eb8ed59e468d617449aeadf8f, type: 3}
-  rightGripPoint: {fileID: 2001363324}
-  leftGripPoint: {fileID: 211561049}
-  MaxAmmo: 0
-  _Ammo: 0
-  explosiveData: {fileID: 11400000, guid: 472fc6247c623ae4a8a97c7f8c765182, type: 2}
-  explosivePrefab: {fileID: 2485011947335807108, guid: bbdc4d9aeaa25d649ae5f143e018a77a, type: 3}
-  c4sPlaced: 0
 --- !u!1 &548258266
 GameObject:
   m_ObjectHideFlags: 0
@@ -4228,8 +4263,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -30}
-  m_SizeDelta: {x: 200, y: 60}
+  m_AnchoredPosition: {x: 300, y: -30}
+  m_SizeDelta: {x: 600, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &548258268
 MonoBehaviour:
@@ -4527,6 +4562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5156d7e73bea3e4bac91775ab9d8214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponGameobject: {fileID: 582469230}
   firePoint: {fileID: 1137081422}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
@@ -6218,7 +6254,7 @@ MonoBehaviour:
   - {fileID: 1509484199}
   - {fileID: 940721438}
   - {fileID: 439211503}
-  - {fileID: 540114165}
+  - {fileID: 123979264}
   - {fileID: 940245621}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
   animator: {fileID: 1428190643}
@@ -6954,6 +6990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b889e48de69065e40811daeb09c1cf08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponGameobject: {fileID: 940245618}
   firePoint: {fileID: 657707482}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
@@ -7070,6 +7107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befca66f5a1eb3740b781729ee54144c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponGameobject: {fileID: 940721435}
   firePoint: {fileID: 895383512}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
@@ -18272,7 +18310,7 @@ Transform:
   - {fileID: 1509484197}
   - {fileID: 940721436}
   - {fileID: 439211501}
-  - {fileID: 540114164}
+  - {fileID: 123979263}
   - {fileID: 940245619}
   - {fileID: 265754158}
   m_Father: {fileID: 843021306}
@@ -19443,6 +19481,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5156d7e73bea3e4bac91775ab9d8214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponGameobject: {fileID: 1509484196}
   firePoint: {fileID: 1678848211}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
@@ -54015,6 +54054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a83a473c10879f438c658f5c0fe7a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponGameobject: {fileID: 1946006312}
   firePoint: {fileID: 1443571219}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}
@@ -54435,6 +54475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5156d7e73bea3e4bac91775ab9d8214, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponGameobject: {fileID: 2093347211}
   firePoint: {fileID: 568860658}
   player: {fileID: 843021306}
   weaponData: {fileID: 11400000, guid: e2736c34a25ce544b8638b34d4737aca, type: 2}

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GrenadeInfo
   grenadeMaxForce: 15
   grenadeMinForce: 2
-  grenadeMaxLaunchTime: 0.7
+  grenadeMaxLaunchTime: 0.6

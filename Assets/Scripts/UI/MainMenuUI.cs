@@ -16,8 +16,7 @@ public class MainMenuUI : MonoBehaviour
 
     private void OnEnable()
     {
-        highScore.text = PlayerPrefs.GetInt("HighScore",0).ToString();
-        AudioManager.instance.PlayMusic();
+        highScore.text = PlayerPrefs.GetInt("HighScore",0).ToString();       
     }
 
     private void Start()
@@ -26,6 +25,7 @@ public class MainMenuUI : MonoBehaviour
         settingsButton.onClick.AddListener(OnSettingsButtonClicked);
         loadingScreen.SetActive(false);
         settingsIU.SetActive(false);
+        AudioManager.instance.PlayMusic();
     }
 
     public void OnPlayButtonClicked()

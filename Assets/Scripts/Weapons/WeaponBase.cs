@@ -4,6 +4,7 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
     public event Action<int, int> OnAmmoChanged;
+    public GameObject weaponGameobject;
     public Transform firePoint;
     [SerializeField] protected Transform player;    
     [SerializeField] protected WeaponData weaponData;

@@ -72,7 +72,7 @@ public class PlayerAttackManager : MonoBehaviour
         UnlockWeapon(0);
         OnWeaponChanged?.Invoke(availableWeapons[(int)_currentWeapon]);
         foreach (WeaponBase w in weapons)
-            w.gameObject.SetActive(false);
+            w.weaponGameobject.SetActive(false);
         ChangeWeapon(0);
         canAttack = true;
     }
@@ -241,9 +241,9 @@ public class PlayerAttackManager : MonoBehaviour
         currentWeapon = (Weapons)nextWeapon;
         foreach(WeaponBase w in availableWeapons)
         {
-            w.gameObject.SetActive(false);
+            w.weaponGameobject.SetActive(false);
         }
-        availableWeapons[nextWeapon].gameObject.SetActive(true);
+        availableWeapons[nextWeapon].weaponGameobject.SetActive(true);
         currentFireRate = weaponData.weapons[nextWeapon].fireRate;
         playerController.ChangeGripPoints(availableWeapons[nextWeapon].rightGripPoint, availableWeapons[nextWeapon].leftGripPoint, 
             weaponData.weapons[nextWeapon].useLeftArmBackPosition, weaponData.weapons[nextWeapon].requiresAiming, weaponData.weapons[nextWeapon].aimingOffset);

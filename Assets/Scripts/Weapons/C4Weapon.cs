@@ -6,7 +6,17 @@ public class C4Weapon : ExplosiveWeapon
 {
     private List<ExplosivesController> activedC4 = new List<ExplosivesController>();
     public bool c4sPlaced;
-    
+
+    protected override void OnEnable()
+    {
+        PlayerAttackManager.OnWeaponChanged += OnWeaponChanged;
+    }
+
+    protected void OnDisable()
+    {
+        PlayerAttackManager.OnWeaponChanged -= OnWeaponChanged;
+    }
+
     public void HandleC4Action()
     {
         if (c4sPlaced)
@@ -18,7 +28,7 @@ public class C4Weapon : ExplosiveWeapon
 
     public IEnumerator ExplodeAll()
     {
-        for (int i = 0; i < activedC4.Count; i++) //
+        for (int i = 0; i < activedC4.Count; i++)
         {
             var c4 = activedC4[i];
             c4?.Explode();
@@ -32,11 +42,14 @@ public class C4Weapon : ExplosiveWeapon
         }
     }
 
-    protected override void OnEnable()
-    {       
-        base.OnEnable();
-        if (Ammo > 0)
-            c4sPlaced = false;
+    private void OnWeaponChanged(WeaponBase weapon)
+    {
+        if (weapon == this)
+        {
+            base.OnEnable();
+            if (Ammo > 0)
+                c4sPlaced = false;
+        }       
     }
 
     public override bool DeployExplosive()
