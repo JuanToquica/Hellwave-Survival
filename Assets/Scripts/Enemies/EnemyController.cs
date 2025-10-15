@@ -74,7 +74,8 @@ public class EnemyController : MonoBehaviour
             {
                 Vector2 closestPoint = other.ClosestPoint(transform.position);
                 float dist = Vector2.Distance(transform.position, closestPoint);
-                Vector2 dir = (Vector2)(transform.position - (Vector3)closestPoint);              
+                Vector2 dir = (Vector2)(transform.position - (Vector3)closestPoint);
+                if (other.CompareTag("Barrel")) dir.y += 0.5f; //Para esquivar los barriles
                 if (dist > 0)
                 {
                     float repulsion = (separationRadius - dist) / separationRadius;
