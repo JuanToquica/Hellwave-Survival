@@ -10,6 +10,7 @@ public class EnemySpawner : MonoBehaviour
     [Range(0, 1)]
     [SerializeField] private float probabilityOfEnemyShooterSpawn;
     [SerializeField] private float timeBetweenSpawns;
+    [SerializeField] private float timeBetweenWaves;
     public bool spawningWave;
 
 
@@ -38,7 +39,7 @@ public class EnemySpawner : MonoBehaviour
             } 
             
             EnemyController enemyController = enemy.GetComponent<EnemyController>();
-            enemyController.SetPlayer(player);
+            enemyController.InitiateEnemy(player, spawners[spawn].right);
             spawn ++;
             spawnedEnemies++;
             if (spawn >= spawnersAmount) spawn = 0;
@@ -72,7 +73,7 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenSpawns);
             if (remainingEnemiesToSpawn <= 0) break;
         }
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(timeBetweenWaves);
         spawningWave = false;
     }
 }

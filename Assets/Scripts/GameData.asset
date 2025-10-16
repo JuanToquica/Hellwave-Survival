@@ -16,6 +16,6 @@ MonoBehaviour:
   maxLimitOfEnemiesOnScene: 140
   numberOfSpawnersRoundOne: 3
   numberOfEnemiesRoundOne: 50
-  limitOfEnemiesOnSceneRoundOne: 35
+  limitOfEnemiesOnSceneRoundOne: 40
   additionOfEnemiesPerRound: 12
   additionOfLimitOfEnemiesOnScene: 8

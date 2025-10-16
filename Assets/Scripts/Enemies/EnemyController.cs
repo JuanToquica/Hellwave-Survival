@@ -21,7 +21,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float smoothFactor;
     [SerializeField] private float stopDistance;
     private bool dying;
-    
+    public Vector3 spawnDirection;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,7 +34,8 @@ public class EnemyController : MonoBehaviour
     private void OnEnable()
     {
         PlayerHealth.OnTargetChanged += SetPlayer;
-        InvokeRepeating("UpdatePath", 0.05f, 0.1f);
+        Invoke("LeaveSpawn", 0.05f);
+        InvokeRepeating("UpdatePath", 2, 1);
         dying = false;
     }
 
@@ -51,6 +54,12 @@ public class EnemyController : MonoBehaviour
         else
             rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, new Vector2(0, 0), smoothFactor);
         
+    }
+
+    public void InitiateEnemy(Transform player, Vector3 spawnDirection)
+    {
+        SetPlayer(player);
+        this.spawnDirection = spawnDirection;
     }
 
     public void SetPlayer(Transform player)
@@ -109,6 +118,14 @@ public class EnemyController : MonoBehaviour
         if (seeker.IsDone() && player != null)
         {
             seeker.StartPath(rb.position, player.position, OnPathComplete);
+        }
+    }
+
+    public void LeaveSpawn()
+    {
+        if (seeker != null && seeker.IsDone())
+        {
+            seeker.StartPath(transform.position, transform.position + spawnDirection * 7, OnPathComplete);            
         }
     }
 

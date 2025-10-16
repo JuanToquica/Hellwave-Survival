@@ -78,7 +78,7 @@ MonoBehaviour:
     speed: 0
     range: 0
     damage: 11
-    fireRate: 1
+    fireRate: 0.8
     magazineCapacity: 15
     maxAmmo: 30
     useLeftArmBackPosition: 1
