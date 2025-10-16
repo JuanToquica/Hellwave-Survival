@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static event Action<string> OnRoundStarted;
 
     [Header("UI")]
+    [SerializeField] private SpawnIndicators spawnIndicators;
     [SerializeField] private GameObject hud;
     [SerializeField] private GameObject pauseUI;
     [SerializeField] private GameObject gameOverPanel;
@@ -77,6 +78,7 @@ public class GameManager : MonoBehaviour
     private void StartRound()
     {
         isRoundActive = true;
+        spawnIndicators.IndicateSpawns(currentRound);
         OnRoundStarted?.Invoke($"Round {currentRound}");
         enemySpawner.SpawnWave(limitOfEnemiesOnScene, activedSpawners, false);
     }
