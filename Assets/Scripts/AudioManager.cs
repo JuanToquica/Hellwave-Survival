@@ -5,7 +5,9 @@ using System.Collections;
 public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private ExplosionSoundManager explosionSoundManager;
+    [SerializeField] private AudioSource generalAudioSource;
+    [SerializeField] private AudioSource growlsSource;
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private AudioClip buttonSound;
@@ -28,7 +30,7 @@ public class AudioManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
-        audioSource = GetComponent<AudioSource>();
+        generalAudioSource = GetComponent<AudioSource>();
     }
 
     private void Start()
@@ -59,64 +61,64 @@ public class AudioManager : MonoBehaviour
     {
         int index = weapon;
         if (index == 7) index = 4; //para reproducir sonido de la bazuca
-        audioSource.PlayOneShot(weaponShotSounds[index]);
+        generalAudioSource.PlayOneShot(weaponShotSounds[index]);
         if (index == 1)
             Invoke("PlayShotgunReloadSound", 0.22f);
     }
 
     public void PlayEnemyGrowlSound(AudioClip clip)
-    {        
-        audioSource.PlayOneShot(clip);
+    {
+        growlsSource.PlayOneShot(clip);
     }
 
     public void PlayDeployWeaponSound()
     {
-        audioSource.PlayOneShot(deploySound);
+        generalAudioSource.PlayOneShot(deploySound);
     }
 
     public void PlayButtonSound()
     {
-        audioSource.PlayOneShot(buttonSound);
+        generalAudioSource.PlayOneShot(buttonSound);
     }
 
     public void PlayReloadSound()
     {
-        audioSource.PlayOneShot(reloadSound);
-    }
-
-    public void PlayExplosionSound()
-    {
-        audioSource.PlayOneShot(explosionSound);
+        generalAudioSource.PlayOneShot(reloadSound);
     }
 
     private void PlayShotgunReloadSound()
     {
-        audioSource.PlayOneShot(shotgunReload);
+        generalAudioSource.PlayOneShot(shotgunReload);
     }
 
     public void PlayFireBallImpactSound()
     {
-        audioSource.PlayOneShot(fireBallImpactSound);
+        generalAudioSource.PlayOneShot(fireBallImpactSound);
     }
 
     public void PlayDryFireSound()
     {
-        audioSource.PlayOneShot(dryFireSound);
+        generalAudioSource.PlayOneShot(dryFireSound);
     }
 
     public void PlayFireballLaunchSound()
     {
-        audioSource.PlayOneShot(fireBallLaunchSound[Random.Range(0,2)]);
+        generalAudioSource.PlayOneShot(fireBallLaunchSound[Random.Range(0,2)]);
     }
 
     public void PlayPlayerDeathSound()
     {
-        audioSource.PlayOneShot(playerDeathSound);
+        generalAudioSource.PlayOneShot(playerDeathSound);
     }
 
     public void PlayMusic()
     {
         if (!musicSource.isPlaying)
             musicSource.Play();
+    }
+
+    public void PlayExplosionSound()
+    {
+        explosionSoundManager.PlayExplosionSound();
     }
 }
