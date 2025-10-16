@@ -55,7 +55,9 @@ public class BulletControler : MonoBehaviour
             else if (hit.transform.CompareTag("Enemy"))
             {
                 EnemyHealth enemy = hit.transform.GetComponent<EnemyHealth>();
-                enemy.TakeDamage(damage, direction, knockbackForce);
+                int newDamage = damage;
+                if (transform.CompareTag("EnemyProjectile")) newDamage *= 5; //El projectile enemigo hace mas daño a los demonios
+                enemy.TakeDamage(newDamage, direction, knockbackForce);
             }
             else if (hit.transform.CompareTag("Player"))
             {
